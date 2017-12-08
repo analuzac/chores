@@ -1,32 +1,46 @@
 import React, { Component } from 'react';
-import { Container, Content, Text } from 'native-base';
+import { Container, Content, Text, Item, Label, Input } from 'native-base';
 import { View, Image } from 'react-native';
 
-export default class HouseholdProfileView extends Component {
+export default class HouseholdProfileUpdate extends Component {
   render() {
     let pic = {
       uri:
         'https://upload.wikimedia.org/wikipedia/commons/d/de/Bananavarieties.jpg'
     };
     function memberChart(arr) {
-      arr.forEach(element =>
-        <Text style={styles.textStyle2}>
-          {`${element.name} - ${element.points}pts`}
-        </Text>
-      );
+      arr.map(element => {
+        return (
+          <Text style={styles.textStyle2}>
+            {`${element.name} - ${element.points}pts`}
+          </Text>
+        );
+      });
     }
     return (
       <Container>
         <Content>
           <Image source={pic} style={styles.imageStyle} />
           <Text style={styles.textStyle1}>Household Name:</Text>
-          <Text style={styles.textStyle2}>
+          <Item stackedLabel>
+            <Label style={styles.textStyle2}>
+              {this.props.leHouse.name}
+            </Label>
+            <Input />
+          </Item>
+          {/* <Text style={styles.textStyle2}>
             {this.props.leHouse.name}
-          </Text>
+          </Text> */}
           <Text style={styles.textStyle1}>Description:</Text>
-          <Text style={styles.textStyle2}>
+          <Item stackedLabel>
+            <Label style={styles.textStyle2}>
+              {this.props.leHouse.description}
+            </Label>
+            <Input />
+          </Item>
+          {/* <Text style={styles.textStyle2}>
             {this.props.leHouse.description}
-          </Text>
+          </Text> */}
           <Text style={styles.textStyle1}>Members:</Text>
           {memberChart(this.props.leHouse.members)}
           {/* <Text style={styles.textStyle2}>

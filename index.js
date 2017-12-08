@@ -16,7 +16,7 @@ import UserProfileUpdate from './src/components/UserProfileUpdate';
 import JoinHousehold from './src/components/JoinHousehold';
 import RegisterHousehold from './src/components/RegisterHousehold';
 import HouseholdProfileView from './src/components/HouseholdProfileView';
-//import HouseholdProfileUpdate from './src/components/HouseholdProfileUpdate';
+import HouseholdProfileUpdate from './src/components/HouseholdProfileUpdate';
 
 // CHORES:
 import ChoreProfileAdd from './src/components/ChoreProfileAdd';
@@ -38,7 +38,17 @@ let esoEso = {
 const App = () =>
   <Container>
     <Header headerText={'ChoreZap'} />
-    <HouseholdProfileView />
+    <HouseholdProfileUpdate
+      leHouse={{
+        name: 'Pokemon World',
+        description: 'We are a world of beautiful exotic creatures',
+        members: [
+          { name: 'Pikachu', points: 150 },
+          { name: 'Eevee', points: 200 },
+          { name: 'Charmander', points: 50 }
+        ]
+      }}
+    />
   </Container>;
 
 /* <UserProfileView /> */
@@ -51,6 +61,14 @@ const App = () =>
 //     role: 'Head of Household',
 //     pointsAwarded: 100,
 //     pointsReedemed: 50
+//   }}
+// /> */}
+
+// {/* <HouseholdProfileView
+//   leHouse={{
+//     name: 'Pokemon World',
+//     description: 'We are a world of beautiful exotic animals',
+//     members: [{name:'Pikachu', points: 150}, {name: 'Eevee', points: 200}, {name: 'Charmander', points: 50}]
 //   }}
 // /> */}
 
