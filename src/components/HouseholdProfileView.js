@@ -11,9 +11,10 @@ export default class HouseholdProfileView extends Component {
     return (
       <Container>
         <Content>
-          <Text style={styles.textStyle}>...Household Name Here...</Text>
           <Image source={pic} style={styles.imageStyle} />
+          <Text style={styles.textStyle}>...Household Name Here...</Text>
           <Text style={styles.textStyle}>...Description Here...</Text>
+          <Text style={styles.textStyle}>...ALL MEMBERS OF HOUSEHOLD...</Text>
         </Content>
       </Container>
     );

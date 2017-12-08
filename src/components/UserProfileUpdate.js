@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Container, Content, Text } from 'native-base';
+import { Container, Content, Text, Item, Label, Input } from 'native-base';
 import { View, Image } from 'react-native';
 
-export default class UserProfileView extends Component {
+export default class UserProfileUpdate extends Component {
   render() {
     let pic = {
       uri:
@@ -13,13 +13,26 @@ export default class UserProfileView extends Component {
         <Content>
           <Image source={pic} style={styles.imageStyle} />
           <Text style={styles.textStyle1}>Name:</Text>
-          <Text style={styles.textStyle2}>
+          <Item stackedLabel>
+            <Label style={styles.textStyle2}>
+              {this.props.leUser.name}
+            </Label>
+            <Input />
+          </Item>
+          {/* <Text style={styles.textStyle2}>
             {this.props.leUser.name}
-          </Text>
+          </Text> */}
           <Text style={styles.textStyle1}>Email:</Text>
-          <Text style={styles.textStyle2}>
+          <Item stackedLabel>
+            <Label style={styles.textStyle2}>
+              {this.props.leUser.email}
+            </Label>
+            <Input />
+          </Item>
+          {/* <Text style={styles.textStyle2}>
             {this.props.leUser.email}
-          </Text>
+          </Text> */}
+
           <Text style={styles.textStyle1}>Household:</Text>
           <Text style={styles.textStyle2}>
             {this.props.leUser.household}

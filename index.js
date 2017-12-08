@@ -10,7 +10,7 @@ import Header from './src/components/header';
 import LogIn from './src/components/LogIn';
 import SignUp from './src/components/SignUp';
 import UserProfileView from './src/components/UserProfileView';
-//import UserProfileUpdate from './src/components/UserProfileUpdate';
+import UserProfileUpdate from './src/components/UserProfileUpdate';
 
 // HOUSEHOLD:
 import JoinHousehold from './src/components/JoinHousehold';
@@ -38,8 +38,21 @@ let esoEso = {
 const App = () =>
   <Container>
     <Header headerText={'ChoreZap'} />
-    <UserProfileView />
+    <HouseholdProfileView />
   </Container>;
+
+/* <UserProfileView /> */
+
+// {/* <UserProfileView
+//   leUser={{
+//     name: 'Pikachu',
+//     email: 'pika@chu.com',
+//     household: 'Pokemon',
+//     role: 'Head of Household',
+//     pointsAwarded: 100,
+//     pointsReedemed: 50
+//   }}
+// /> */}
 
 // <ChoreProfileView
 //   leChore={{
