@@ -21,15 +21,15 @@ export default class SignUp extends Component {
             <Separator bordered>
               <Text style={styles.textStyle}>User Registration</Text>
             </Separator>
-            <Item fixedLabel>
+            <Item stackedLabel>
               <Label>Full Name</Label>
               <Input />
             </Item>
-            <Item fixedLabel>
+            <Item stackedLabel>
               <Label>Email</Label>
               <Input />
             </Item>
-            <Item fixedLabel last>
+            <Item stackedLabel last>
               <Label>Password</Label>
               <Input />
             </Item>

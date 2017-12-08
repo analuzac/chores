@@ -21,11 +21,11 @@ export default class LogIn extends Component {
             <Separator bordered>
               <Text style={styles.textStyle}>Log In - User</Text>
             </Separator>
-            <Item fixedLabel>
+            <Item stackedLabel>
               <Label>Email</Label>
               <Input />
             </Item>
-            <Item fixedLabel last>
+            <Item stackedLabel last>
               <Label>Password</Label>
               <Input />
             </Item>

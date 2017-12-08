@@ -21,15 +21,15 @@ export default class RegisterHousehold extends Component {
             <Separator bordered>
               <Text style={styles.textStyle}>Household Registration</Text>
             </Separator>
-            <Item fixedLabel>
+            <Item stackedLabel>
               <Label>Household Name</Label>
               <Input />
             </Item>
-            <Item fixedLabel>
+            <Item stackedLabel>
               <Label>Type of Household</Label>
               <Input />
             </Item>
-            <Item fixedLabel last>
+            <Item stackedLabel last>
               <Label>Description</Label>
               <Input />
             </Item>

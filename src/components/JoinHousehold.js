@@ -21,11 +21,11 @@ export default class JoinHousehold extends Component {
             <Separator bordered>
               <Text style={styles.textStyle}>Log In - Household </Text>
             </Separator>
-            <Item fixedLabel>
+            <Item stackedLabel>
               <Label>Household Name</Label>
               <Input />
             </Item>
-            <Item fixedLabel last>
+            <Item stackedLabel last>
               <Label>Key Code</Label>
               <Input />
             </Item>
@@ -45,9 +45,9 @@ export default class JoinHousehold extends Component {
 
 const styles = {
   buttonStyle: {
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'center',
+    // flex: 1,
+    // flexDirection: 'column',
+    // justifyContent: 'center',
     alignItems: 'center'
   },
   textStyle: {
