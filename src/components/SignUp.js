@@ -13,6 +13,31 @@ import {
 } from 'native-base';
 
 export default class SignUp extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showBody: true,
+      hasValidationErrors: false
+    };
+  }
+
+  handleSubmit = event => {
+    event.preventDefault();
+    const $form = event.target;
+
+    const name = $form.name.value;
+    const email = $form.email.value;
+    const password = $form.password.value;
+    const userInfo = { name, email, password };
+
+    // let regEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    //
+    // if (email.match(regEmail) && password.length >= 8) {
+    this.props.onSignUp(userInfo);
+    this.props.history.push('/login');
+    // } else this.setState({ hasValidationErrors: true });
+  };
+
   render() {
     return (
       <Container>
@@ -33,7 +58,7 @@ export default class SignUp extends Component {
               <Label>Password</Label>
               <Input />
             </Item>
-            <Button block primary>
+            <Button block primary onPress={this.handleSubmit}>
               <Text> Submit </Text>
             </Button>
           </Form>

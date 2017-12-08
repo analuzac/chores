@@ -11,7 +11,11 @@
 		"native-base": "^2.3.3",
 		"react": "16.0.0",
 		"react-native": "0.50.4",
-		"react-native-material-kit": "^0.5.1"
+		"react-native-material-kit": "^0.5.1",
+		"react-redux": "^5.0.6",
+		"recompose": "^0.26.0",
+		"redux": "^3.7.2",
+		"redux-thunk": "^2.2.0"
 	},
 	"devDependencies": {
 		"babel-jest": "21.2.0",
