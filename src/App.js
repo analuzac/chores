@@ -1,5 +1,5 @@
-import React { Component } from 'react';
-import { Router, Scene } from 'react-native-router-flux'
+import React, { Component } from 'react';
+import { Router, Stack, Scene } from 'react-native-router-flux';
 
 import SignUpPageContainer from './redux/containers/SignUpPageContainer';
 
@@ -12,17 +12,22 @@ import setupStore from './redux/setupStore';
 import { Provider } from 'react-redux';
 const store = setupStore();
 
+export default class App extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <Router>
+          <Stack key="root">
+            <Scene
+              key="signup"
+              component={SignUpPageContainer}
+              title="Please Sign Up"
+            />
+          </Stack>
+        </Router>
+      </Provider>
+    );
+  }
+}
 
-const App = () => {
-  return (
-    <Provider store={createStore(reducers)}>
-      <Router>
-        <Scene key="root">
-        <Scene key="signup" component={SignUp} title="Please Sign Up" />
-      </Scene>
-      </Router>
-    </Provider>
-  );
-};
-
-export default App;
+//<SignUpPageContainer />

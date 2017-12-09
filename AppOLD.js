@@ -4,7 +4,7 @@ import { createStore, applyMiddleware } from 'redux'
 import ReduxThunk from 'redux-thunk'
 import reducers from './reducers/'
 import LogIn from './components/LogIn'
-// import { AppRegistry, Text, View, Image } from 'react-native';
+ import { AppRegistry, Text, View, Image } from 'react-native';
 import Router from './Router'
 
 class Greeting extends Component {
