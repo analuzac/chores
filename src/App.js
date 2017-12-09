@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Router, Stack, Scene } from 'react-native-router-flux';
 
+import LogInPageContainer from './redux/containers/LogInPageContainer';
 import SignUpPageContainer from './redux/containers/SignUpPageContainer';
 
 // import { View } from 'react-native';
@@ -18,6 +19,11 @@ export default class App extends Component {
       <Provider store={store}>
         <Router>
           <Stack key="root">
+            <Scene
+              key="login"
+              component={LogInPageContainer}
+              title="Please Log In"
+            />
             <Scene
               key="signup"
               component={SignUpPageContainer}

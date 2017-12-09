@@ -13,7 +13,42 @@ import {
 } from 'native-base';
 
 export default class LogIn extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showBody: true,
+      hasValidationErrors: false,
+      email: '',
+      password: ''
+    };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleEmail = this.handleEmail.bind(this);
+    this.handlePassword = this.handlePassword.bind(this);
+  }
+
+  handleEmail(email) {
+    //this.setState({ name: name});
+    this.setState({ email: email });
+  }
+
+  handlePassword(password) {
+    //this.setState({ name: name});
+    this.setState({ password: password });
+  }
+
+  handleSubmit = () => {
+    const userInfo = {
+      email: this.state.email,
+      password: this.state.password
+    };
+
+    console.log('USER INFO', userInfo);
+    this.props.onLogIn(userInfo);
+  };
+
   render() {
+    console.log('THE PROPS', this.props);
     return (
       <Container>
         <Content>
@@ -23,13 +58,17 @@ export default class LogIn extends Component {
             </Separator>
             <Item stackedLabel>
               <Label>Email</Label>
-              <Input />
+              <Input placerholder="email" onChangeText={this.handleEmail} />
             </Item>
             <Item stackedLabel last>
               <Label>Password</Label>
-              <Input />
+              <Input
+                secureTextEntry
+                placerholder="password"
+                onChangeText={this.handlePassword}
+              />
             </Item>
-            <Button block primary>
+            <Button block primary onPress={this.handleSubmit}>
               <Text> Submit </Text>
             </Button>
             <Text style={styles.textStyle}> - or - </Text>

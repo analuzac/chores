@@ -1,16 +1,15 @@
 import env from '../env';
 
-export default function createUser(userInfo, history) {
-  return fetch(`${env.API_BASE_URL}/users`, {
+export default function getToken(userInfo, history) {
+  return fetch(`${env.API_BASE_URL}/token`, {
     method: 'POST',
     headers: {
-      //   Authorization: 'Bearer keyE9lXfaaEAGEG23',
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(userInfo)
   }).then(response => {
     if (response.status === 400) {
-      history.push('/signup');
+      history.push('/login');
       return response.text();
     }
     return response.json();

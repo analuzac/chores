@@ -46,35 +46,19 @@ export default class SignUp extends Component {
   }
 
   handleSubmit = () => {
-    // alert('hi');
-    //event.preventDefault();
-    // const $form = event.target;
+    const userInfo = {
+      name: this.state.name,
+      email: this.state.email,
+      password: this.state.password
+    };
 
-    //const name = $form.name.value;
-    // const email = $form.email.value;
-    // const password = $form.password.value;
-    //const userInfo = { this.state.name, this.state.email, this.state.password };
-    console.log(
-      'LE USER',
-      this.state.name,
-      this.state.email,
-      this.state.password
-    );
-
-    // let regEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    //
-    // if (email.match(regEmail) && password.length >= 8) {
-    // this.props.onSignUp(userInfo);
-    // this.props.history.push('/login');
-    // } else this.setState({ hasValidationErrors: true });
+    console.log('USER INFO', userInfo);
+    this.props.onSignUp(userInfo);
   };
-  // onEmailChange(text) {
-  //   this.props.onSignUp(text)
-  //   console.log('LE TEXT', text);
-  // }
 
   render() {
-    console.log('HI THERE');
+    console.log('THE PROPS', this.props);
+
     return (
       <Content>
         <Form>
@@ -97,7 +81,7 @@ export default class SignUp extends Component {
               onChangeText={this.handlePassword}
             />
           </Item>
-          <Button onPress={this.handleSubmit}>
+          <Button block primary onPress={this.handleSubmit}>
             <Text> Submit </Text>
           </Button>
         </Form>

@@ -13,16 +13,16 @@ import {
   Separator
 } from 'native-base';
 
-import SignUp from './SignUp';
+import LogIn from './LogIn';
 
-export default function SignUpPage({ onSignUp, userInfo, history, errorMsg }) {
+export default function LogInPage({ onLogIn, userInfo, history, errorMsg }) {
   console.log('THE PROPS - PAGE', this.props);
   return (
     <Container>
       <Content>
-        <SignUp
+        <LogIn
           userInfo={userInfo}
-          onSignUp={onSignUp}
+          onLogIn={onLogIn}
           history={history}
           errorMsg={errorMsg}
         />
