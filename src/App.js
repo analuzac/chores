@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
+import { Provider } from 'react-redux';
 import { Router, Stack, Scene } from 'react-native-router-flux';
+import setupStore from './redux/setupStore';
+const store = setupStore();
 
 import LogInPageContainer from './redux/containers/LogInPageContainer';
 import SignUpPageContainer from './redux/containers/SignUpPageContainer';
-
-// import { View } from 'react-native';
-//import { Provider } from 'react-redux';
-// import { createStore } from 'redux';
-// import reducers from './reducers';
-
-import setupStore from './redux/setupStore';
-import { Provider } from 'react-redux';
-const store = setupStore();
+import LogIn2PageContainer from './redux/containers/LogIn2PageContainer';
+import JoinHousePageContainer from './redux/containers/JoinHousePageContainer';
+import RegisterHousePageContainer from './redux/containers/RegisterHousePageContainer';
 
 export default class App extends Component {
   render() {
@@ -19,21 +16,40 @@ export default class App extends Component {
       <Provider store={store}>
         <Router>
           <Stack key="root">
-            <Scene
-              key="login"
-              component={LogInPageContainer}
-              title="Please Log In"
-            />
+            <Scene key="login" component={LogInPageContainer} title="Log In" />
+            {/* <Scene
+              key="dashboard"
+              component={DashboardPageContainer}
+              title="Assigned Chores"
+            /> */}
             <Scene
               key="signup"
               component={SignUpPageContainer}
-              title="Please Sign Up"
+              title="Sign Up"
             />
+            <Scene
+              key="login2"
+              component={LogIn2PageContainer}
+              title="Log In"
+            />
+            <Scene
+              key="joinhouse"
+              component={JoinHousePageContainer}
+              title="Join Household"
+            />
+            <Scene
+              key="registerhouse"
+              component={RegisterHousePageContainer}
+              title="Register Household"
+            />
+            {/* <Scene
+              key="houseview"
+              component={HouseViewPageContainer}
+              title="Household Profile"
+            /> */}
           </Stack>
         </Router>
       </Provider>
     );
   }
 }
-
-//<SignUpPageContainer />

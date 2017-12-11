@@ -8,10 +8,11 @@ import {
   Input,
   Label,
   Button,
+  Text,
   Separator
 } from 'native-base';
-import { AppRegistry, View, Image, Text } from 'react-native';
-// import { connect } from
+// import { AppRegistry, View, Image, Text } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 
 export default class SignUp extends Component {
   constructor(props) {
@@ -54,6 +55,7 @@ export default class SignUp extends Component {
 
     console.log('USER INFO', userInfo);
     this.props.onSignUp(userInfo);
+    Actions.login2();
   };
 
   render() {

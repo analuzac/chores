@@ -11,9 +11,54 @@ import {
   Text,
   Separator
 } from 'native-base';
+import { Actions } from 'react-native-router-flux';
 
 export default class RegisterHousehold extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showBody: true,
+      hasValidationErrors: false,
+      house: '',
+      type: '',
+      description: ''
+    };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleHouse = this.handleHouse.bind(this);
+    this.handleType = this.handleType.bind(this);
+    this.handleDescription = this.handleDescription.bind(this);
+  }
+
+  handleHouse(house) {
+    //this.setState({ name: name});
+    this.setState({ house: house });
+  }
+
+  handleType(type) {
+    //this.setState({ name: name});
+    this.setState({ type: type });
+  }
+
+  handleDescription(description) {
+    //this.setState({ name: name});
+    this.setState({ description: description });
+  }
+
+  handleSubmit = () => {
+    const householdInfo = {
+      house: this.state.house,
+      type: this.state.type,
+      description: this.state.description
+    };
+
+    console.log('HOUSE INFO', householdInfo);
+    this.props.onRegister(householdInfo);
+    //Actions.dashboard();
+  };
+
   render() {
+    console.log('THE PROPS', this.props);
     return (
       <Container>
         <Content>
@@ -23,15 +68,18 @@ export default class RegisterHousehold extends Component {
             </Separator>
             <Item stackedLabel>
               <Label>Household Name</Label>
-              <Input />
+              <Input placerholder="house" onChangeText={this.handleHouse} />
             </Item>
             <Item stackedLabel>
               <Label>Type of Household</Label>
-              <Input />
+              <Input placerholder="type" onChangeText={this.handleType} />
             </Item>
             <Item stackedLabel last>
               <Label>Description</Label>
-              <Input />
+              <Input
+                placerholder="description"
+                onChangeText={this.handleDescription}
+              />
             </Item>
             <Button block primary>
               <Text> Submit </Text>

@@ -11,9 +11,51 @@ import {
   Text,
   Separator
 } from 'native-base';
+import { Actions } from 'react-native-router-flux';
 
 export default class JoinHousehold extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showBody: true,
+      hasValidationErrors: false,
+      house: '',
+      keycode: ''
+    };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleNew = this.handleNew.bind(this);
+    this.handleHouse = this.handleHouse.bind(this);
+    this.handleKeyCode = this.handleKeyCode.bind(this);
+  }
+
+  handleHouse(house) {
+    //this.setState({ name: name});
+    this.setState({ house: house });
+  }
+
+  handleKeyCode(keycode) {
+    //this.setState({ name: name});
+    this.setState({ keycode: keycode });
+  }
+
+  handleSubmit = () => {
+    const householdInfo = {
+      house: this.state.house,
+      keycode: this.state.keycode
+    };
+
+    console.log('HOUSE INFO', householdInfo);
+    this.props.onJoin(householdInfo);
+    //Actions.dashboard();
+  };
+
+  handleNew = () => {
+    Actions.registerhouse();
+  };
+
   render() {
+    console.log('THE PROPS', this.props);
     return (
       <Container>
         <Content>
@@ -23,17 +65,17 @@ export default class JoinHousehold extends Component {
             </Separator>
             <Item stackedLabel>
               <Label>Household Name</Label>
-              <Input />
+              <Input placerholder="house" onChangeText={this.handleHouse} />
             </Item>
             <Item stackedLabel last>
               <Label>Key Code</Label>
-              <Input />
+              <Input placerholder="keycode" onChangeText={this.handleKeyCode} />
             </Item>
-            <Button block primary>
+            <Button block primary onPress={this.handleSubmit}>
               <Text> Submit </Text>
             </Button>
             <Text style={styles.textStyle}> - or - </Text>
-            <Button success style={styles.buttonStyle}>
+            <Button success style={styles.buttonStyle} onPress={this.handleNew}>
               <Text> Create New Household </Text>
             </Button>
           </Form>

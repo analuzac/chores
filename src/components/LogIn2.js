@@ -13,7 +13,7 @@ import {
 } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 
-export default class LogIn extends Component {
+export default class LogIn2 extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -24,7 +24,6 @@ export default class LogIn extends Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleNew = this.handleNew.bind(this);
     this.handleEmail = this.handleEmail.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
   }
@@ -47,11 +46,7 @@ export default class LogIn extends Component {
 
     console.log('USER INFO', userInfo);
     this.props.onLogIn(userInfo);
-    //Actions.dashboard();
-  };
-
-  handleNew = () => {
-    Actions.signup();
+    Actions.joinhouse();
   };
 
   render() {
@@ -77,10 +72,6 @@ export default class LogIn extends Component {
             </Item>
             <Button block primary onPress={this.handleSubmit}>
               <Text> Submit </Text>
-            </Button>
-            <Text style={styles.textStyle}> - or - </Text>
-            <Button success style={styles.buttonStyle} onPress={this.handleNew}>
-              <Text> Create New Account </Text>
             </Button>
           </Form>
         </Content>
