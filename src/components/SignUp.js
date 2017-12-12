@@ -11,6 +11,7 @@ import {
   Separator
 } from 'native-base';
 import { Alert, AppRegistry, View, Image, Text } from 'react-native';
+// import { connect } from
 
 export default class SignUp extends Component {
   constructor(props) {
@@ -32,14 +33,17 @@ export default class SignUp extends Component {
   }
 
   handleName(name) {
+    //this.setState({ name: name});
     this.setState({ name: name.toLowerCase() });
   }
 
   handleEmail(email) {
+    //this.setState({ name: name});
     this.setState({ email: email.toLowerCase() });
   }
 
   handlePassword(password) {
+    //this.setState({ name: name});
     this.setState({ password: password });
   }
 

@@ -11,35 +11,27 @@ import {
   Text,
   Separator
 } from 'native-base';
-// import { AppRegistry, View, Image, Text } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
-export default class SignUp extends Component {
+export default class LogIn extends Component {
   constructor(props) {
     super(props);
     this.state = {
       showBody: true,
       hasValidationErrors: false,
-      name: '',
       email: '',
       password: ''
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleName = this.handleName.bind(this);
+    this.handleNew = this.handleNew.bind(this);
     this.handleEmail = this.handleEmail.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
   }
 
-  handleName(name) {
-    //this.setState({ name: name});
-    this.setState({ name: name });
-  }
-
   handleEmail(email) {
     //this.setState({ name: name});
-
-    this.setState({ email: email.toLowerCase() });
+    this.setState({ email: email });
   }
 
   handlePassword(password) {
@@ -49,54 +41,46 @@ export default class SignUp extends Component {
 
   handleSubmit = () => {
     const userInfo = {
-      name: this.state.name,
       email: this.state.email,
       password: this.state.password
     };
 
     console.log('USER INFO', userInfo);
-    this.props.onSignUp(userInfo);
-    Actions.login2();
+    this.props.onLogIn(userInfo);
+    Actions.dashboard();
+  };
+
+  handleNew = () => {
+    Actions.signup();
   };
 
   render() {
     console.log('THE PROPS', this.props);
-
     return (
       <Container>
         <Content>
           <Form>
             <Separator bordered>
-              <Text style={styles.textStyle}>User Registration</Text>
+              <Text style={styles.textStyle}>Log In - User</Text>
             </Separator>
             <Item stackedLabel>
-              <Label>Full Name</Label>
-              <Input
-                name="name"
-                onChangeText={this.handleName}
-                value={this.state.name}
-              />
-            </Item>
-            <Item stackedLabel>
               <Label>Email</Label>
-              {/* <Input placerholder="email" onChangeText={this.handleEmail} /> */}
-              <Input
-                name="email"
-                onChangeText={this.handleEmail}
-                value={this.state.email}
-              />
+              <Input placerholder="email" onChangeText={this.handleEmail} />
             </Item>
             <Item stackedLabel last>
               <Label>Password</Label>
               <Input
                 secureTextEntry
-                name="password"
-                value=[this.state.password]
+                placerholder="password"
                 onChangeText={this.handlePassword}
               />
             </Item>
             <Button block primary onPress={this.handleSubmit}>
               <Text> Submit </Text>
+            </Button>
+            <Text style={styles.textStyle}> - or - </Text>
+            <Button success style={styles.buttonStyle} onPress={this.handleNew}>
+              <Text> Create New Account </Text>
             </Button>
           </Form>
         </Content>
@@ -106,15 +90,14 @@ export default class SignUp extends Component {
 }
 
 const styles = {
-  // buttonStyle: {
-  //   flex: 1,
-  //   flexDirection: 'column',
-  //   justifyContent: 'center',
-  //   alignItems: 'center'
-  // },
+  buttonStyle: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
   textStyle: {
-    // color: 'blue',
-    // fontWeight: 'bold',
     fontSize: 25
+    // fontWeight: 'bold'
   }
 };

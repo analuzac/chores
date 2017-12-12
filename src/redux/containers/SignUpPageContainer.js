@@ -1,7 +1,7 @@
 import { compose, lifecycle } from 'recompose';
 import { connect } from 'react-redux';
 
-import SignUpPage from '../../components/SignUpPage';
+import SignUp from '../../components/SignUp';
 
 import createUserProcess from '../thunks/createUserProcess';
 
@@ -19,7 +19,7 @@ function mapStateToProps(state, ownProps) {
 function mapDispatchToProps(dispatch, ownProps) {
   return {
     onSignUp: userInfo => {
-      dispatch(createUserProcess(userInfo));
+      return dispatch(createUserProcess(userInfo));
     }
   };
 }
@@ -37,4 +37,4 @@ const connectToStore = connect(mapStateToProps, mapDispatchToProps);
 //Thus we don't need the following line:
 //export default compose(connectToStore, onDidMount)(LogInPage);
 
-export default compose(connectToStore)(SignUpPage);
+export default compose(connectToStore)(SignUp);

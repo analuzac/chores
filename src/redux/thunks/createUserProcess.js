@@ -4,8 +4,6 @@ export default function createUserProcess(userInfo) {
   return (dispatch, getState) => {
     console.log('INSIDE THUNK', userInfo);
     return createUser(userInfo).then(userInfo => {
-
-
       // if (typeof userInfo === 'string') {
       //   //
       //   let errorMsg = userInfo;
@@ -13,8 +11,8 @@ export default function createUserProcess(userInfo) {
       //   );
       // }
 
-    dispatch({ type: 'CREATE_USER', userInfo: userInfo, errorMsg: null });
-    return userInfo;
-    // });
+      dispatch({ type: 'CREATE_USER', userInfo: userInfo, errorMsg: null });
+      return userInfo;
+    });
   };
 }
