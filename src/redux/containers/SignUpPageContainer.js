@@ -35,6 +35,6 @@ const connectToStore = connect(mapStateToProps, mapDispatchToProps);
 // });
 //
 //Thus we don't need the following line:
-//export default compose(connectToStore, onDidMount)(LogInPage);
+//export default compose(connectToStore, onDidMount)(SignUp);
 
 export default compose(connectToStore)(SignUp);

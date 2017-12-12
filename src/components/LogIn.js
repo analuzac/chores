@@ -29,35 +29,23 @@ export default class LogIn extends Component {
   }
 
   handleEmail(email) {
-    //this.setState({ name: name});
     this.setState({ email: email.toLowerCase() });
   }
 
   handlePassword(password) {
-    //this.setState({ name: name});
     this.setState({ password: password });
   }
 
   async handleLogin() {
-    console.log('handleLogin');
-
-    const email = this.state.email;
-    const password = this.state.password;
-    console.log('22222');
-
-    let logInUser = {};
-
-    logInUser = {
-      email: email,
-      password: password
+    let logInUser = {
+      email: this.state.email,
+      password: this.state.password
     };
 
-    let returnedUser = {};
-    returnedUser = await this.props.onLogIn(logInUser); //
+    let returnedUser = await this.props.onLogIn(logInUser);
 
-    console.log('msg ', returnedUser);
     if (returnedUser.email) {
-      Alert.alert('Logged in ', returnedUser.email);
+      Alert.alert('Sucessful LogIn ', returnedUser.email);
       Actions.dashboard();
     } else {
       Alert.alert('Error');
@@ -74,13 +62,6 @@ export default class LogIn extends Component {
             </Separator>
             <Item stackedLabel>
               <Label>Email</Label>
-              {/* <Input
-                name="username"
-                onChangeText={username => this.setState({ username: username.toLowerCase() })}
-                value={this.state.username}
-                placerholder="username"
-              /> */}
-
               <Input
                 name="email"
                 onChangeText={this.handleEmail}
@@ -89,12 +70,11 @@ export default class LogIn extends Component {
             </Item>
             <Item stackedLabel last>
               <Label>Password</Label>
-              {/* <Input name="password" onChangeText={password => this.setState({ password: password })} value={this.state.password} secureTextEntry={true} /> */}
               <Input
                 name="password"
                 onChangeText={this.handlePassword}
                 value={this.state.password}
-                secureTextEntry={true}
+                secureTextEntry
               />
             </Item>
             <Button onPress={this.handleLogin} block primary>

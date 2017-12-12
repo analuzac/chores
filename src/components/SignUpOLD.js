@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {
   Container,
-  Header,
   Content,
   Form,
   Item,
@@ -11,15 +10,13 @@ import {
   Text,
   Separator
 } from 'native-base';
-// import { AppRegistry, View, Image, Text } from 'react-native';
+
 import { Actions } from 'react-native-router-flux';
 
 export default class SignUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showBody: true,
-      hasValidationErrors: false,
       name: '',
       email: '',
       password: ''
@@ -32,36 +29,29 @@ export default class SignUp extends Component {
   }
 
   handleName(name) {
-    //this.setState({ name: name});
     this.setState({ name: name });
   }
 
   handleEmail(email) {
-    //this.setState({ name: name});
-
     this.setState({ email: email.toLowerCase() });
   }
 
   handlePassword(password) {
-    //this.setState({ name: name});
     this.setState({ password: password });
   }
 
   handleSubmit = () => {
-    const userInfo = {
+    let userInfo = {
       name: this.state.name,
       email: this.state.email,
       password: this.state.password
     };
 
-    console.log('USER INFO', userInfo);
     this.props.onSignUp(userInfo);
     Actions.login2();
   };
 
   render() {
-    console.log('THE PROPS', this.props);
-
     return (
       <Container>
         <Content>
@@ -79,7 +69,6 @@ export default class SignUp extends Component {
             </Item>
             <Item stackedLabel>
               <Label>Email</Label>
-              {/* <Input placerholder="email" onChangeText={this.handleEmail} /> */}
               <Input
                 name="email"
                 onChangeText={this.handleEmail}
@@ -89,13 +78,13 @@ export default class SignUp extends Component {
             <Item stackedLabel last>
               <Label>Password</Label>
               <Input
-                secureTextEntry
                 name="password"
-                value=[this.state.password]
                 onChangeText={this.handlePassword}
+                value={this.state.password}
+                secureTextEntry
               />
             </Item>
-            <Button block primary onPress={this.handleSubmit}>
+            <Button onPress={this.handleSubmit} block primary>
               <Text> Submit </Text>
             </Button>
           </Form>
@@ -113,8 +102,8 @@ const styles = {
   //   alignItems: 'center'
   // },
   textStyle: {
+    fontSize: 25
     // color: 'blue',
     // fontWeight: 'bold',
-    fontSize: 25
   }
 };
