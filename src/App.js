@@ -9,6 +9,7 @@ import SignUpPageContainer from './redux/containers/SignUpPageContainer';
 import LogIn2PageContainer from './redux/containers/LogIn2PageContainer';
 import JoinHousePageContainer from './redux/containers/JoinHousePageContainer';
 import RegisterHousePageContainer from './redux/containers/RegisterHousePageContainer';
+import DashboardPageContainer from './redux/containers/DashboardPageContainer';
 
 export default class App extends Component {
   render() {
@@ -17,11 +18,11 @@ export default class App extends Component {
         <Router>
           <Stack key="root">
             <Scene key="login" component={LogInPageContainer} title="Log In" />
-            {/* <Scene
+            <Scene
               key="dashboard"
               component={DashboardPageContainer}
               title="Assigned Chores"
-            /> */}
+            />
             <Scene
               key="signup"
               component={SignUpPageContainer}

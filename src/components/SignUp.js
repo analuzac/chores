@@ -8,21 +8,21 @@ import {
   Input,
   Label,
   Button,
-  Text,
   Separator
 } from 'native-base';
-// import { AppRegistry, View, Image, Text } from 'react-native';
-import { Actions } from 'react-native-router-flux';
+import { Alert, AppRegistry, View, Image, Text } from 'react-native';
 
 export default class SignUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showBody: true,
-      hasValidationErrors: false,
       name: '',
       email: '',
-      password: ''
+      password: '',
+      // validations
+      uniqueEmail: false,
+      badPassword: false,
+      emptyFields: false
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -32,38 +32,111 @@ export default class SignUp extends Component {
   }
 
   handleName(name) {
-    //this.setState({ name: name});
-    this.setState({ name: name });
+    this.setState({ name: name.toLowerCase() });
   }
 
   handleEmail(email) {
-    //this.setState({ name: name});
-    this.setState({ email: email });
+    this.setState({ email: email.toLowerCase() });
   }
 
   handlePassword(password) {
-    //this.setState({ name: name});
     this.setState({ password: password });
   }
 
-  handleSubmit = () => {
+  async handleSubmit() {
+    // alert('hi');
+    //event.preventDefault();
+    // const $form = event.target;
+
+    const name = this.state.name;
+    const email = this.state.email;
+    const password = this.state.password;
+    //const userInfo = { this.state.name, this.state.email, this.state.password };
+
+    // EMPTY FIELDS ERROR
+    if (!email || !name || !password) {
+      // if fields are blank, set all other errors to FALSE
+      // unique
+      this.setState({ uniqueEmail: false });
+      // password
+      this.setState({ badPassword: false });
+      return this.setState({ emptyFields: true });
+    }
+    if (password.length < 5) {
+      // if the password is bad, then set all other errors to false
+      // uniqueEmail
+      this.setState({ uniqueEmail: false });
+      // empty fields
+      this.setState({ emptyFields: false });
+      // set bad pw to true
+      return this.setState({ badPassword: true });
+    }
+
+    //console.log('LE USER', this.state.name, this.state.email, this.state.password);
+    // IF all goes well
+
+    // 1 set up the userInfo
     const userInfo = {
-      name: this.state.name,
+      firstName: this.state.name,
       email: this.state.email,
       password: this.state.password
     };
 
-    console.log('USER INFO', userInfo);
-    this.props.onSignUp(userInfo);
-    Actions.login2();
-  };
+    // 2 call up the props function
+    //console.log('USER INFO', userInfo);
+    let returnedUser = {};
+    returnedUser = await this.props.onSignUp(userInfo);
+
+    console.log('RETURNED USERS', returnedUser);
+
+    if (returnedUser.firstName) {
+      Alert.alert('Sign Up Completed');
+    } else {
+      Alert.alert('Hi', returnedUser.name);
+      this.setState({ uniqueEmail: true });
+    }
+  }
 
   render() {
-    console.log('THE PROPS', this.props);
+    let errorMsg = null;
+    // if (this.state.loading)
+    //   return (
+    //     <Content
+    //       style={{
+    //         marginTop: '50%'
+    //       }}>
+    //       <Spinner color="blue" />
+    //       <Text style={{ marginLeft: '34%', color: 'black' }}> Creating Account... </Text>
+    //     </Content>
+    //   );
+    if (this.state.emptyFields) {
+      errorMsg = (
+        <Text style={{ color: 'red', marginLeft: '20%' }}>
+          Please fill out all required fields
+        </Text>
+      );
+    }
+    if (this.state.badPassword) {
+      errorMsg = (
+        <Text style={{ color: 'red', marginLeft: '20%' }}>
+          Password must be at least 5 characters
+        </Text>
+      );
+    }
+    if (this.state.uniqueEmail) {
+      errorMsg = (
+        <Text style={{ color: 'red', marginLeft: '20%' }}>
+          {' '}Email must be unique{' '}
+        </Text>
+      );
+    }
 
+    console.log('HI THERE');
+    ////////////////////////////////////////////////////////////////////////////
     return (
       <Content>
         <Form>
+          {errorMsg}
           <Separator bordered>
             <Text style={styles.textStyle}>User Registration</Text>
           </Separator>
@@ -83,7 +156,7 @@ export default class SignUp extends Component {
               onChangeText={this.handlePassword}
             />
           </Item>
-          <Button block primary onPress={this.handleSubmit}>
+          <Button onPress={this.handleSubmit}>
             <Text> Submit </Text>
           </Button>
         </Form>

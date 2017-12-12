@@ -37,6 +37,8 @@ export default function rootReducer(
         ),
         errorMsg: action.errorMsg
       };
+    case 'GET_ASSIGNMENTS':
+      return { ...currentState, assigments: action.assigments };
     case 'CREATE_USER':
       return {
         ...currentState,

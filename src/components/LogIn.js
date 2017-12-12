@@ -47,7 +47,7 @@ export default class LogIn extends Component {
 
     console.log('USER INFO', userInfo);
     this.props.onLogIn(userInfo);
-    //Actions.dashboard();
+    Actions.dashboard();
   };
 
   handleNew = () => {

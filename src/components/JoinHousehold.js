@@ -47,7 +47,7 @@ export default class JoinHousehold extends Component {
 
     console.log('HOUSE INFO', householdInfo);
     this.props.onJoin(householdInfo);
-    //Actions.dashboard();
+    Actions.dashboard();
   };
 
   handleNew = () => {

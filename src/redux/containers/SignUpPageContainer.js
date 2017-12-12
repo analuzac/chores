@@ -19,7 +19,7 @@ function mapStateToProps(state, ownProps) {
 function mapDispatchToProps(dispatch, ownProps) {
   return {
     onSignUp: userInfo => {
-      dispatch(createUserProcess(userInfo, ownProps.history));
+      dispatch(createUserProcess(userInfo));
     }
   };
 }

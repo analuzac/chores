@@ -9,7 +9,7 @@ export default function getToken(userInfo, history) {
     body: JSON.stringify(userInfo)
   }).then(response => {
     if (response.status === 400) {
-      history.push('/login');
+      //history.push('/login');
       return response.text();
     }
     return response.json();
