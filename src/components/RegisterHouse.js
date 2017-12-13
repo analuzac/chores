@@ -12,14 +12,13 @@ import {
   Separator
 } from 'native-base';
 import { Actions } from 'react-native-router-flux';
+import { Alert, AsyncStorage } from 'react-native';
 
 export default class RegisterHouse extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showBody: true,
-      hasValidationErrors: false,
-      house: '',
+      name: '',
       type: '',
       description: ''
     };
@@ -30,9 +29,9 @@ export default class RegisterHouse extends Component {
     this.handleDescription = this.handleDescription.bind(this);
   }
 
-  handleHouse(house) {
+  handleHouse(name) {
     //this.setState({ name: name});
-    this.setState({ house: house });
+    this.setState({ name: name });
   }
 
   handleType(type) {
@@ -45,20 +44,27 @@ export default class RegisterHouse extends Component {
     this.setState({ description: description });
   }
 
-  handleSubmit = () => {
+  async handleSubmit() {
     const householdInfo = {
-      house: this.state.house,
+      name: this.state.name,
       type: this.state.type,
       description: this.state.description
     };
 
-    console.log('HOUSE INFO', householdInfo);
-    this.props.onRegister(householdInfo);
-    //Actions.dashboard();
-  };
+    let returnedHousehold = await this.props.onRegister(householdInfo);
+
+    console.log('PROPS INSIDE REGISTER HOUSEHOLD', this.props);
+    console.log('returnedHousehold', returnedHousehold);
+    if (returnedHousehold.name) {
+      this.props.onUpdateUser(this.props.userInfo, this.props.householdInfo);
+      Alert.alert('Welcome!', returnedHousehold.name);
+      Actions.dashboard();
+    } else {
+      Alert.alert('Error');
+    }
+  }
 
   render() {
-    console.log('THE PROPS', this.props);
     return (
       <Container>
         <Content>
@@ -68,20 +74,29 @@ export default class RegisterHouse extends Component {
             </Separator>
             <Item stackedLabel>
               <Label>Household Name</Label>
-              <Input placerholder="house" onChangeText={this.handleHouse} />
+              <Input
+                name="name"
+                onChangeText={this.handleHouse}
+                value={this.state.name}
+              />
             </Item>
             <Item stackedLabel>
               <Label>Type of Household</Label>
-              <Input placerholder="type" onChangeText={this.handleType} />
+              <Input
+                name="type"
+                onChangeText={this.handleType}
+                value={this.state.type}
+              />
             </Item>
             <Item stackedLabel last>
               <Label>Description</Label>
               <Input
-                placerholder="description"
+                name="description"
                 onChangeText={this.handleDescription}
+                value={this.state.description}
               />
             </Item>
-            <Button block primary>
+            <Button onPress={this.handleSubmit} block primary>
               <Text> Submit </Text>
             </Button>
           </Form>

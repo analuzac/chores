@@ -36,19 +36,23 @@ export default class LogIn2 extends Component {
     this.setState({ password: password });
   }
 
-  handleSubmit = () => {
-    const userInfo = {
+  async handleSubmit() {
+    let logInUser = {
       email: this.state.email,
       password: this.state.password
     };
 
-    console.log('USER INFO', userInfo);
-    this.props.onLogIn(userInfo);
-    Actions.joinhouse();
-  };
+    let returnedUser = await this.props.onLogIn(logInUser);
+
+    if (returnedUser.email) {
+      Alert.alert('Sucessful LogIn ', returnedUser.email);
+      Actions.joinhouse();
+    } else {
+      Alert.alert('Error');
+    }
+  }
 
   render() {
-    console.log('THE PROPS', this.props);
     return (
       <Container>
         <Content>
@@ -58,17 +62,22 @@ export default class LogIn2 extends Component {
             </Separator>
             <Item stackedLabel>
               <Label>Email</Label>
-              <Input placerholder="email" onChangeText={this.handleEmail} />
+              <Input
+                name="email"
+                onChangeText={this.handleEmail}
+                value={this.state.email}
+              />
             </Item>
             <Item stackedLabel last>
               <Label>Password</Label>
               <Input
-                secureTextEntry
-                placerholder="password"
+                name="password"
                 onChangeText={this.handlePassword}
+                value={this.state.password}
+                secureTextEntry
               />
             </Item>
-            <Button block primary onPress={this.handleSubmit}>
+            <Button onPress={this.handleSubmit} block primary>
               <Text> Submit </Text>
             </Button>
           </Form>

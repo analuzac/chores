@@ -2,9 +2,8 @@ import { compose, lifecycle } from 'recompose';
 import { connect } from 'react-redux';
 
 import RegisterHouse from '../../components/RegisterHouse';
-
-import createUserProcess from '../thunks/createUserProcess';
-// SHOULD BE SOMETHING LIKE createHouseProcess
+import createHouseholdProcess from '../thunks/createHouseholdProcess';
+import updateUserProcess from '../thunks/updateUserProcess';
 
 function mapStateToProps(state, ownProps) {
   return {
@@ -20,9 +19,11 @@ function mapStateToProps(state, ownProps) {
 function mapDispatchToProps(dispatch, ownProps) {
   return {
     onRegister: householdInfo => {
-      dispatch(createUserProcess(householdInfo));
+      return dispatch(createHouseholdProcess(householdInfo));
+    },
+    onUpdateUser: (userInfo, householdInfo) => {
+      return dispatch(updateUserProcess(userInfo, householdInfo));
     }
-    // SHOULD BE SOMETHING LIKE createHouseProcess
   };
 }
 

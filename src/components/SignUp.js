@@ -84,7 +84,7 @@ export default class SignUp extends Component {
 
     if (returnedUser.firstName) {
       Alert.alert('Sucessful SignUp');
-      Actions.login2();
+      Actions.login();
     } else {
       Alert.alert('Hi', returnedUser.name);
       this.setState({ uniqueEmail: true });

@@ -37,12 +37,24 @@ export default function rootReducer(
         ),
         errorMsg: action.errorMsg
       };
+    case 'CREATE_HOUSEHOLD':
+      return {
+        ...currentState,
+        householdInfo: action.householdInfo,
+        errorMsg: action.errorMsg
+      };
     case 'GET_ASSIGNMENTS':
       return { ...currentState, assigments: action.assigments };
     case 'CREATE_USER':
       return {
         ...currentState,
         userInfo: action.userInfo
+      };
+    case 'UPDATE_USER':
+      return {
+        ...currentState,
+        userInfo: action.userInfo,
+        errorMsg: action.errorMsg
       };
     case 'GET_TOKEN':
       return {

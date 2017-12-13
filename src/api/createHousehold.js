@@ -1,21 +1,23 @@
 import { AsyncStorage } from 'react-native';
 import env from '../env';
 
-export default function getAssignments() {
+export default function createHousehold(householdInfo) {
   //let storedToken = localStorage.getItem('token');
 
   return AsyncStorage.getItem('token').then(storedToken => {
     console.log('THE STORED TOKEN', storedToken);
-    return fetch(`${env.API_BASE_URL}/households/1/assignments/pending`, {
-      method: 'GET',
+
+    return fetch(`${env.API_BASE_URL}/households`, {
+      method: 'POST',
       headers: {
         Authorization: storedToken,
         'Content-Type': 'application/json'
-      }
+      },
+      body: JSON.stringify(householdInfo)
     })
       .then(handleErrors)
       .then(response => {
-        console.log('RESPONSE - GET ASSIGNMENTS', response);
+        console.log('RESPONSE - CREATE HOUSEHOLD', response);
         return response.json();
       })
       .catch(function(error) {

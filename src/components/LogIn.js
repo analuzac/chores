@@ -43,10 +43,19 @@ export default class LogIn extends Component {
     };
 
     let returnedUser = await this.props.onLogIn(logInUser);
+    console.log('RETURNED USERS', returnedUser);
 
     if (returnedUser.email) {
-      Alert.alert('Sucessful LogIn ', returnedUser.email);
-      Actions.dashboard();
+      Alert.alert(
+        'Sucessful LogIn, now join/create a house',
+        returnedUser.email
+      );
+
+      if (returnedUser.householdId === 0) {
+        Actions.joinhouse();
+      } else {
+        Actions.dashboard();
+      }
     } else {
       Alert.alert('Error');
     }
