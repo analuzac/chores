@@ -1,7 +1,7 @@
 import { compose, lifecycle } from 'recompose';
 import { connect } from 'react-redux';
 
-import LogIn2Page from '../../components/LogIn2Page';
+import LogIn2 from '../../components/LogIn2';
 
 import getTokenProcess from '../thunks/getTokenProcess';
 
@@ -16,19 +16,11 @@ function mapStateToProps(state, ownProps) {
   };
 }
 
-console.log('THE PROPS - CONTAINER', this.props);
-
 function mapDispatchToProps(dispatch, ownProps) {
   return {
     onLogIn: userInfo => {
-      console.log('>>>', userInfo);
-      dispatch(getTokenProcess(userInfo, ownProps.history));
+      dispatch(getTokenProcess(userInfo));
     }
-    // onLogOut: () =>
-    //   dispatch({
-    //     type: 'REMOVE_TOKEN',
-    //     userInfo: null
-    //   })
   };
 }
 
@@ -43,6 +35,6 @@ const connectToStore = connect(mapStateToProps, mapDispatchToProps);
 // });
 //
 //Thus we don't need the following line:
-//export default compose(connectToStore, onDidMount)(LogInPage);
+//export default compose(connectToStore, onDidMount)(LogIn2);
 
-export default compose(connectToStore)(LogIn2Page);
+export default compose(connectToStore)(LogIn2);

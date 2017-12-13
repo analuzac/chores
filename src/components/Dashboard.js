@@ -11,12 +11,11 @@ import {
   Item,
   Input
 } from 'native-base';
+import { Actions } from 'react-native-router-flux';
 // import HeaderIconText from './HeaderIconText';
 // import Footer from './Footer';
 
 import CardComponent from './CardComponent';
-
-import { Actions } from 'react-native-router-flux'; // New code
 
 export default class Dashboard extends Component {
   render() {

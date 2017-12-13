@@ -1,7 +1,7 @@
 import { compose, lifecycle } from 'recompose';
 import { connect } from 'react-redux';
 
-import JoinHousePage from '../../components/JoinHousePage';
+import JoinHouse from '../../components/JoinHouse';
 
 import getTokenProcess from '../thunks/getTokenProcess';
 // SHOULD BE SOMETHING LIKE getHouseProcess
@@ -17,13 +17,10 @@ function mapStateToProps(state, ownProps) {
   };
 }
 
-console.log('THE PROPS - CONTAINER', this.props);
-
 function mapDispatchToProps(dispatch, ownProps) {
   return {
     onJoin: householdInfo => {
-      console.log('>>>', householdInfo);
-      dispatch(getTokenProcess(householdInfo, ownProps.history));
+      dispatch(getTokenProcess(householdInfo));
     }
     // SHOULD BE SOMETHING LIKE getHouseProcess
   };
@@ -40,6 +37,6 @@ const connectToStore = connect(mapStateToProps, mapDispatchToProps);
 // });
 //
 //Thus we don't need the following line:
-//export default compose(connectToStore, onDidMount)(LogInPage);
+//export default compose(connectToStore, onDidMount)(JoinHouse);
 
-export default compose(connectToStore)(JoinHousePage);
+export default compose(connectToStore)(JoinHouse);

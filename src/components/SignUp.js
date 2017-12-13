@@ -11,7 +11,7 @@ import {
   Separator
 } from 'native-base';
 import { Alert, AppRegistry, View, Image, Text } from 'react-native';
-// import { connect } from
+import { Actions } from 'react-native-router-flux';
 
 export default class SignUp extends Component {
   constructor(props) {
@@ -33,29 +33,21 @@ export default class SignUp extends Component {
   }
 
   handleName(name) {
-    //this.setState({ name: name});
     this.setState({ name: name.toLowerCase() });
   }
 
   handleEmail(email) {
-    //this.setState({ name: name});
     this.setState({ email: email.toLowerCase() });
   }
 
   handlePassword(password) {
-    //this.setState({ name: name});
     this.setState({ password: password });
   }
 
   async handleSubmit() {
-    // alert('hi');
-    //event.preventDefault();
-    // const $form = event.target;
-
     const name = this.state.name;
     const email = this.state.email;
     const password = this.state.password;
-    //const userInfo = { this.state.name, this.state.email, this.state.password };
 
     // EMPTY FIELDS ERROR
     if (!email || !name || !password) {
@@ -76,9 +68,6 @@ export default class SignUp extends Component {
       return this.setState({ badPassword: true });
     }
 
-    //console.log('LE USER', this.state.name, this.state.email, this.state.password);
-    // IF all goes well
-
     // 1 set up the userInfo
     const userInfo = {
       firstName: this.state.name,
@@ -94,7 +83,8 @@ export default class SignUp extends Component {
     console.log('RETURNED USERS', returnedUser);
 
     if (returnedUser.firstName) {
-      Alert.alert('Sign Up Completed');
+      Alert.alert('Sucessful SignUp');
+      Actions.login2();
     } else {
       Alert.alert('Hi', returnedUser.name);
       this.setState({ uniqueEmail: true });

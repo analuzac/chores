@@ -13,20 +13,21 @@ import {
 } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 
-export default class JoinHousehold extends Component {
+export default class RegisterHouse extends Component {
   constructor(props) {
     super(props);
     this.state = {
       showBody: true,
       hasValidationErrors: false,
       house: '',
-      keycode: ''
+      type: '',
+      description: ''
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleNew = this.handleNew.bind(this);
     this.handleHouse = this.handleHouse.bind(this);
-    this.handleKeyCode = this.handleKeyCode.bind(this);
+    this.handleType = this.handleType.bind(this);
+    this.handleDescription = this.handleDescription.bind(this);
   }
 
   handleHouse(house) {
@@ -34,24 +35,26 @@ export default class JoinHousehold extends Component {
     this.setState({ house: house });
   }
 
-  handleKeyCode(keycode) {
+  handleType(type) {
     //this.setState({ name: name});
-    this.setState({ keycode: keycode });
+    this.setState({ type: type });
+  }
+
+  handleDescription(description) {
+    //this.setState({ name: name});
+    this.setState({ description: description });
   }
 
   handleSubmit = () => {
     const householdInfo = {
       house: this.state.house,
-      keycode: this.state.keycode
+      type: this.state.type,
+      description: this.state.description
     };
 
     console.log('HOUSE INFO', householdInfo);
-    this.props.onJoin(householdInfo);
-    Actions.dashboard();
-  };
-
-  handleNew = () => {
-    Actions.registerhouse();
+    this.props.onRegister(householdInfo);
+    //Actions.dashboard();
   };
 
   render() {
@@ -61,22 +64,25 @@ export default class JoinHousehold extends Component {
         <Content>
           <Form>
             <Separator bordered>
-              <Text style={styles.textStyle}>Log In - Household </Text>
+              <Text style={styles.textStyle}>Household Registration</Text>
             </Separator>
             <Item stackedLabel>
               <Label>Household Name</Label>
               <Input placerholder="house" onChangeText={this.handleHouse} />
             </Item>
-            <Item stackedLabel last>
-              <Label>Key Code</Label>
-              <Input placerholder="keycode" onChangeText={this.handleKeyCode} />
+            <Item stackedLabel>
+              <Label>Type of Household</Label>
+              <Input placerholder="type" onChangeText={this.handleType} />
             </Item>
-            <Button block primary onPress={this.handleSubmit}>
+            <Item stackedLabel last>
+              <Label>Description</Label>
+              <Input
+                placerholder="description"
+                onChangeText={this.handleDescription}
+              />
+            </Item>
+            <Button block primary>
               <Text> Submit </Text>
-            </Button>
-            <Text style={styles.textStyle}> - or - </Text>
-            <Button success style={styles.buttonStyle} onPress={this.handleNew}>
-              <Text> Create New Household </Text>
             </Button>
           </Form>
         </Content>
@@ -85,15 +91,18 @@ export default class JoinHousehold extends Component {
   }
 }
 
+//
+
 const styles = {
-  buttonStyle: {
-    // flex: 1,
-    // flexDirection: 'column',
-    // justifyContent: 'center',
-    alignItems: 'center'
-  },
+  // buttonStyle: {
+  //   flex: 1,
+  //   flexDirection: 'column',
+  //   justifyContent: 'center',
+  //   alignItems: 'center'
+  // },
   textStyle: {
+    // color: 'blue',
+    // fontWeight: 'bold',
     fontSize: 25
-    // fontWeight: 'bold'
   }
 };

@@ -12,15 +12,15 @@ import {
   Separator
 } from 'native-base';
 import { Actions } from 'react-native-router-flux';
+import { Alert, AsyncStorage } from 'react-native';
 
 export default class LogIn2 extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showBody: true,
-      hasValidationErrors: false,
       email: '',
-      password: ''
+      password: '',
+      errorLogin: false
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -29,12 +29,10 @@ export default class LogIn2 extends Component {
   }
 
   handleEmail(email) {
-    //this.setState({ name: name});
     this.setState({ email: email });
   }
 
   handlePassword(password) {
-    //this.setState({ name: name});
     this.setState({ password: password });
   }
 

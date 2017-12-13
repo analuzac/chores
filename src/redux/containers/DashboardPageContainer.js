@@ -1,7 +1,7 @@
 import { compose, lifecycle } from 'recompose';
 import { connect } from 'react-redux';
 
-import DashboardPage from '../../components/DashboardPage';
+import Dashboard from '../../components/Dashboard';
 
 import getAssignmentsProcess from '../thunks/getAssignmentsProcess';
 
@@ -15,8 +15,6 @@ function mapStateToProps(state, ownProps) {
     errorMsg: state.errorMsg
   };
 }
-
-console.log('THE PROPS - CONTAINER', this.props);
 
 function mapDispatchToProps(dispatch, ownProps) {
   return {
@@ -32,4 +30,4 @@ const onDidMount = lifecycle({
   }
 });
 
-export default compose(connectToStore, onDidMount)(DashboardPage);
+export default compose(connectToStore, onDidMount)(Dashboard);

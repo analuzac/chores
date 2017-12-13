@@ -1,5 +1,5 @@
 import env from '../env';
-export default function getToken(user) {
+export default async function getToken(user) {
   user = {
     email: user.email,
     password: user.password
