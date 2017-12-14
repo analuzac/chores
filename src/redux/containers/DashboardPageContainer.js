@@ -5,7 +5,11 @@ import Dashboard from '../../components/Dashboard';
 
 import getAssignmentsProcess from '../thunks/getAssignmentsProcess';
 
+const scope = {};
+
 function mapStateToProps(state, ownProps) {
+  console.log('MAPTOSTATE...', state.userInfo);
+  scope.userInfo = state.userInfo;
   return {
     assigments: state.assigments,
     chores: state.chores,
@@ -18,7 +22,10 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch, ownProps) {
   return {
-    onMount: () => dispatch(getAssignmentsProcess())
+    onMount: () => {
+      console.log('INSIDE DASHBOARD CONTAINER', scope);
+      dispatch(getAssignmentsProcess(scope.userInfo));
+    }
   };
 }
 
