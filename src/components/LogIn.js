@@ -46,14 +46,15 @@ export default class LogIn extends Component {
     console.log('RETURNED USERS', returnedUser);
 
     if (returnedUser.email) {
-      Alert.alert(
-        'Sucessful LogIn, now join/create a house',
-        returnedUser.email
-      );
+      // Alert.alert(
+      //   'Sucessful LogIn, now join/create a house',
+      //   returnedUser.email
+      // );
 
       if (returnedUser.householdId === 0) {
         Actions.joinhouse();
       } else {
+        // Actions.choreslibrary();
         Actions.dashboard();
       }
     } else {

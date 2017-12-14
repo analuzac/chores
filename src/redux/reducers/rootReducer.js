@@ -1,6 +1,6 @@
 export default function rootReducer(
   currentState = {
-    assigments: [],
+    assignments: [],
     chores: [],
     currentChore: null,
     userInfo: null,
@@ -44,7 +44,7 @@ export default function rootReducer(
         errorMsg: action.errorMsg
       };
     case 'GET_ASSIGNMENTS':
-      return { ...currentState, assigments: action.assigments };
+      return { ...currentState, assignments: action.assignments };
     case 'GET_USER_BY_TOKEN':
       return {
         ...currentState,

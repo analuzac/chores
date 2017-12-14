@@ -4,14 +4,14 @@ export default function getAssignmentsProcess(userInfo) {
   console.log('INSIDE ASSIGNMENTS THUNK - USER_INFO', userInfo);
   return (dispatch, getState) => {
     //
-    return getAssignments(userInfo).then(assigments => {
+    return getAssignments(userInfo).then(assignments => {
       //
       dispatch({
         type: 'GET_ASSIGNMENTS',
-        assigments: assigments,
+        assignments: assignments,
         errorMsg: null
       });
-      return assigments;
+      return assignments;
     });
   };
 }

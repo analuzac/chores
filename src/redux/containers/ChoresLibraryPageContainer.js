@@ -1,17 +1,17 @@
 import { compose, lifecycle } from 'recompose';
 import { connect } from 'react-redux';
 
-import Dashboard from '../../components/Dashboard';
+import ChoresLibrary from '../../components/ChoresLibrary';
 
-import getAssignmentsProcess from '../thunks/getAssignmentsProcess';
+import getChoresProcess from '../thunks/getChoresProcess';
 
 const scope = {};
 
 function mapStateToProps(state, ownProps) {
-  console.log('MAPTOSTATE...', state.userInfo);
+  console.log('MAPTOSTATE...', state);
   scope.userInfo = state.userInfo;
   return {
-    assignments: state.assignments,
+    assigments: state.assigments,
     chores: state.chores,
     currentChore: state.currentChore,
     userInfo: state.userInfo,
@@ -23,8 +23,8 @@ function mapStateToProps(state, ownProps) {
 function mapDispatchToProps(dispatch, ownProps) {
   return {
     onMount: () => {
-      console.log('INSIDE DASHBOARD CONTAINER', scope);
-      return dispatch(getAssignmentsProcess(scope.userInfo));
+      console.log('INSIDE CHORES LIBRARY CONTAINER', scope);
+      dispatch(getChoresProcess(scope.userInfo));
     }
   };
 }
@@ -37,4 +37,4 @@ const onDidMount = lifecycle({
   }
 });
 
-export default compose(connectToStore, onDidMount)(Dashboard);
+export default compose(connectToStore, onDidMount)(ChoresLibrary);
