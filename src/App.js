@@ -17,7 +17,12 @@ export default class App extends Component {
       <Provider store={store}>
         <Router>
           <Stack key="root">
-            <Scene key="login" component={LogInPageContainer} title="Log In" />
+            <Scene
+              key="login"
+              component={LogInPageContainer}
+              title="Log In"
+              initial
+            />
             <Scene
               key="dashboard"
               component={DashboardPageContainer}
@@ -37,7 +42,6 @@ export default class App extends Component {
               key="joinhouse"
               component={JoinHousePageContainer}
               title="Join Household"
-              initial
             />
             <Scene
               key="registerhouse"

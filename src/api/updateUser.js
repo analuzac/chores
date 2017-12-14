@@ -5,10 +5,11 @@ export default function updateUser(userInfo, householdInfo) {
   //let storedToken = localStorage.getItem('token');
 
   return AsyncStorage.getItem('token').then(storedToken => {
-    console.log('LE KEYCODE', householdInfo.keycode);
-    console.log('THE STORED TOKEN', storedToken);
+    //
+    let leHouseholdId = householdInfo.keycode;
+    //
     return fetch(
-      `${env.API_BASE_URL}/households/${householdInfo.id}/users/${userInfo.id}`,
+      `${env.API_BASE_URL}/households/${leHouseholdId}/users/${userInfo.id}`,
       {
         method: 'PATCH',
         headers: {
@@ -18,13 +19,12 @@ export default function updateUser(userInfo, householdInfo) {
         body: JSON.stringify({
           role: 'member',
           isHead: false,
-          householdId: householdInfo.keycode
+          householdId: leHouseholdId
         })
       }
     )
       .then(handleErrors)
       .then(response => {
-        console.log('RESPONSE - UPDATE USER', response);
         return response.json();
       })
       .catch(function(error) {

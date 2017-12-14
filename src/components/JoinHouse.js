@@ -30,12 +30,10 @@ export default class JoinHouse extends Component {
   }
 
   handleHouse(house) {
-    //this.setState({ name: name});
     this.setState({ house: house });
   }
 
   handleKeyCode(keycode) {
-    //this.setState({ name: name});
     this.setState({ keycode: keycode });
   }
 
@@ -45,7 +43,6 @@ export default class JoinHouse extends Component {
       keycode: this.state.keycode
     };
     const userInfo = this.props.userInfo;
-    console.log('HOUSE INFO', householdInfo);
     this.props.onJoin(userInfo, householdInfo);
     Actions.dashboard();
   };
@@ -55,7 +52,6 @@ export default class JoinHouse extends Component {
   };
 
   render() {
-    console.log('THE PROPS', this.props);
     return (
       <Container>
         <Content>
