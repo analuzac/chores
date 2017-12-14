@@ -37,12 +37,12 @@ export default class App extends Component {
               key="joinhouse"
               component={JoinHousePageContainer}
               title="Join Household"
+              initial
             />
             <Scene
               key="registerhouse"
               component={RegisterHousePageContainer}
               title="Register Household"
-              initial
             />
             {/* <Scene
               key="houseview"

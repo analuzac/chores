@@ -56,8 +56,8 @@ export default class RegisterHouse extends Component {
     console.log('PROPS INSIDE REGISTER HOUSEHOLD', this.props);
     console.log('returnedHousehold', returnedHousehold);
     if (returnedHousehold.name) {
-      this.props.onUpdateUser(this.props.userInfo, this.props.householdInfo);
-      Alert.alert('Welcome!', returnedHousehold.name);
+      //  this.props.onUpdateUser(this.props.userInfo, this.props.householdInfo);
+      Alert.alert('Your household is live!');
       Actions.dashboard();
     } else {
       Alert.alert('Error');

@@ -1,30 +1,21 @@
 import { AsyncStorage } from 'react-native';
 import env from '../env';
 
-export default function updateUser(userInfo, householdInfo) {
+export default function getUserByToken() {
   //let storedToken = localStorage.getItem('token');
 
   return AsyncStorage.getItem('token').then(storedToken => {
-    console.log('LE KEYCODE', householdInfo.keycode);
     console.log('THE STORED TOKEN', storedToken);
-    return fetch(
-      `${env.API_BASE_URL}/households/${householdInfo.id}/users/${userInfo.id}`,
-      {
-        method: 'PATCH',
-        headers: {
-          Authorization: storedToken,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          role: 'member',
-          isHead: false,
-          householdId: householdInfo.keycode
-        })
+    return fetch(`${env.API_BASE_URL}/users/token`, {
+      method: 'GET',
+      headers: {
+        Authorization: storedToken,
+        'Content-Type': 'application/json'
       }
-    )
+    })
       .then(handleErrors)
       .then(response => {
-        console.log('RESPONSE - UPDATE USER', response);
+        console.log('RESPONSE - GET ASSIGNMENTS', response);
         return response.json();
       })
       .catch(function(error) {

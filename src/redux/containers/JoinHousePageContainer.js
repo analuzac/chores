@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 
 import JoinHouse from '../../components/JoinHouse';
 
-import getTokenProcess from '../thunks/getTokenProcess';
+import updateUserProcess from '../thunks/updateUserProcess';
+import getUserByTokenProcess from '../thunks/getUserByTokenProcess';
 // SHOULD BE SOMETHING LIKE getHouseProcess
 
 function mapStateToProps(state, ownProps) {
@@ -19,8 +20,10 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch, ownProps) {
   return {
-    onJoin: householdInfo => {
-      dispatch(getTokenProcess(householdInfo));
+    onMount: () => dispatch(getUserByTokenProcess()),
+    onJoin: (userInfo, householdInfo) => {
+      console.log('LE KEYCODE', householdInfo.keycode);
+      dispatch(updateUserProcess(userInfo, householdInfo));
     }
     // SHOULD BE SOMETHING LIKE getHouseProcess
   };
@@ -30,13 +33,13 @@ const connectToStore = connect(mapStateToProps, mapDispatchToProps);
 
 // We don't need onDidMount:
 //
-// const onDidMount = lifecycle({
-//   componentDidMount() {
-//     this.props.onMount();
-//   }
-// });
+const onDidMount = lifecycle({
+  componentDidMount() {
+    this.props.onMount();
+  }
+});
 //
 //Thus we don't need the following line:
-//export default compose(connectToStore, onDidMount)(JoinHouse);
+export default compose(connectToStore, onDidMount)(JoinHouse);
 
-export default compose(connectToStore)(JoinHouse);
+//export default compose(connectToStore)(JoinHouse);

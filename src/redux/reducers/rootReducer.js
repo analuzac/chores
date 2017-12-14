@@ -45,6 +45,11 @@ export default function rootReducer(
       };
     case 'GET_ASSIGNMENTS':
       return { ...currentState, assigments: action.assigments };
+    case 'GET_USER_BY_TOKEN':
+      return {
+        ...currentState,
+        userInfo: action.userInfo
+      };
     case 'CREATE_USER':
       return {
         ...currentState,

@@ -44,9 +44,9 @@ export default class JoinHouse extends Component {
       house: this.state.house,
       keycode: this.state.keycode
     };
-
+    const userInfo = this.props.userInfo;
     console.log('HOUSE INFO', householdInfo);
-    this.props.onJoin(householdInfo);
+    this.props.onJoin(userInfo, householdInfo);
     Actions.dashboard();
   };
 
