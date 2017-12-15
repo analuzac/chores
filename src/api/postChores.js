@@ -1,24 +1,23 @@
 import { AsyncStorage } from 'react-native';
 import env from '../env';
 
-export default function getOneChores(choreId, householdId) {
+export default function postChores(householdId, newChore) {
   //let storedToken = localStorage.getItem('token');
 
   return AsyncStorage.getItem('token').then(storedToken => {
-    console.log('THE STORED TOKEN', storedToken);
-    return fetch(
-      `${env.API_BASE_URL}/households/${householdId}/chores/${choreId}`,
-      {
-        method: 'GET',
-        headers: {
-          Authorization: storedToken,
-          'Content-Type': 'application/json'
-        }
-      }
-    )
+    //console.log('THE STORED TOKEN', storedToken);
+
+    return fetch(`${env.API_BASE_URL}/households/${householdId}/chores`, {
+      method: 'POST',
+      headers: {
+        Authorization: storedToken,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newChore)
+    })
       .then(handleErrors)
       .then(response => {
-        console.log('RESPONSE - GET ONE CHORES', response);
+        console.log('RESPONSE - CREATE HOUSEHOLD', response);
         return response.json();
       })
       .catch(function(error) {

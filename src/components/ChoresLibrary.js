@@ -14,7 +14,8 @@ import {
   Button,
   Icon,
   Badge,
-  Alert
+  Alert,
+  Separator
 } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 // import HeaderIconText from './HeaderIconText';
@@ -29,45 +30,59 @@ export default class ChoresLibrary extends Component {
     this.handleChore = this.handleChore.bind(this);
   }
 
-  handleChore(key) {
-    console.log('KEY....', key);
+  async handleChore(key) {
+    let choreId = key;
+    let householdId = this.props.userInfo.householdId;
+    console.log('HANDLE CHORE....', choreId, householdId);
+    // console.log('HOUSEHOLD ID?', this.props.userInfo);
+    let returnedChore = await this.props.onOneChore(choreId, householdId);
+    console.log('RETURNED CHORE', returnedChore);
+
+    if (returnedChore.type) {
+      Actions.choresview();
+    } else {
+      Alert.alert('Error');
+    }
   }
 
-  pressButton() {
-    Alert.alert('hi button');
-  }
   render() {
+    console.log('WHATS IN THE STATE?', this.props);
     let leChores = this.props.chores;
     //console.log('INSIDE CHORES LIBRARY COMPONENT', leChores);
-    //onPress={this.handleChore}
 
     return (
       <Container>
         {/* <HeaderIconText /> */}
         <Content>
+          <Separator bordered>
+            <Text style={styles.textStyle}>View & Edit Chores:</Text>
+          </Separator>
           {leChores.map(leChore => {
             //console.log('leChore', leChore);
             return (
               <Button
+                large
+                full
+                rounded
                 bordered
                 style={styles.buttonStyle}
                 key={leChore.id}
                 onPress={() => {
                   return this.handleChore(leChore.id);
                 }}>
-                {/* onPress={this.pressButton}> */}
                 <Text>
                   {leChore.type}
                 </Text>
               </Button>
             );
           })}
-          <Button>
+          <Separator small />
+          <Button block onPress={() => Actions.choresadd()}>
             <Icon name="add" />
             <Text>Add A Chore</Text>
           </Button>
 
-          <Button onPress={() => Actions.choresview()}>
+          <Button block onPress={() => Actions.dashboard()}>
             <Text>Assign Chores</Text>
           </Button>
         </Content>

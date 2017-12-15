@@ -22,7 +22,6 @@ export default function rootReducer(
       return {
         ...currentState,
         currentChore: action.currentChore,
-        chores: [action.currentChore, ...currentState.chores],
         errorMsg: action.errorMsg
       };
     case 'UPDATE_CHORE':

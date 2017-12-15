@@ -14,19 +14,19 @@ export default class ChoreProfileView extends Component {
           <Image source={pic} style={styles.imageStyle} />
           <Text style={styles.textStyle1}>Chore Type:</Text>
           <Text style={styles.textStyle2}>
-            {this.props.leChore.type}
+            {this.props.currentChore.type}
           </Text>
           <Text style={styles.textStyle1}>Instructions:</Text>
           <Text style={styles.textStyle2}>
-            {this.props.leChore.instructions}
+            {this.props.currentChore.instructions}
           </Text>
           <Text style={styles.textStyle1}>Points:</Text>
           <Text style={styles.textStyle2}>
-            {this.props.leChore.points}
+            {this.props.currentChore.points}
           </Text>
           <Text style={styles.textStyle1}>Status:</Text>
           <Text style={styles.textStyle2}>
-            {this.props.leChore.status}
+            {this.props.currentChore.status}
           </Text>
         </Content>
       </Container>

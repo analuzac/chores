@@ -18,6 +18,7 @@ import {
   Item as FormItem
 } from 'native-base';
 import { View, Image, Platform } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 
 const leItem = Picker.leItem;
 
@@ -25,13 +26,51 @@ export default class ChoreProfileAdd extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected1: 'key0'
+      // status: 'key0',
+      type: '',
+      instructions: '',
+      points: ''
     };
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleType = this.handleType.bind(this);
+    this.handleInstructions = this.handleInstructions.bind(this);
+    this.handlePoints = this.handlePoints.bind(this);
   }
-  onValueChange(value: string) {
-    this.setState({
-      selected1: value
-    });
+
+  // onValueChange(value: string) {
+  //   this.setState({
+  //     status: value
+  //   });
+  // }
+
+  handleType(type) {
+    this.setState({ type: type });
+  }
+
+  handleInstructions(instructions) {
+    this.setState({ instructions: instructions });
+  }
+
+  handlePoints(points) {
+    this.setState({ points: points });
+  }
+
+  async handleSubmit() {
+    let newChore = {
+      type: this.state.type,
+      instructions: this.state.instructions,
+      points: this.state.points
+      // status: this.state.status
+    };
+    let householdId = this.props.userInfo.householdId;
+    let returnedChore = await this.props.onCreateChore(householdId, newChore);
+    console.log('RETURNED USERS', returnedChore);
+
+    if (returnedChore.type) {
+      Actions.choreslibrary();
+    } else {
+      Alert.alert('Error');
+    }
   }
 
   render() {
@@ -57,7 +96,7 @@ export default class ChoreProfileAdd extends Component {
 
           <Text style={styles.textStyle1}>Chore Type:</Text>
           <Item>
-            <Input />
+            <Input placerholder="type" onChangeText={this.handleType} />
           </Item>
           {/* <Text style={styles.textStyle2}>
             {this.props.leChore.type}
@@ -65,7 +104,10 @@ export default class ChoreProfileAdd extends Component {
 
           <Text style={styles.textStyle1}>Instructions:</Text>
           <Item>
-            <Input />
+            <Input
+              placerholder="instructions"
+              onChangeText={this.handleInstructions}
+            />
           </Item>
           {/* <Text style={styles.textStyle2}>
             {this.props.leChore.instructions}
@@ -73,13 +115,13 @@ export default class ChoreProfileAdd extends Component {
 
           <Text style={styles.textStyle1}>Points:</Text>
           <Item>
-            <Input />
+            <Input placerholder="points" onChangeText={this.handlePoints} />
           </Item>
           {/* <Text style={styles.textStyle2}>
             {this.props.leChore.points}
           </Text> */}
 
-          <Text style={styles.textStyle1}>Status:</Text>
+          {/* <Text style={styles.textStyle1}>Status:</Text>
           <Form>
             <Picker
               iosHeader="Select one"
@@ -89,9 +131,9 @@ export default class ChoreProfileAdd extends Component {
               <leItem label="active" value="key0" style={styles.textStyle2} />
               <leItem label="inactive" value="key1" />
             </Picker>
-          </Form>
-          <Button block primary>
-            <Text> DONE </Text>
+          </Form> */}
+          <Button onPress={this.handleSubmit} block primary>
+            <Text> SUBMIT </Text>
           </Button>
         </Content>
       </Container>

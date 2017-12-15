@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 
 import ChoreProfileView from '../../components/ChoreProfileView';
 
-import getOneChoresProcess from '../thunks/getOneChoresProcess';
+//import getOneChoresProcess from '../thunks/getOneChoresProcess';
 
-const scope = {};
+//const scope = {};
 
 function mapStateToProps(state, ownProps) {
   console.log('MAPTOSTATE...', state);
-  scope.userInfo = state.userInfo;
+  //scope.userInfo = state.userInfo;
   return {
     assigments: state.assigments,
     chores: state.chores,
@@ -22,19 +22,20 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch, ownProps) {
   return {
-    onMount: () => {
-      console.log('INSIDE CHORES LIBRARY CONTAINER', scope);
-      dispatch(getOneChoresProcess(scope.userInfo));
-    }
+    // onMount: () => {
+    //   console.log('INSIDE CHORES LIBRARY CONTAINER', scope);
+    //   dispatch(getOneChoresProcess(scope.userInfo));
+    // }
   };
 }
 
 const connectToStore = connect(mapStateToProps, mapDispatchToProps);
 
-const onDidMount = lifecycle({
-  componentDidMount() {
-    this.props.onMount();
-  }
-});
+// const onDidMount = lifecycle({
+//   componentDidMount() {
+//     this.props.onMount();
+//   }
+// });
 
-export default compose(connectToStore, onDidMount)(ChoreProfileView);
+//export default compose(connectToStore, onDidMount)(ChoreProfileView);
+export default compose(connectToStore)(ChoreProfileView);

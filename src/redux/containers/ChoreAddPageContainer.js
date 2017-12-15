@@ -1,16 +1,15 @@
 import { compose, lifecycle } from 'recompose';
 import { connect } from 'react-redux';
 
-import ChoresLibrary from '../../components/ChoresLibrary';
+import ChoreProfileAdd from '../../components/ChoreProfileAdd';
 
-import getChoresProcess from '../thunks/getChoresProcess';
-import getOneChoresProcess from '../thunks/getOneChoresProcess';
+import postChoresProcess from '../thunks/postChoresProcess';
 
-const scope = {};
+//const scope = {};
 
 function mapStateToProps(state, ownProps) {
   console.log('MAPTOSTATE...', state);
-  scope.userInfo = state.userInfo;
+  //scope.userInfo = state.userInfo;
   return {
     assigments: state.assigments,
     chores: state.chores,
@@ -23,12 +22,12 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch, ownProps) {
   return {
-    onMount: () => {
-      console.log('INSIDE CHORES LIBRARY CONTAINER', scope);
-      dispatch(getChoresProcess(scope.userInfo));
-    },
-    onOneChore: (choreId, householdId) => {
-      return dispatch(getOneChoresProcess(choreId, householdId));
+    // onMount: () => {
+    //   console.log('INSIDE CHORES LIBRARY CONTAINER', scope);
+    //   dispatch(getChoresProcess(scope.userInfo));
+    // },
+    onCreateChore: (householdId, newChore) => {
+      return dispatch(postChoresProcess(householdId, newChore));
     }
   };
 }
@@ -41,4 +40,5 @@ const onDidMount = lifecycle({
   }
 });
 
-export default compose(connectToStore, onDidMount)(ChoresLibrary);
+// export default compose(connectToStore, onDidMount)(ChoresLibrary);
+export default compose(connectToStore)(ChoreProfileAdd);
