@@ -41,6 +41,7 @@ export default class Dashboard extends Component {
             chore="Kitchen"
             image={pic}
           /> */}
+
           {leAssignments.map(leAssignment => {
             console.log('leAssignment', leAssignment);
             console.log('ID', leAssignment.assignmentId);

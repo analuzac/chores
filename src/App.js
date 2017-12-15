@@ -11,6 +11,7 @@ import JoinHousePageContainer from './redux/containers/JoinHousePageContainer';
 import RegisterHousePageContainer from './redux/containers/RegisterHousePageContainer';
 import DashboardPageContainer from './redux/containers/DashboardPageContainer';
 import ChoresLibraryPageContainer from './redux/containers/ChoresLibraryPageContainer';
+import ChoreViewPageContainer from './redux/containers/ChoreViewPageContainer';
 
 export default class App extends Component {
   render() {
@@ -52,7 +53,12 @@ export default class App extends Component {
             <Scene
               key="choreslibrary"
               component={ChoresLibraryPageContainer}
-              title="ChoresLibrary"
+              title="Chores Library"
+            />
+            <Scene
+              key="choresview"
+              component={ChoreViewPageContainer}
+              title="Chore Profile - View"
             />
             {/* <Scene
               key="houseview"

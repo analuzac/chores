@@ -54,8 +54,8 @@ export default class LogIn extends Component {
       if (returnedUser.householdId === 0) {
         Actions.joinhouse();
       } else {
-        // Actions.choreslibrary();
-        Actions.dashboard();
+        //Actions.dashboard();
+        Actions.choreslibrary();
       }
     } else {
       Alert.alert('Error');
