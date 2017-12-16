@@ -18,9 +18,16 @@ import { Actions } from 'react-native-router-flux';
 import CardComponent from './CardComponent';
 
 export default class Dashboard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      users: this.props.users
+    };
+  }
   render() {
-    let leAssignments = this.props.assignments;
-    console.log('INSIDE DASHBOARD', leAssignments);
+    const leAssignments = this.props.assignments;
+    const users = this.props.users;
+    console.log('INSIDE DASHBOARD', leAssignments, users);
     let pic = {
       uri:
         'https://upload.wikimedia.org/wikipedia/commons/d/de/Bananavarieties.jpg'
@@ -43,16 +50,22 @@ export default class Dashboard extends Component {
           /> */}
 
           {leAssignments.map(leAssignment => {
-            console.log('leAssignment', leAssignment);
-            console.log('ID', leAssignment.assignmentId);
+            //console.log('leAssignment', leAssignment);
+            //console.log('ID', leAssignment.userId);
 
             return (
-              <Content>
+              <Content key={leAssignment.assignmentId}>
                 <CardComponent
-                  key={leAssignment.assignmentId}
-                  assigned={leAssignment.firstName}
-                  chore={leAssignment.type}
-                  image={pic}
+                  assignmentId={leAssignment.assignmentId} //
+                  assigned={leAssignment.firstName} //
+                  chore={leAssignment.type} //
+                  choreId={leAssignment.choreId} //
+                  image={pic} //
+                  users={users}
+                  assignedUserId={leAssignment.userId}
+                  updateAssignment={this.props.updateAssignment}
+                  householdId={leAssignment.householdId}
+                  status={leAssignment.status}
                 />
               </Content>
             );

@@ -58,7 +58,7 @@ export default class RegisterHouse extends Component {
     if (returnedHousehold.name) {
       //  this.props.onUpdateUser(this.props.userInfo, this.props.householdInfo);
       Alert.alert('Your household is live!');
-      Actions.dashboard();
+      Actions.choreslibrary();
     } else {
       Alert.alert('Error');
     }

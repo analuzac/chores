@@ -55,7 +55,7 @@ export default class LogIn extends Component {
         Actions.joinhouse();
       } else {
         //Actions.dashboard();
-        Actions.choreslibrary();
+        Actions.dashboard();
       }
     } else {
       Alert.alert('Error');

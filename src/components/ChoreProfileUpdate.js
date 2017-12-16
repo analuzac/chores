@@ -95,17 +95,6 @@ export default class ChoreProfileUpdate extends Component {
     };
     return (
       <Container>
-        {/* <Header>
-          <Left>
-            <Button transparent onPress={() => this.props.navigation.goBack()}>
-              <Icon name="arrow-back" />
-            </Button>
-          </Left>
-          <Body>
-            <Title>Update Chore</Title>
-          </Body>
-          <Right />
-        </Header> */}
         <Content>
           <Image source={pic} style={styles.imageStyle} />
 
@@ -155,24 +144,6 @@ export default class ChoreProfileUpdate extends Component {
     );
   }
 }
-
-// {/* <Form>
-//   <Picker
-//     iosHeader="Select one"
-//     mode="dropdown"
-//     selectedValue={this.state.selected1}
-//     onValueChange={this.onValueChange.bind(this)}>
-//     <Item label="< select one >" value="key0" />
-//     <Item label="Bathroom" value="key1" />
-//     <Item label="Living Room" value="key2" />
-//     <Item label="Kitchen" value="key3" />
-//     <Item label="Floors" value="key4" />
-//     <Item label="Trash/Recycling" value="key5" />
-//   </Picker>
-// </Form> */}
-//
-//   <View style={{ alignItems: 'center' }}>
-//
 
 const styles = {
   buttonStyle: {
