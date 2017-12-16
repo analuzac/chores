@@ -28,12 +28,6 @@ export default function rootReducer(
       return {
         ...currentState,
         currentChore: action.currentChore,
-        chores: currentState.chores.map(
-          choreItem =>
-            choreItem.id === action.currentChore.id
-              ? action.currentChore
-              : choreItem
-        ),
         errorMsg: action.errorMsg
       };
     case 'CREATE_HOUSEHOLD':

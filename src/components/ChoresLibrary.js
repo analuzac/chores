@@ -76,13 +76,14 @@ export default class ChoresLibrary extends Component {
               </Button>
             );
           })}
-          <Separator small />
-          <Button block onPress={() => Actions.choresadd()}>
+          <Text />
+          <Button full rounded info onPress={() => Actions.choresadd()}>
             <Icon name="add" />
-            <Text>Add A Chore</Text>
+            <Text>Add a Chore</Text>
           </Button>
-
-          <Button block onPress={() => Actions.dashboard()}>
+          <Text />
+          <Button full rounded info onPress={() => Actions.dashboard()}>
+            <Icon name="people" />
             <Text>Assign Chores</Text>
           </Button>
         </Content>

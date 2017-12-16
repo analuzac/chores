@@ -18,20 +18,74 @@ import {
   Item as FormItem
 } from 'native-base';
 import { View, Image, Platform } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 
-const leItem = Picker.leItem;
+const leItem = Picker.Item;
 
 export default class ChoreProfileUpdate extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected1: 'key0'
+      status: 'active',
+      type: '',
+      instructions: '',
+      points: ''
     };
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleType = this.handleType.bind(this);
+    this.handleInstructions = this.handleInstructions.bind(this);
+    this.handlePoints = this.handlePoints.bind(this);
   }
+
   onValueChange(value: string) {
     this.setState({
-      selected1: value
+      status: value
     });
+  }
+
+  handleType(type) {
+    this.setState({ type: type });
+  }
+
+  handleInstructions(instructions) {
+    this.setState({ instructions: instructions });
+  }
+
+  handlePoints(points) {
+    this.setState({ points: points });
+  }
+
+  async handleSubmit() {
+    const leType = this.state.type
+      ? this.state.type.trim()
+      : this.props.currentChore.type;
+    const leInstructions = this.state.instructions
+      ? this.state.instructions.trim()
+      : this.props.currentChore.instructions;
+    const lePoints = this.state.points
+      ? this.state.points.trim()
+      : this.props.currentChore.points;
+
+    let updateChore = {
+      type: leType,
+      instructions: leInstructions,
+      points: lePoints,
+      status: this.state.status
+    };
+    let choreId = this.props.currentChore.id;
+    let householdId = this.props.currentChore.householdId;
+    let returnedChore = await this.props.onUpdateChore(
+      householdId,
+      choreId,
+      updateChore
+    );
+    console.log('RETURNED CHORE', returnedChore);
+
+    if (returnedChore.type) {
+      Actions.choreslibrary();
+    } else {
+      Alert.alert('Error');
+    }
   }
 
   render() {
@@ -41,7 +95,7 @@ export default class ChoreProfileUpdate extends Component {
     };
     return (
       <Container>
-        <Header>
+        {/* <Header>
           <Left>
             <Button transparent onPress={() => this.props.navigation.goBack()}>
               <Icon name="arrow-back" />
@@ -51,55 +105,49 @@ export default class ChoreProfileUpdate extends Component {
             <Title>Update Chore</Title>
           </Body>
           <Right />
-        </Header>
+        </Header> */}
         <Content>
           <Image source={pic} style={styles.imageStyle} />
 
           <Text style={styles.textStyle1}>Chore Type:</Text>
           <Item stackedLabel>
             <Label style={styles.textStyle2}>
-              {this.props.leChore.type}
+              {this.props.currentChore.type}
             </Label>
-            <Input />
+            <Input placerholder="type" onChangeText={this.handleType} />
           </Item>
-          {/* <Text style={styles.textStyle2}>
-            {this.props.leChore.type}
-          </Text> */}
 
           <Text style={styles.textStyle1}>Instructions:</Text>
           <Item stackedLabel>
             <Label style={styles.textStyle2}>
-              {this.props.leChore.instructions}
+              {this.props.currentChore.instructions}
             </Label>
-            <Input />
+            <Input
+              placerholder="instructions"
+              onChangeText={this.handleInstructions}
+            />
           </Item>
-          {/* <Text style={styles.textStyle2}>
-            {this.props.leChore.instructions}
-          </Text> */}
 
           <Text style={styles.textStyle1}>Points:</Text>
           <Item stackedLabel>
             <Label style={styles.textStyle2}>
-              {this.props.leChore.points}
+              {this.props.currentChore.points}
             </Label>
-            <Input />
+            <Input placerholder="points" onChangeText={this.handlePoints} />
           </Item>
-          {/* <Text style={styles.textStyle2}>
-            {this.props.leChore.points}
-          </Text> */}
 
           <Text style={styles.textStyle1}>Status:</Text>
           <Form>
             <Picker
               iosHeader="Select one"
               mode="dropdown"
-              selectedValue={this.state.selected1}
+              selectedValue={this.state.status}
               onValueChange={this.onValueChange.bind(this)}>
-              <leItem label="active" value="key0" style={styles.textStyle2} />
-              <leItem label="inactive" value="key1" />
+              <leItem label="active" value="active" style={styles.textStyle2} />
+              <leItem label="inactive" value="inactive" />
             </Picker>
           </Form>
-          <Button block primary>
+          <Button onPress={this.handleSubmit} block primary>
             <Text> DONE </Text>
           </Button>
         </Content>

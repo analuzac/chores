@@ -20,7 +20,7 @@ import {
 import { View, Image, Platform } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
-const leItem = Picker.leItem;
+//const leItem = Picker.leItem;
 
 export default class ChoreProfileAdd extends Component {
   constructor(props) {
@@ -64,7 +64,7 @@ export default class ChoreProfileAdd extends Component {
     };
     let householdId = this.props.userInfo.householdId;
     let returnedChore = await this.props.onCreateChore(householdId, newChore);
-    console.log('RETURNED USERS', returnedChore);
+    console.log('RETURNED CHORE', returnedChore);
 
     if (returnedChore.type) {
       Actions.choreslibrary();
@@ -80,7 +80,7 @@ export default class ChoreProfileAdd extends Component {
     };
     return (
       <Container>
-        <Header>
+        {/* <Header>
           <Left>
             <Button transparent onPress={() => this.props.navigation.goBack()}>
               <Icon name="arrow-back" />
@@ -90,7 +90,7 @@ export default class ChoreProfileAdd extends Component {
             <Title>Create Chore</Title>
           </Body>
           <Right />
-        </Header>
+        </Header> */}
         <Content>
           <Image source={pic} style={styles.imageStyle} />
 

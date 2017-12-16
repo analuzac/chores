@@ -1,9 +1,9 @@
 import { compose, lifecycle } from 'recompose';
 import { connect } from 'react-redux';
 
-import ChoreProfileAdd from '../../components/ChoreProfileAdd';
+import ChoreProfileUpdate from '../../components/ChoreProfileUpdate';
 
-import postChoresProcess from '../thunks/postChoresProcess';
+import patchChoresProcess from '../thunks/patchChoresProcess';
 
 //const scope = {};
 
@@ -26,8 +26,8 @@ function mapDispatchToProps(dispatch, ownProps) {
     //   console.log('INSIDE CHORES LIBRARY CONTAINER', scope);
     //   dispatch(getChoresProcess(scope.userInfo));
     // },
-    onCreateChore: (householdId, newChore) => {
-      return dispatch(postChoresProcess(householdId, newChore));
+    onUpdateChore: (householdId, choreId, updateChore) => {
+      return dispatch(patchChoresProcess(householdId, choreId, updateChore));
     }
   };
 }
@@ -41,4 +41,4 @@ const connectToStore = connect(mapStateToProps, mapDispatchToProps);
 // });
 
 // export default compose(connectToStore, onDidMount)(ChoresLibrary);
-export default compose(connectToStore)(ChoreProfileAdd);
+export default compose(connectToStore)(ChoreProfileUpdate);

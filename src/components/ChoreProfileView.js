@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Container, Content, Text, Item } from 'native-base';
+import { Container, Content, Text, Item, Button } from 'native-base';
 import { View, Image, Platform } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 
 export default class ChoreProfileView extends Component {
   render() {
@@ -28,6 +29,9 @@ export default class ChoreProfileView extends Component {
           <Text style={styles.textStyle2}>
             {this.props.currentChore.status}
           </Text>
+          <Button onPress={() => Actions.choresupdate()} block primary>
+            <Text> EDIT CHORE </Text>
+          </Button>
         </Content>
       </Container>
     );
