@@ -64,6 +64,7 @@ export default class Dashboard extends Component {
                   users={users}
                   assignedUserId={leAssignment.userId}
                   updateAssignment={this.props.updateAssignment}
+                  createAssignment={this.props.createAssignment}
                   householdId={leAssignment.householdId}
                   status={leAssignment.status}
                 />

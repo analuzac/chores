@@ -58,7 +58,7 @@ export default class LogIn extends Component {
         Actions.dashboard();
       }
     } else {
-      Alert.alert('Error');
+      Alert.alert(returnedUser);
     }
   }
 

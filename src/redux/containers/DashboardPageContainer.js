@@ -11,6 +11,8 @@ import getUsersProcess from '../thunks/getUsersProcess';
 // mccode
 import updateAssignmentProcess from '../thunks/updateAssignmentProcess';
 
+import createAssignmentProcess from '../thunks/createAssignmentProcess';
+
 const scope = {};
 let currentAssignment = {};
 
@@ -41,6 +43,16 @@ function mapDispatchToProps(dispatch, ownProps) {
     updateAssignment: currentAssignment => {
       console.log('DB CONTAINER', currentAssignment);
       return dispatch(updateAssignmentProcess(currentAssignment));
+    },
+    createAssignment: currentAssignment => {
+      console.log(
+        'DB CONTAINER',
+        scope.userInfo.householdId,
+        currentAssignment
+      );
+      return dispatch(
+        createAssignmentProcess(scope.userInfo.householdId, currentAssignment)
+      );
     }
   };
 }

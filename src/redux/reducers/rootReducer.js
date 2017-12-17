@@ -40,6 +40,12 @@ export default function rootReducer(
       };
     case 'GET_ASSIGNMENTS':
       return { ...currentState, assignments: action.assignments };
+    case 'CREATE_ASSIGNMENT':
+      return {
+        ...currentState,
+        assignments: action.assignments,
+        errorMsg: action.errorMsg
+      };
 
     case 'UPDATE_ASSIGNMENT_STATE':
       let updatedAssignments = currentState.assignments;

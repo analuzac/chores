@@ -7,14 +7,18 @@ export default function getTokenProcess(userInfo) {
     //
     return getToken(userInfo).then(userInfo => {
       //
-      AsyncStorage.setItem('token', userInfo.token);
-      //
-      dispatch({
-        type: 'GET_TOKEN',
-        userInfo: userInfo,
-        errorMsg: null
-      });
-      return userInfo;
+      if (userInfo === 'ERROR') {
+        return 'Invalid username/password';
+      } else {
+        AsyncStorage.setItem('token', userInfo.token);
+        //
+        dispatch({
+          type: 'GET_TOKEN',
+          userInfo: userInfo,
+          errorMsg: null
+        });
+        return userInfo;
+      }
     });
   };
 }
