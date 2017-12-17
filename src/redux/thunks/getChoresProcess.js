@@ -1,7 +1,6 @@
 import getChores from '../.././api/getChores';
 
 export default function getChoresProcess(userInfo) {
-  console.log('INSIDE GET CHORES THUNK', userInfo);
   return (dispatch, getState) => {
     //
     return getChores(userInfo).then(chores => {

@@ -5,7 +5,7 @@ export default function createHouseholdProcess(householdInfo) {
     //
     return createHousehold(householdInfo).then(householdInfo => {
       //
-      console.log('WHATS IN STATE', householdInfo);
+
       dispatch({
         type: 'CREATE_HOUSEHOLD',
         householdInfo: householdInfo,

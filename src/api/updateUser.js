@@ -2,8 +2,6 @@ import { AsyncStorage } from 'react-native';
 import env from '../env';
 
 export default function updateUser(userInfo, householdInfo) {
-  //let storedToken = localStorage.getItem('token');
-
   return AsyncStorage.getItem('token').then(storedToken => {
     //
     let leHouseholdId = householdInfo.keycode;

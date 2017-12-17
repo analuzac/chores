@@ -1,7 +1,6 @@
 import env from '../env';
 
 export default function createUser(userInfo) {
-  console.log('CREATE USER API', env.API_BASE_URL);
   return fetch(`${env.API_BASE_URL}/users`, {
     method: 'POST',
     headers: {

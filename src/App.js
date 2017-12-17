@@ -6,7 +6,6 @@ const store = setupStore();
 
 import LogInPageContainer from './redux/containers/LogInPageContainer';
 import SignUpPageContainer from './redux/containers/SignUpPageContainer';
-import LogIn2PageContainer from './redux/containers/LogIn2PageContainer';
 import JoinHousePageContainer from './redux/containers/JoinHousePageContainer';
 import RegisterHousePageContainer from './redux/containers/RegisterHousePageContainer';
 import DashboardPageContainer from './redux/containers/DashboardPageContainer';
@@ -36,11 +35,6 @@ export default class App extends Component {
               key="signup"
               component={SignUpPageContainer}
               title="Sign Up"
-            />
-            <Scene
-              key="login2"
-              component={LogIn2PageContainer}
-              title="Log In"
             />
             <Scene
               key="joinhouse"

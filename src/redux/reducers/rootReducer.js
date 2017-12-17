@@ -151,6 +151,7 @@ export default function rootReducer(
         errorMsg: action.errorMsg
       };
     case 'GET_USER_BY_TOKEN':
+      console.log('GET_USER_BY_TOKEN', action.userInfo);
       return {
         ...currentState,
         userInfo: action.userInfo
@@ -167,7 +168,7 @@ export default function rootReducer(
         errorMsg: action.errorMsg
       };
     case 'GET_USERS': //mccode
-      console.log('INSIDE RR GET_USERS', action.users);
+      //console.log('INSIDE RR GET_USERS', action.users);
       return {
         ...currentState,
         users: action.users,

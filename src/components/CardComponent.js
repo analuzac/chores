@@ -26,7 +26,7 @@ import {
   Item as FormItem
 } from 'native-base';
 
-const leItem = Picker.Item;
+// const leItem = Picker.Item;
 
 export default class CardComponent extends Component {
   constructor(props) {
@@ -42,7 +42,6 @@ export default class CardComponent extends Component {
 
   async handleDone() {
     //console.log('State Assmgt ', this.state.assignmentId);
-    //console.log('user ', this.props.assigned);
 
     const updateAssignment = {
       assignmentId: this.state.assignmentId,
@@ -98,6 +97,8 @@ export default class CardComponent extends Component {
 
   render() {
     console.log('CC USERS', this.props);
+    console.log('PROPSSSS ', this.props);
+
     const users = this.props.users;
     const assignedUserId = this.props.assignedUserId;
     //console.log('assignedUserId...........', assignedUserId);
@@ -115,7 +116,7 @@ export default class CardComponent extends Component {
 
             <Body>
               <Text>
-                {this.props.chore} = {this.props.status}
+                Chore {this.props.chore} = {this.props.status}
               </Text>
               <Text>
                 AmgtID: {this.props.assignmentId} ChoreID: {this.props.choreId}{' '}
@@ -141,15 +142,29 @@ export default class CardComponent extends Component {
               selectedValue={this.state.selected}
               mode="dropdown"
               onValueChange={this.onValueChange.bind(this)}>
-              {console.log('USERS', users, this.state.selected)}
-              {users.map(user =>
-                <leItem
-                  label={user.firstName}
-                  value={user.userId}
-                  key={user.userId}
-                />
-              )}
+              {/* {console.log('USERS=', users)} */}
+              {users.map(user => {
+                return (
+                  <Picker.Item
+                    label={user.firstName}
+                    value={user.userId}
+                    key={user.userId}
+                  />
+                );
+              })}
             </Picker>
+
+            {/* <Picker iosHeader="Select one"
+              selectedValue={this.state.selected}
+              mode="dropdown"
+              onValueChange={this.onValueChange.bind(this)}>
+              {console.log('USERS', users, this.state.selected)}
+              {users.map(user => <leItem label={user.firstName} value={user.userId} key={user.userId} />)}
+            </Picker> */}
+            {/* <Picker iosHeader="Select one" mode="dropdown">
+              {console.log('USERS', users, this.state.selected)}
+
+            </Picker> */}
           </Form>
           <Button block primary onPress={this.handleDone}>
             <Text> DONE </Text>

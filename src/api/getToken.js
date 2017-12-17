@@ -17,7 +17,6 @@ export default async function getToken(user) {
       return response.json();
     })
     .catch(function(error) {
-      // return [{ id: 'error', subject: error.message }];
       return 'ERROR';
     });
 } // end of function

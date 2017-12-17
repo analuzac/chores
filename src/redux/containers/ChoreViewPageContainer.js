@@ -3,13 +3,7 @@ import { connect } from 'react-redux';
 
 import ChoreProfileView from '../../components/ChoreProfileView';
 
-//import getOneChoresProcess from '../thunks/getOneChoresProcess';
-
-//const scope = {};
-
 function mapStateToProps(state, ownProps) {
-  console.log('MAPTOSTATE...', state);
-  //scope.userInfo = state.userInfo;
   return {
     assigments: state.assigments,
     chores: state.chores,

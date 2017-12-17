@@ -2,10 +2,8 @@ import { AsyncStorage } from 'react-native';
 import env from '../env';
 
 export default function getUsers(userInfo) {
-  //let storedToken = localStorage.getItem('token');
-
+  console.log('GET USERS API', userInfo);
   return AsyncStorage.getItem('token').then(storedToken => {
-    console.log('THE STORED TOKEN', storedToken);
     return fetch(`${env.API_BASE_URL}/households/${userInfo.householdId}`, {
       method: 'GET',
       headers: {
@@ -15,7 +13,6 @@ export default function getUsers(userInfo) {
     })
       .then(handleErrors)
       .then(response => {
-        console.log('RESPONSE - GET USERS', response);
         return response.json();
       })
       .catch(function(error) {

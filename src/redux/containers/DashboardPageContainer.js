@@ -1,24 +1,29 @@
 import { compose, lifecycle } from 'recompose';
 import { connect } from 'react-redux';
 
+//temporary:
+//import getUserByTokenProcess from '../thunks/getUserByTokenProcess';
+/////////////
+
 import Dashboard from '../../components/Dashboard';
-
+//
 import getAssignmentsProcess from '../thunks/getAssignmentsProcess';
+//
 
-//mccode
 import getUsersProcess from '../thunks/getUsersProcess';
-
-// mccode
+//
+// // mccode
 import updateAssignmentProcess from '../thunks/updateAssignmentProcess';
 
 import createAssignmentProcess from '../thunks/createAssignmentProcess';
 
 const scope = {};
-let currentAssignment = {};
+// let currentAssignment = {};
 
 function mapStateToProps(state, ownProps) {
   console.log('MAPTOSTATE DS...', state);
   scope.userInfo = state.userInfo;
+  console.log('THE SCOPE', scope);
   // currentAssignment = state.currentAssignment;
   return {
     assignments: state.assignments,
@@ -36,7 +41,8 @@ function mapDispatchToProps(dispatch, ownProps) {
   return {
     onMount: () => {
       console.log('INSIDE DASHBOARD CONTAINER', scope);
-      //mccode
+
+      //return dispatch(getUserByTokenProcess());
       dispatch(getUsersProcess(scope.userInfo));
       return dispatch(getAssignmentsProcess(scope.userInfo));
     },

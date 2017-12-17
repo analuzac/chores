@@ -2,14 +2,9 @@ import { compose, lifecycle } from 'recompose';
 import { connect } from 'react-redux';
 
 import ChoreProfileAdd from '../../components/ChoreProfileAdd';
-
 import postChoresProcess from '../thunks/postChoresProcess';
 
-//const scope = {};
-
 function mapStateToProps(state, ownProps) {
-  console.log('MAPTOSTATE...', state);
-  //scope.userInfo = state.userInfo;
   return {
     assigments: state.assigments,
     chores: state.chores,
@@ -22,10 +17,6 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch, ownProps) {
   return {
-    // onMount: () => {
-    //   console.log('INSIDE CHORES LIBRARY CONTAINER', scope);
-    //   dispatch(getChoresProcess(scope.userInfo));
-    // },
     onCreateChore: (householdId, newChore) => {
       return dispatch(postChoresProcess(householdId, newChore));
     }

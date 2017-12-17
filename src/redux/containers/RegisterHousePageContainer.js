@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 import RegisterHouse from '../../components/RegisterHouse';
 import createHouseholdProcess from '../thunks/createHouseholdProcess';
-//import updateUserProcess from '../thunks/updateUserProcess';
 
 function mapStateToProps(state, ownProps) {
   return {
@@ -21,9 +20,6 @@ function mapDispatchToProps(dispatch, ownProps) {
     onRegister: householdInfo => {
       return dispatch(createHouseholdProcess(householdInfo));
     }
-    // onUpdateUser: (userInfo, householdInfo) => {
-    //   return dispatch(updateUserProcess(userInfo, householdInfo));
-    // }
   };
 }
 

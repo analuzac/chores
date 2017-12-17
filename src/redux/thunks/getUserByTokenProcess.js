@@ -5,6 +5,7 @@ export default function getUserByTokenProcess() {
     //
     return getUserByToken().then(userInfo => {
       //
+      //console.log('INSIDE GET USER BY TOKEN PROCESS', userInfo);
       dispatch({
         type: 'GET_USER_BY_TOKEN',
         userInfo: userInfo,

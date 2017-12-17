@@ -2,16 +2,8 @@ import { AsyncStorage } from 'react-native';
 import env from '../env';
 
 export default function updateAssignment(currentAssignment) {
-  //let storedToken = localStorage.getItem('token');
-
   return AsyncStorage.getItem('token').then(storedToken => {
-    console.log(
-      'UA API',
-      currentAssignment.householdId,
-      currentAssignment.assignmentId
-    );
     let leHouseholdId = currentAssignment.householdId;
-
     //
     return fetch(
       `${env.API_BASE_URL}/households/${leHouseholdId}/assignments/${currentAssignment.assignmentId}`,
@@ -29,7 +21,6 @@ export default function updateAssignment(currentAssignment) {
     )
       .then(handleErrors)
       .then(response => {
-        // console.log('UPDATE USER RESPONSE: ', response.json());
         return response.json();
       })
       .catch(function(error) {

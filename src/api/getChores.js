@@ -2,10 +2,7 @@ import { AsyncStorage } from 'react-native';
 import env from '../env';
 
 export default function getChores(userInfo) {
-  //let storedToken = localStorage.getItem('token');
-
   return AsyncStorage.getItem('token').then(storedToken => {
-    console.log('THE STORED TOKEN', storedToken);
     return fetch(
       `${env.API_BASE_URL}/households/${userInfo.householdId}/chores`,
       {
@@ -18,7 +15,6 @@ export default function getChores(userInfo) {
     )
       .then(handleErrors)
       .then(response => {
-        console.log('RESPONSE - GET CHORES', response);
         return response.json();
       })
       .catch(function(error) {
