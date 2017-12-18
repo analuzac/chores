@@ -21,7 +21,7 @@ function mapDispatchToProps(dispatch, ownProps) {
   return {
     //onMount: () => dispatch(getUserByTokenProcess()),
     onJoin: (householdId, userId, changes) => {
-      dispatch(updateUserProcess(householdId, userId, changes));
+      return dispatch(updateUserProcess(householdId, userId, changes));
     }
   };
 }

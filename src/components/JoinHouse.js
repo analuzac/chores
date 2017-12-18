@@ -12,6 +12,7 @@ import {
   Separator
 } from 'native-base';
 import { Actions } from 'react-native-router-flux';
+import { Alert, AsyncStorage } from 'react-native';
 
 export default class JoinHouse extends Component {
   constructor(props) {
@@ -24,7 +25,6 @@ export default class JoinHouse extends Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleNew = this.handleNew.bind(this);
     this.handleHouse = this.handleHouse.bind(this);
     this.handleKeyCode = this.handleKeyCode.bind(this);
   }
@@ -37,7 +37,7 @@ export default class JoinHouse extends Component {
     this.setState({ keycode: keycode });
   }
 
-  handleSubmit = () => {
+  async handleSubmit() {
     const userId = this.props.userInfo.id;
     const householdId = this.state.keycode;
     const changes = {
@@ -45,13 +45,17 @@ export default class JoinHouse extends Component {
       isHead: false,
       householdId: householdId
     };
-    this.props.onJoin(householdId, userId, changes);
-    //Actions.dashboard();
-  };
 
-  handleNew = () => {
-    Actions.registerhouse();
-  };
+    let returnedUser = await this.props.onJoin(householdId, userId, changes);
+    console.log('RETURNED USERS', returnedUser);
+
+    if (returnedUser.email) {
+      // Actions.chores();
+      Actions.dashboard();
+    } else {
+      Alert.alert('Error');
+    }
+  }
 
   render() {
     return (
@@ -73,7 +77,10 @@ export default class JoinHouse extends Component {
               <Text> Submit </Text>
             </Button>
             <Text style={styles.textStyle}> - or - </Text>
-            <Button success style={styles.buttonStyle} onPress={this.handleNew}>
+            <Button
+              success
+              style={styles.buttonStyle}
+              onPress={() => Actions.registerhouse()}>
               <Text> Create New Household </Text>
             </Button>
           </Form>
