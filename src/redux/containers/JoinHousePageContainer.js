@@ -20,9 +20,8 @@ function mapStateToProps(state, ownProps) {
 function mapDispatchToProps(dispatch, ownProps) {
   return {
     //onMount: () => dispatch(getUserByTokenProcess()),
-    onJoin: (userInfo, householdInfo) => {
-      console.log('LE KEYCODE', householdInfo.keycode);
-      dispatch(updateUserProcess(userInfo, householdInfo));
+    onJoin: (householdId, userId, changes) => {
+      dispatch(updateUserProcess(householdId, userId, changes));
     }
   };
 }

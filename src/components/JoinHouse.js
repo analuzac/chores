@@ -38,13 +38,15 @@ export default class JoinHouse extends Component {
   }
 
   handleSubmit = () => {
-    const householdInfo = {
-      house: this.state.house,
-      keycode: this.state.keycode
+    const userId = this.props.userInfo.id;
+    const householdId = this.state.keycode;
+    const changes = {
+      role: 'member',
+      isHead: false,
+      householdId: householdId
     };
-    const userInfo = this.props.userInfo;
-    this.props.onJoin(userInfo, householdInfo);
-    Actions.dashboard();
+    this.props.onJoin(householdId, userId, changes);
+    //Actions.dashboard();
   };
 
   handleNew = () => {

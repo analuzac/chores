@@ -35,7 +35,8 @@ export default class CardComponent extends Component {
       selected: this.props.assignedUserId,
       assignmentId: this.props.assignmentId,
       householdId: this.props.householdId,
-      choreId: this.props.choreId
+      choreId: this.props.choreId,
+      users: this.props.users
     };
     this.handleDone = this.handleDone.bind(this);
   }
@@ -53,16 +54,45 @@ export default class CardComponent extends Component {
 
     const assignment = await this.props.updateAssignment(updateAssignment);
 
+    console.log(
+      'Assigned and all users',
+      this.props.assignedUserId,
+      this.props.users
+    );
+
+    // 1 get the next User to assign based on the Array
+    let indexUser = 10;
+
+    indexUser = this.props.users.findIndex(element => {
+      // console.log('COMPARE', element.userId, this.props.assignedUserId);
+
+      console.log('element.userId ==', element.userId);
+      console.log('this.props.assignedUserId===', this.props.assignedUserId);
+      if (element.userId === this.props.assignedUserId) {
+        console.log('...', element.userId, element);
+        //
+        return element;
+      }
+    });
+    console.log('INDX USER', indexUser, this.props.users.length);
+
+    if (indexUser + 1 === this.props.users.length) {
+      indexUser = 0;
+    } else {
+      indexUser += 1;
+    }
+
+    console.log('Next USER', indexUser, this.props.users[indexUser].userId);
+    // ADD
     const newAssignment = {
       choreId: this.state.choreId,
-      assignedUserId: this.props.assignedUserId,
+      assignedUserId: this.props.users[indexUser].userId,
       status: 'pending',
       dueDate: '2017-12-15 12:29:45.964056'
     };
-
     const theAssignment = await this.props.createAssignment(newAssignment);
 
-    console.log('CC2', theAssignment);
+    console.log('CC ADD ASSMT', theAssignment);
 
     if (assignment.status) {
       Alert.alert('Done');
@@ -83,9 +113,9 @@ export default class CardComponent extends Component {
       householdId: this.state.householdId,
       assignedUserId: value
     };
-    console.log('CC1', updateAssignment);
 
     const assignment = await this.props.updateAssignment(updateAssignment);
+    // console.log('CC1 UPDATE ASGME', assignment);
 
     if (assignment.status) {
       Alert.alert('Reassigned');
@@ -96,8 +126,8 @@ export default class CardComponent extends Component {
   }
 
   render() {
-    console.log('CC USERS', this.props);
-    console.log('PROPSSSS ', this.props);
+    // console.log('CC USERS', this.props);
+    // console.log('PROPSSSS ', this.props);
 
     const users = this.props.users;
     const assignedUserId = this.props.assignedUserId;

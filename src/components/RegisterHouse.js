@@ -53,12 +53,27 @@ export default class RegisterHouse extends Component {
 
     let returnedHousehold = await this.props.onRegister(householdInfo);
 
-    console.log('PROPS INSIDE REGISTER HOUSEHOLD', this.props);
+    //console.log('PROPS INSIDE REGISTER HOUSEHOLD', this.props);
     console.log('returnedHousehold', returnedHousehold);
+
     if (returnedHousehold.name) {
-      //  this.props.onUpdateUser(this.props.userInfo, this.props.householdInfo);
-      Alert.alert('Your household is live!');
-      Actions.choreslibrary();
+      const householdId = this.props.householdInfo.id;
+      const userId = this.props.userInfo.id;
+      const changes = {
+        role: 'head',
+        isHead: true,
+        householdId: householdId
+      };
+      let returnedUpdatedUser = await this.props.onUpdateUser(
+        householdId,
+        userId,
+        changes
+      );
+      console.log('>>>>>>', returnedUpdatedUser);
+      if (returnedUpdatedUser.id) {
+        Alert.alert('Your household is live!');
+        Actions.choreslibrary();
+      }
     } else {
       Alert.alert('Error');
     }

@@ -40,10 +40,56 @@ export default function rootReducer(
       };
     case 'GET_ASSIGNMENTS':
       return { ...currentState, assignments: action.assignments };
+    // CREATE ASSIGNMENT //////////
     case 'CREATE_ASSIGNMENT':
+      // 1. create new Array of state of assignments
+      let theAssignments = currentState.assignments;
+
+      // 2. create a scope object to represent joining of tables
+      let aScope = {};
+
+      // 2a. get the current user from user Array in state
+      let aUser = currentState.users.filter(user => {
+        //console.log('COMPARE', user.userId, action.currentAssignment.assignedUserId);
+        if (user.userId === action.currentAssignment.assignedUserId) {
+          //console.log('CCreturn USER', user);
+          return user;
+        }
+      });
+
+      //console.log('ARRY VS CC', currentState.chores, action.currentAssignment);
+
+      // 2b. get the current chore from chore Array in state
+      let aChore = currentState.chores.filter(chore => {
+        if (chore.id === action.currentAssignment.choreId) {
+          return chore;
+        }
+      });
+
+      //console.log('aChore', aChore);
+      // 2c. add to scope()
+
+      aScope.assignmentId = action.currentAssignment.id;
+      aScope.choreId = action.currentAssignment.choreId;
+      aScope.firstName = aUser[0].firstName;
+      aScope.householdId = aUser[0].householdId;
+      aScope.userId = aUser[0].userId;
+      // chore stuff
+      aScope.image = aChore[0].image;
+      aScope.instructions = aChore[0].instructions;
+      aScope.points = aChore[0].points;
+      aScope.status = aChore[0].status;
+      aScope.type = aChore[0].type;
+
+      // 3. ADD the assignment to the array of assignments
+      //console.log('CR scope', aScope);
+      theAssignments.push(aScope);
+
+      ////console.log('RR INSIDE CR', action.currentAssignment);
       return {
         ...currentState,
-        assignments: action.assignments,
+        currentAssignment: action.currentAssignment,
+        assignments: theAssignments,
         errorMsg: action.errorMsg
       };
 
