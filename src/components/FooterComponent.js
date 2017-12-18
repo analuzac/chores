@@ -22,18 +22,12 @@ export default class FooterComponent extends Component {
       <Footer>
         <FooterTab>
           <Button onPress={() => Actions.dashboard()} active badge vertical>
-            {/* <Badge>
-              <Text>5</Text>
-            </Badge> */}
-            <Icon active name="apps" />
+            <Icon active name="people" />
             <Text>Assignments</Text>
           </Button>
 
-          <Button onPress={() => Actions.choreslibrary()} badge vertical>
-            {/* <Badge>
-              <Text>2</Text>
-            </Badge> */}
-            <Icon name="add" />
+          <Button onPress={() => Actions.choreslibrary()} active badge vertical>
+            <Icon active name="apps" />
             <Text>Chores Library</Text>
           </Button>
 

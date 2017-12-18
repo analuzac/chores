@@ -13,7 +13,7 @@ export default class ChoreProfileView extends Component {
       <Container>
         <Content>
           <Image source={pic} style={styles.imageStyle} />
-          <Text style={styles.textStyle1}>Chore Type:</Text>
+          <Text style={styles.textStyle1}>Chore Name:</Text>
           <Text style={styles.textStyle2}>
             {this.props.currentChore.type}
           </Text>
@@ -21,17 +21,19 @@ export default class ChoreProfileView extends Component {
           <Text style={styles.textStyle2}>
             {this.props.currentChore.instructions}
           </Text>
-          <Text style={styles.textStyle1}>Points:</Text>
+          {/* <Text style={styles.textStyle1}>Points:</Text>
           <Text style={styles.textStyle2}>
             {this.props.currentChore.points}
-          </Text>
+          </Text> */}
           <Text style={styles.textStyle1}>Status:</Text>
           <Text style={styles.textStyle2}>
             {this.props.currentChore.status}
           </Text>
-          <Button onPress={() => Actions.choresupdate()} block primary>
-            <Text> EDIT CHORE </Text>
-          </Button>
+          {this.props.userInfo.role === 'head'
+            ? <Button onPress={() => Actions.choresupdate()} block primary>
+                <Text> EDIT CHORE </Text>
+              </Button>
+            : null}
         </Content>
       </Container>
     );

@@ -28,13 +28,13 @@ export default class ChoreProfileUpdate extends Component {
     this.state = {
       status: 'active',
       type: '',
-      instructions: '',
-      points: ''
+      instructions: ''
+      //points: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleType = this.handleType.bind(this);
     this.handleInstructions = this.handleInstructions.bind(this);
-    this.handlePoints = this.handlePoints.bind(this);
+    //this.handlePoints = this.handlePoints.bind(this);
   }
 
   onValueChange(value: string) {
@@ -51,9 +51,9 @@ export default class ChoreProfileUpdate extends Component {
     this.setState({ instructions: instructions });
   }
 
-  handlePoints(points) {
-    this.setState({ points: points });
-  }
+  // handlePoints(points) {
+  //   this.setState({ points: points });
+  // }
 
   async handleSubmit() {
     const leType = this.state.type
@@ -62,14 +62,14 @@ export default class ChoreProfileUpdate extends Component {
     const leInstructions = this.state.instructions
       ? this.state.instructions.trim()
       : this.props.currentChore.instructions;
-    const lePoints = this.state.points
-      ? this.state.points.trim()
-      : this.props.currentChore.points;
+    // const lePoints = this.state.points
+    //   ? this.state.points.trim()
+    //   : this.props.currentChore.points;
 
     let updateChore = {
       type: leType,
       instructions: leInstructions,
-      points: lePoints,
+      //points: lePoints,
       status: this.state.status
     };
     let choreId = this.props.currentChore.id;
@@ -98,7 +98,7 @@ export default class ChoreProfileUpdate extends Component {
         <Content>
           <Image source={pic} style={styles.imageStyle} />
 
-          <Text style={styles.textStyle1}>Chore Type:</Text>
+          <Text style={styles.textStyle1}>Chore Name:</Text>
           <Item stackedLabel>
             <Label style={styles.textStyle2}>
               {this.props.currentChore.type}
@@ -117,13 +117,13 @@ export default class ChoreProfileUpdate extends Component {
             />
           </Item>
 
-          <Text style={styles.textStyle1}>Points:</Text>
+          {/* <Text style={styles.textStyle1}>Points:</Text>
           <Item stackedLabel>
             <Label style={styles.textStyle2}>
               {this.props.currentChore.points}
             </Label>
             <Input placerholder="points" onChangeText={this.handlePoints} />
-          </Item>
+          </Item> */}
 
           <Text style={styles.textStyle1}>Status:</Text>
           <Form>

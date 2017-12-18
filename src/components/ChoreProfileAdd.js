@@ -20,28 +20,19 @@ import {
 import { Alert, View, Image, Platform } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
-//const leItem = Picker.leItem;
-
 export default class ChoreProfileAdd extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // status: 'key0',
       type: '',
-      instructions: '',
-      points: ''
+      instructions: ''
+      //points: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleType = this.handleType.bind(this);
     this.handleInstructions = this.handleInstructions.bind(this);
-    this.handlePoints = this.handlePoints.bind(this);
+    //this.handlePoints = this.handlePoints.bind(this);
   }
-
-  // onValueChange(value: string) {
-  //   this.setState({
-  //     status: value
-  //   });
-  // }
 
   handleType(type) {
     this.setState({ type: type });
@@ -51,16 +42,15 @@ export default class ChoreProfileAdd extends Component {
     this.setState({ instructions: instructions });
   }
 
-  handlePoints(points) {
-    this.setState({ points: points });
-  }
+  // handlePoints(points) {
+  //   this.setState({ points: points });
+  // }
 
   async handleSubmit() {
     let newChore = {
       type: this.state.type,
-      instructions: this.state.instructions,
-      points: this.state.points
-      // status: this.state.status
+      instructions: this.state.instructions
+      //points: this.state.points
     };
     let householdId = this.props.userInfo.householdId;
     let returnedChore = await this.props.onCreateChore(householdId, newChore);
@@ -74,13 +64,6 @@ export default class ChoreProfileAdd extends Component {
     };
     const theAssignment = await this.props.createAssignment2(newAssignment);
     console.log('CC ADD ASSMT', theAssignment);
-
-    // if (assignment.status) {
-    //    Alert.alert(‘Done’);
-    //    // Actions.dashboard();
-    //  } else {
-    //    Alert.alert(‘Error’);
-    //  }
 
     if (returnedChore.type && theAssignment.status) {
       Alert.alert('Added Assignment');
@@ -97,27 +80,13 @@ export default class ChoreProfileAdd extends Component {
     };
     return (
       <Container>
-        {/* <Header>
-          <Left>
-            <Button transparent onPress={() => this.props.navigation.goBack()}>
-              <Icon name="arrow-back" />
-            </Button>
-          </Left>
-          <Body>
-            <Title>Create Chore</Title>
-          </Body>
-          <Right />
-        </Header> */}
         <Content>
           <Image source={pic} style={styles.imageStyle} />
 
-          <Text style={styles.textStyle1}>Chore Type:</Text>
+          <Text style={styles.textStyle1}>Chore Name:</Text>
           <Item>
             <Input placerholder="type" onChangeText={this.handleType} />
           </Item>
-          {/* <Text style={styles.textStyle2}>
-            {this.props.leChore.type}
-          </Text> */}
 
           <Text style={styles.textStyle1}>Instructions:</Text>
           <Item>
@@ -126,29 +95,12 @@ export default class ChoreProfileAdd extends Component {
               onChangeText={this.handleInstructions}
             />
           </Item>
-          {/* <Text style={styles.textStyle2}>
-            {this.props.leChore.instructions}
-          </Text> */}
 
-          <Text style={styles.textStyle1}>Points:</Text>
+          {/* <Text style={styles.textStyle1}>Points:</Text>
           <Item>
             <Input placerholder="points" onChangeText={this.handlePoints} />
-          </Item>
-          {/* <Text style={styles.textStyle2}>
-            {this.props.leChore.points}
-          </Text> */}
+          </Item> */}
 
-          {/* <Text style={styles.textStyle1}>Status:</Text>
-          <Form>
-            <Picker
-              iosHeader="Select one"
-              mode="dropdown"
-              selectedValue={this.state.selected1}
-              onValueChange={this.onValueChange.bind(this)}>
-              <leItem label="active" value="key0" style={styles.textStyle2} />
-              <leItem label="inactive" value="key1" />
-            </Picker>
-          </Form> */}
           <Button onPress={this.handleSubmit} block primary>
             <Text> SUBMIT </Text>
           </Button>
@@ -157,24 +109,6 @@ export default class ChoreProfileAdd extends Component {
     );
   }
 }
-
-// {/* <Form>
-//   <Picker
-//     iosHeader="Select one"
-//     mode="dropdown"
-//     selectedValue={this.state.selected1}
-//     onValueChange={this.onValueChange.bind(this)}>
-//     <Item label="< select one >" value="key0" />
-//     <Item label="Bathroom" value="key1" />
-//     <Item label="Living Room" value="key2" />
-//     <Item label="Kitchen" value="key3" />
-//     <Item label="Floors" value="key4" />
-//     <Item label="Trash/Recycling" value="key5" />
-//   </Picker>
-// </Form> */}
-//
-//   <View style={{ alignItems: 'center' }}>
-//
 
 const styles = {
   buttonStyle: {

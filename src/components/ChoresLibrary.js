@@ -56,7 +56,7 @@ export default class ChoresLibrary extends Component {
         {/* <HeaderIconText /> */}
         <Content>
           <Separator bordered>
-            <Text style={styles.textStyle}>View & Edit Chores:</Text>
+            <Text style={styles.textStyle}>Household Chores:</Text>
           </Separator>
           {leChores.map(leChore => {
             //console.log('leChore', leChore);
@@ -78,15 +78,19 @@ export default class ChoresLibrary extends Component {
             );
           })}
           <Text />
-          <Button full rounded info onPress={() => Actions.choresadd()}>
-            <Icon name="add" />
-            <Text>Add a Chore</Text>
-          </Button>
+          {this.props.userInfo.role === 'head'
+            ? <Button full rounded info onPress={() => Actions.choresadd()}>
+                <Icon name="add" />
+                <Text>Add a Chore</Text>
+              </Button>
+            : null}
           <Text />
-          <Button full rounded info onPress={() => Actions.dashboard()}>
-            <Icon name="people" />
-            <Text>Assign Chores</Text>
-          </Button>
+          {this.props.userInfo.role === 'head'
+            ? <Button full rounded info onPress={() => Actions.dashboard()}>
+                <Icon name="people" />
+                <Text>Assign Chores</Text>
+              </Button>
+            : null}
         </Content>
         <Content>
           <FooterComponent />

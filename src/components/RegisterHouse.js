@@ -19,14 +19,14 @@ export default class RegisterHouse extends Component {
     super(props);
     this.state = {
       name: '',
-      type: '',
-      description: ''
+      type: ''
+      //description: ''
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleHouse = this.handleHouse.bind(this);
     this.handleType = this.handleType.bind(this);
-    this.handleDescription = this.handleDescription.bind(this);
+    //this.handleDescription = this.handleDescription.bind(this);
   }
 
   handleHouse(name) {
@@ -39,16 +39,16 @@ export default class RegisterHouse extends Component {
     this.setState({ type: type });
   }
 
-  handleDescription(description) {
-    //this.setState({ name: name});
-    this.setState({ description: description });
-  }
+  // handleDescription(description) {
+  //   //this.setState({ name: name});
+  //   this.setState({ description: description });
+  // }
 
   async handleSubmit() {
     const householdInfo = {
       name: this.state.name,
-      type: this.state.type,
-      description: this.state.description
+      type: this.state.type
+      // description: this.state.description
     };
 
     let returnedHousehold = await this.props.onRegister(householdInfo);
@@ -103,14 +103,14 @@ export default class RegisterHouse extends Component {
                 value={this.state.type}
               />
             </Item>
-            <Item stackedLabel last>
+            {/* <Item stackedLabel last>
               <Label>Description</Label>
               <Input
                 name="description"
                 onChangeText={this.handleDescription}
                 value={this.state.description}
               />
-            </Item>
+            </Item> */}
             <Button onPress={this.handleSubmit} block primary>
               <Text> Submit </Text>
             </Button>
