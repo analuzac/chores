@@ -16,6 +16,7 @@ import { Actions } from 'react-native-router-flux';
 // import Footer from './Footer';
 
 import CardComponent from './CardComponent';
+import FooterComponent from './FooterComponent';
 
 export default class Dashboard extends Component {
   constructor(props) {
@@ -79,7 +80,9 @@ export default class Dashboard extends Component {
             </CardItem>
           </Card> */}
         </Content>
-        {/* <Footer /> */}
+        <Content>
+          <FooterComponent />
+        </Content>
       </Container>
     );
   }

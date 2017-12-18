@@ -20,6 +20,7 @@ import {
 import { Actions } from 'react-native-router-flux';
 // import HeaderIconText from './HeaderIconText';
 // import Footer from './Footer';
+import FooterComponent from './FooterComponent';
 
 export default class ChoresLibrary extends Component {
   constructor(props) {
@@ -87,7 +88,9 @@ export default class ChoresLibrary extends Component {
             <Text>Assign Chores</Text>
           </Button>
         </Content>
-        {/* <Footer /> */}
+        <Content>
+          <FooterComponent />
+        </Content>
       </Container>
     );
   }
