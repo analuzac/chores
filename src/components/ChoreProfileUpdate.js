@@ -89,15 +89,14 @@ export default class ChoreProfileUpdate extends Component {
   }
 
   render() {
-    let pic = {
-      uri:
-        'https://upload.wikimedia.org/wikipedia/commons/d/de/Bananavarieties.jpg'
-    };
+    // let pic = {
+    //   uri:
+    //     'https://upload.wikimedia.org/wikipedia/commons/d/de/Bananavarieties.jpg'
+    // };
     return (
       <Container>
         <Content>
-          <Image source={pic} style={styles.imageStyle} />
-
+          {/* <Image source={pic} style={styles.imageStyle} /> */}
           <Text style={styles.textStyle1}>Chore Name:</Text>
           <Item stackedLabel>
             <Label style={styles.textStyle2}>

@@ -127,7 +127,7 @@ export default class CardComponent extends Component {
 
   render() {
     // console.log('CC USERS', this.props);
-    // console.log('PROPSSSS ', this.props);
+    console.log('PROPSSSS ', this.props);
 
     const users = this.props.users;
     const assignedUserId = this.props.assignedUserId;
@@ -155,6 +155,9 @@ export default class CardComponent extends Component {
               <Text note>
                 Assigned: {this.props.assigned}
               </Text>
+              <Text note>
+                Logged in as role : {this.props.userInfo.role}
+              </Text>
             </Body>
           </Left>
         </CardItem>
@@ -165,40 +168,46 @@ export default class CardComponent extends Component {
           />
         </CardItem>
         <CardItem>
-          <Text>Assign</Text>
-          <Form>
-            <Picker
-              iosHeader="Select one"
-              selectedValue={this.state.selected}
-              mode="dropdown"
-              onValueChange={this.onValueChange.bind(this)}>
-              {/* {console.log('USERS=', users)} */}
-              {users.map(user => {
-                return (
-                  <Picker.Item
-                    label={user.firstName}
-                    value={user.userId}
-                    key={user.userId}
-                  />
-                );
-              })}
-            </Picker>
+          {this.props.userInfo.role === 'head'
+            ? <Form>
+                <Text>Assign</Text>
+                <Picker
+                  iosHeader="Select one"
+                  selectedValue={this.state.selected}
+                  mode="dropdown"
+                  onValueChange={this.onValueChange.bind(this)}>
+                  {/* {console.log('USERS=', users)} */}
+                  {users.map(user => {
+                    return (
+                      <Picker.Item
+                        label={user.firstName}
+                        value={user.userId}
+                        key={user.userId}
+                      />
+                    );
+                  })}
+                </Picker>
+              </Form>
+            : null}
 
-            {/* <Picker iosHeader="Select one"
+          {/* <Picker iosHeader="Select one"
               selectedValue={this.state.selected}
               mode="dropdown"
               onValueChange={this.onValueChange.bind(this)}>
               {console.log('USERS', users, this.state.selected)}
               {users.map(user => <leItem label={user.firstName} value={user.userId} key={user.userId} />)}
             </Picker> */}
-            {/* <Picker iosHeader="Select one" mode="dropdown">
+          {/* <Picker iosHeader="Select one" mode="dropdown">
               {console.log('USERS', users, this.state.selected)}
 
             </Picker> */}
-          </Form>
-          <Button block primary onPress={this.handleDone}>
-            <Text> DONE </Text>
-          </Button>
+
+          {this.props.userInfo.role === 'head' ||
+          this.props.userInfo.id === this.props.assignedUserId
+            ? <Button block primary onPress={this.handleDone}>
+                <Text> DONE </Text>
+              </Button>
+            : null}
         </CardItem>
       </Card>
       //   </Content>

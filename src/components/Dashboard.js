@@ -28,6 +28,7 @@ export default class Dashboard extends Component {
   render() {
     const leAssignments = this.props.assignments;
     const users = this.props.users;
+    const userInfo = this.props.userInfo; //mccode
     console.log('INSIDE DASHBOARD', leAssignments, users);
     let pic = {
       uri:
@@ -63,6 +64,7 @@ export default class Dashboard extends Component {
                   choreId={leAssignment.choreId} //
                   image={pic} //
                   users={users}
+                  userInfo={userInfo} //mccode
                   assignedUserId={leAssignment.userId}
                   updateAssignment={this.props.updateAssignment}
                   createAssignment={this.props.createAssignment}

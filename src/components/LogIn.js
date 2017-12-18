@@ -66,32 +66,41 @@ export default class LogIn extends Component {
     return (
       <Container>
         <Content>
-          <Form>
+          <Form style={styles.formStyle}>
             <Separator bordered>
-              <Text style={styles.textStyle}>Log In - User</Text>
+              <Text style={styles.textStyle}>Log In</Text>
             </Separator>
-            <Item stackedLabel>
-              <Label>Email</Label>
+            <Item regular style={styles.itemStyle}>
+              {/* <Label>Email</Label> */}
               <Input
+                style={styles.inputStyle}
                 name="email"
                 onChangeText={this.handleEmail}
                 value={this.state.email}
+                placeholder="Email"
               />
             </Item>
-            <Item stackedLabel last>
-              <Label>Password</Label>
+            <Item regular style={styles.itemStyle}>
+              {/* <Label>Password</Label> */}
               <Input
+                style={styles.inputStyle}
                 name="password"
                 onChangeText={this.handlePassword}
                 value={this.state.password}
                 secureTextEntry
+                placeholder="Password"
               />
             </Item>
-            <Button onPress={this.handleLogin} block primary>
+            <Button
+              style={styles.buttonStyle}
+              onPress={this.handleLogin}
+              block
+              primary>
               <Text> Submit </Text>
             </Button>
             <Text style={styles.textStyle}> - or - </Text>
             <Button
+              block
               success
               style={styles.buttonStyle}
               onPress={() => Actions.signup()}>
@@ -105,14 +114,31 @@ export default class LogIn extends Component {
 }
 
 const styles = {
+  itemStyle: {
+    flex: 1,
+    marginRight: 15,
+    marginLeft: 15,
+    marginBottom: 15
+    // marginHorizontal: 15,
+    // justifyContent: 'center'
+  },
+  inputStyle: {
+    backgroundColor: 'white'
+  },
   buttonStyle: {
     flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center'
+    marginHorizontal: 15
+    //flexDirection: 'row',
   },
   textStyle: {
-    fontSize: 25
+    fontSize: 25,
     // fontWeight: 'bold'
+    textAlign: 'center'
+  },
+  formStyle: {
+    display: 'flex',
+    // backgroundColor: 'red',
+    justifyContent: 'center'
+    // alignItems: 'center'
   }
 };
