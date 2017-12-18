@@ -41,6 +41,71 @@ export default function rootReducer(
     case 'GET_ASSIGNMENTS':
       return { ...currentState, assignments: action.assignments };
     // CREATE ASSIGNMENT //////////
+    case 'CREATE_ASSIGNMENT2':
+      console.log('CREATE A2');
+      // 1 need the state of  assignments
+
+      let bAssignments = currentState.assignments;
+
+      //2 create a scope object to represent joining of tables
+      let bScope = {};
+      console.log('RR', currentState.userInfo);
+      // 2a. get the current user from user Array in state
+      let bUser = currentState.userInfo;
+
+      // currentState.users.filter(user => {
+      //   //console.log('COMPARE', user.userId, action.currentAssignment.assignedUserId);
+      //   if (user.userId === action.currentAssignment.assignedUserId) {
+      //     //console.log('CCreturn USER', user);
+      //     return user;
+      //   }
+      // });
+
+      // 2b. get the current chore from chore Array in state
+      let bChore = currentState.currentChore;
+
+      // = currentState.chores.filter(chore => {
+      //   if (chore.id === action.currentAssignment.choreId) {
+      //     return chore;
+      //   }
+      // });
+
+      // so far we have
+      // bAssignments for array of Assignment
+      // bScope to represent the Assignment Object
+      // bUser for the User object
+      // bChore for the Chore object
+
+      //console.log('aChore', aChore);
+      // 2c. add to scope()
+
+      // action item
+      bScope.assignmentId = action.currentAssignment.id;
+      bScope.choreId = action.currentAssignment.choreId;
+
+      // user info
+      bScope.firstName = bUser.firstName;
+      bScope.householdId = bUser.householdId;
+      bScope.userId = bUser.userId;
+      // chore stuff
+      bScope.image = bChore.image;
+      bScope.instructions = bChore.instructions;
+      bScope.points = bChore.points;
+      bScope.status = bChore.status;
+      bScope.type = bChore.type;
+
+      // 3. ADD the assignment to the array of assignments
+      //console.log('CR scope', aScope);
+      bAssignments.push(bScope);
+
+      return {
+        ...currentState,
+        // currentAssignment: action.currentAssignment,
+        assignments: bAssignments,
+        errorMsg: action.errorMsg
+      };
+
+    //////////////////////////////////////////////////////////////////
     case 'CREATE_ASSIGNMENT':
       // 1. create new Array of state of assignments
       let theAssignments = currentState.assignments;

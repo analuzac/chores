@@ -3,10 +3,16 @@ import { connect } from 'react-redux';
 
 import ChoreProfileAdd from '../../components/ChoreProfileAdd';
 import postChoresProcess from '../thunks/postChoresProcess';
+import createAssignmentProcess2 from '../thunks/createAssignmentProcess2';
+
+let scope = {};
 
 function mapStateToProps(state, ownProps) {
+  scope.userInfo = state.userInfo;
+
   return {
     assigments: state.assigments,
+    currentAssignment: state.currentAssignment,
     chores: state.chores,
     currentChore: state.currentChore,
     userInfo: state.userInfo,
@@ -19,6 +25,16 @@ function mapDispatchToProps(dispatch, ownProps) {
   return {
     onCreateChore: (householdId, newChore) => {
       return dispatch(postChoresProcess(householdId, newChore));
+    },
+    createAssignment2: currentAssignment => {
+      console.log(
+        'DB CONTAINER',
+        scope.userInfo.householdId,
+        currentAssignment
+      );
+      return dispatch(
+        createAssignmentProcess2(scope.userInfo.householdId, currentAssignment)
+      );
     }
   };
 }

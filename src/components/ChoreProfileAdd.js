@@ -17,7 +17,7 @@ import {
   Label,
   Item as FormItem
 } from 'native-base';
-import { View, Image, Platform } from 'react-native';
+import { Alert, View, Image, Platform } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
 //const leItem = Picker.leItem;
@@ -66,7 +66,24 @@ export default class ChoreProfileAdd extends Component {
     let returnedChore = await this.props.onCreateChore(householdId, newChore);
     console.log('RETURNED CHORE', returnedChore);
 
-    if (returnedChore.type) {
+    const newAssignment = {
+      choreId: returnedChore.id,
+      assignedUserId: this.props.userInfo.id,
+      status: 'pending',
+      dueDate: '2017-12-15 12:29:45.964056'
+    };
+    const theAssignment = await this.props.createAssignment2(newAssignment);
+    console.log('CC ADD ASSMT', theAssignment);
+
+    // if (assignment.status) {
+    //    Alert.alert(‘Done’);
+    //    // Actions.dashboard();
+    //  } else {
+    //    Alert.alert(‘Error’);
+    //  }
+
+    if (returnedChore.type && theAssignment.status) {
+      Alert.alert('Added Assignment');
       Actions.choreslibrary();
     } else {
       Alert.alert('Error');
