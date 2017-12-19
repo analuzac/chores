@@ -83,7 +83,7 @@ export default class SignUp extends Component {
     console.log('RETURNED USERS', returnedUser);
 
     if (returnedUser.firstName) {
-      Alert.alert('Sucessful SignUp');
+      Alert.alert('Welcome to ChoreZap! \n😎');
       Actions.login();
     } else {
       Alert.alert('Hi', returnedUser.name);

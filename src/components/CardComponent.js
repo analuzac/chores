@@ -95,7 +95,7 @@ export default class CardComponent extends Component {
     console.log('CC ADD ASSMT', theAssignment);
 
     if (assignment.status) {
-      Alert.alert('Done');
+      Alert.alert('High Five! \n🙌🏼');
       // Actions.dashboard();
     } else {
       Alert.alert('Error');

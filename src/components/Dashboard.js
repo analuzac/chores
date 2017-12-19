@@ -9,7 +9,9 @@ import {
   Text,
   Form,
   Item,
-  Input
+  Input,
+  Footer,
+  FooterTab
 } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 // import HeaderIconText from './HeaderIconText';
@@ -82,9 +84,11 @@ export default class Dashboard extends Component {
             </CardItem>
           </Card> */}
         </Content>
-        <Content>
+        {/* <Content> */}
+        <Footer>
           <FooterComponent />
-        </Content>
+        </Footer>
+        {/* </Content> */}
       </Container>
     );
   }

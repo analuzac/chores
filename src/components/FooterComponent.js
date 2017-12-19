@@ -19,25 +19,34 @@ export default class FooterComponent extends Component {
       // <Container>
       //   <Header />
       //   <Content />
-      <Footer>
-        <FooterTab>
-          <Button onPress={() => Actions.dashboard()} active badge vertical>
-            <Icon active name="people" />
-            <Text>Assignments</Text>
-          </Button>
+      // <Footer>
+      // <Content>
+      <FooterTab>
+        <Button vertical onPress={() => Actions.dashboard()}>
+          <Icon name="people" />
+          <Text>Assignments</Text>
+        </Button>
 
-          <Button onPress={() => Actions.choreslibrary()} active badge vertical>
-            <Icon active name="apps" />
-            <Text>Chores Library</Text>
-          </Button>
+        <Button vertical onPress={() => Actions.choreslibrary()}>
+          <Icon name="apps" />
+          <Text>Chores Library</Text>
+        </Button>
 
-          {/* <Button vertical>
+        {/* <Button vertical>
             <Icon name="home" />
             <Text>Household</Text>
           </Button> */}
-        </FooterTab>
-      </Footer>
+      </FooterTab>
+      // </Content>
+      // </Footer>
       // </Container>
     );
   }
 }
+
+const styles = {
+  itemStyle: {
+    flex: 1,
+    marginTop: 10
+  }
+};

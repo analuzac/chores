@@ -71,7 +71,7 @@ export default class RegisterHouse extends Component {
       );
       console.log('>>>>>>', returnedUpdatedUser);
       if (returnedUpdatedUser.id) {
-        Alert.alert('Your household is live!');
+        Alert.alert('Your household is live! \n🏡');
         Actions.choreslibrary();
       }
     } else {

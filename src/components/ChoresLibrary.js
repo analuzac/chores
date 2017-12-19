@@ -15,7 +15,9 @@ import {
   Icon,
   Badge,
   Alert,
-  Separator
+  Separator,
+  Footer,
+  FooterTab
 } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 // import HeaderIconText from './HeaderIconText';
@@ -92,13 +94,19 @@ export default class ChoresLibrary extends Component {
               </Button>
             : null}
         </Content>
-        <Content>
+        <Footer>
           <FooterComponent />
-        </Content>
+        </Footer>
       </Container>
     );
   }
 }
+
+// {/* <Content> */}
+// {/* <Footer>
+//   <FooterComponent />
+// </Footer> */}
+// {/* </Content> */}
 
 const styles = {
   buttonStyle: {
