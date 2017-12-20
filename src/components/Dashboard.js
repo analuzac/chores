@@ -88,7 +88,7 @@ export default class Dashboard extends Component {
         </Content>
         {/* <Content> */}
         <Footer>
-          <FooterComponent />
+          <FooterComponent selected={'dashboard'} />
         </Footer>
         {/* </Content> */}
       </Container>

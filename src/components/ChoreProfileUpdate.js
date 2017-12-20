@@ -82,7 +82,7 @@ export default class ChoreProfileUpdate extends Component {
     console.log('RETURNED CHORE', returnedChore);
 
     if (returnedChore.type) {
-      Actions.choresview();
+      Actions.pop();
     } else {
       Alert.alert('Error');
     }
@@ -95,10 +95,10 @@ export default class ChoreProfileUpdate extends Component {
     // };
     return (
       <Container>
-        <Content>
+        <Content style={styles.contentStyle1}>
           {/* <Image source={pic} style={styles.imageStyle} /> */}
           <Text style={styles.textStyle1}>Chore Name:</Text>
-          <Item stackedLabel>
+          <Item stackedLabel style={styles.itemStyle}>
             <Label style={styles.textStyle2}>
               {this.props.currentChore.type}
             </Label>
@@ -106,7 +106,7 @@ export default class ChoreProfileUpdate extends Component {
           </Item>
 
           <Text style={styles.textStyle1}>Instructions:</Text>
-          <Item stackedLabel>
+          <Item stackedLabel style={styles.itemStyle}>
             <Label style={styles.textStyle2}>
               {this.props.currentChore.instructions}
             </Label>
@@ -135,7 +135,12 @@ export default class ChoreProfileUpdate extends Component {
               <leItem label="inactive" value="inactive" />
             </Picker>
           </Form>
-          <Button onPress={this.handleSubmit} block primary>
+          <Button
+            style={styles.buttonStyle}
+            onPress={this.handleSubmit}
+            full
+            rounded
+            primary>
             <Text> DONE </Text>
           </Button>
         </Content>
@@ -145,20 +150,41 @@ export default class ChoreProfileUpdate extends Component {
 }
 
 const styles = {
+  formStyle: {
+    display: 'flex',
+    // backgroundColor: 'red',
+    justifyContent: 'center'
+    // alignItems: 'center'
+  },
+  itemStyle: {
+    flex: 1,
+    marginRight: 15,
+    marginLeft: 15,
+    marginBottom: 5
+    // marginHorizontal: 15,
+    // justifyContent: 'center'
+  },
   buttonStyle: {
     flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center'
+    marginHorizontal: 15
+    //flexDirection: 'row',
   },
   textStyle1: {
     fontSize: 20,
-    textDecorationLine: 'underline'
+    textDecorationLine: 'underline',
+    marginRight: 15,
+    marginLeft: 15,
+    marginTop: 15
+    // textAlign: 'center'
     // fontWeight: 'bold'
   },
   textStyle2: {
     fontSize: 17,
-    fontStyle: 'italic'
+    fontStyle: 'italic',
+    marginRight: 15,
+    marginLeft: 15,
+    marginBottom: 5
+    // textAlign: 'center'
     // fontWeight: 'bold'
   },
   imageStyle: {

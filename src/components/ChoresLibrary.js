@@ -107,7 +107,7 @@ export default class ChoresLibrary extends Component {
             : null}
         </Content>
         <Footer>
-          <FooterComponent />
+          <FooterComponent selected={'choreslibrary'} />
         </Footer>
       </Container>
     );

@@ -14,7 +14,6 @@ import { Actions } from 'react-native-router-flux';
 
 export default class FooterComponent extends Component {
   render() {
-    console.log('Hi Footer.....');
     return (
       // <Container>
       //   <Header />
@@ -22,13 +21,19 @@ export default class FooterComponent extends Component {
       // <Footer>
       // <Content>
       <FooterTab>
-        <Button vertical onPress={() => Actions.dashboard()}>
-          <Icon name="people" />
+        <Button
+          vertical
+          active={this.props.selected === 'dashboard'}
+          onPress={() => Actions.dashboard()}>
+          <Icon active={this.props.selected === 'dashboard'} name="people" />
           <Text>Assignments</Text>
         </Button>
 
-        <Button vertical onPress={() => Actions.choreslibrary()}>
-          <Icon name="apps" />
+        <Button
+          vertical
+          active={this.props.selected === 'choreslibrary'}
+          onPress={() => Actions.choreslibrary()}>
+          <Icon active={this.props.selected === 'choreslibrary'} name="apps" />
           <Text>Chores Library</Text>
         </Button>
 
