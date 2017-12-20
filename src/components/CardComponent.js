@@ -132,7 +132,9 @@ export default class CardComponent extends Component {
     const assignedUserId = this.props.assignedUserId;
     //console.log('assignedUserId...........', assignedUserId);
     //mccode ////
-    // 0 bart, 1 lisa, 2 marge, 3 homer, 4 blank
+    // 0 bart, 1 lisa, 2 marge, 3 homer,
+    // 4 default
+    // 5 joey, 6 rachel, 7 phoebe, 8 ross, 9 monica , 10 chander
     let userImages = [
       {
         uri:
@@ -150,25 +152,67 @@ export default class CardComponent extends Component {
         uri:
           'https://www.polyvore.com/cgi/img-thing?.out=jpg&size=l&tid=11624142'
       },
-      { uri: 'https://i.imgflip.com/1slnr0.jpg' }
+      { uri: 'https://i.imgflip.com/1slnr0.jpg' },
+      //
+      {
+        uri:
+          'https://vignette.wikia.nocookie.net/friends/images/f/f5/JoeyTribbiani.jpg/revision/latest?cb=20070426103739'
+      },
+      {
+        uri:
+          'https://vignette.wikia.nocookie.net/friends/images/7/7e/5487b27b80c8d_-_mcx-rachel-green-0510-lgn.jpg/revision/latest/scale-to-width-down/191?cb=20160903061934'
+      },
+      {
+        uri:
+          'https://vignette.wikia.nocookie.net/friends/images/f/f5/Square_Phoebe.jpg/revision/latest?cb=20111216200026'
+      },
+      {
+        uri:
+          'https://vignette.wikia.nocookie.net/friends/images/8/89/Square_Ross.jpg/revision/latest?cb=20111216200027'
+      },
+      {
+        uri:
+          'https://vignette.wikia.nocookie.net/friends/images/7/75/Monica.jpg/revision/latest?cb=20130802071219'
+      },
+      {
+        uri:
+          'https://vignette.wikia.nocookie.net/friends/images/2/21/2473459498_a3b4e40781.jpg/revision/latest/scale-to-width-down/350?cb=20100601130820'
+      }
     ];
 
     // assingn the user images
     let assignedImage = userImages[4];
     // console.log('ASSIGNED ', this.props.assigned.toLowerCase());
-    if (this.props.assigned === 'Bart') {
+    if (this.props.assigned.toLowerCase() === 'bart') {
       assignedImage = userImages[0];
-    } else if (this.props.assigned === 'Lisa') {
+    } else if (this.props.assigned.toLowerCase() === 'lisa') {
       assignedImage = userImages[1];
-    } else if (this.props.assigned === 'Marge') {
+    } else if (this.props.assigned.toLowerCase() === 'marge') {
       assignedImage = userImages[2];
     } else if (this.props.assigned.toLowerCase() === 'homer') {
-      console.log('HOMERR', userImages[3]);
+      // console.log('HOMERR', userImages[3]);
       assignedImage = userImages[3];
     }
 
+    if (this.props.assigned.toLowerCase() === 'joey') {
+      assignedImage = userImages[5];
+    } else if (this.props.assigned.toLowerCase() === 'rachel') {
+      assignedImage = userImages[6];
+    } else if (this.props.assigned.toLowerCase() === 'phoebe') {
+      assignedImage = userImages[7];
+    } else if (this.props.assigned.toLowerCase() === 'ross') {
+      // console.log('HOMERR', userImages[3]);
+      assignedImage = userImages[8];
+    } else if (this.props.assigned.toLowerCase() === 'monica') {
+      // console.log('HOMERR', userImages[3]);
+      assignedImage = userImages[9];
+    } else if (this.props.assigned.toLowerCase() === 'chandler') {
+      // console.log('HOMERR', userImages[3]);
+      assignedImage = userImages[10];
+    }
+
     // chore images
-    // 0 livingroom (? not working use 5), 1 kitchen, 2 bathroom, 3 trash, 4 default, 5 living room
+    // 0 livingroom (? not working use 5), 1 kitchen, 2 bathroom, 3 trash, 4 default, 5 living room , 7 simpsons livingroom , 8 friends living room
     let choreImages = [
       {
         uri:
@@ -199,9 +243,11 @@ export default class CardComponent extends Component {
           'https://upload.wikimedia.org/wikipedia/commons/c/c4/Ovolo_2AR_living_room.jpg'
       },
       {
-        //  require('.././images/livingroomSimpsonsChristmas.jpg')
         uri:
           'https://newcastlelive.com.au/wp-content/uploads/2017/12/Simpsons-Christmas.jpg'
+      },
+      {
+        uri: 'https://tvseriesfinale.com/wp-content/uploads/2015/12/S1EP7.jpg'
       }
     ];
 
@@ -214,17 +260,16 @@ export default class CardComponent extends Component {
         console.log('THE SIMPSONS');
         choreImage = choreImages[7];
         // choreImage = require('./images/livingroomSimpsonsChristmas.jpg');
+      } else if (this.props.householdId === 2) {
+        //console.log('DEFAULT ');
+
+        choreImage = choreImages[8];
       } else {
-        console.log('DEFAULT ');
+        //console.log('DEFAULT ');
 
         choreImage = choreImages[0];
       }
-      console.log(
-        'LIVINGROOOM........................',
-        this.props.chore.toLowerCase(),
-        this.props.chore.toLowerCase().indexOf('livingroom'),
-        choreImage
-      );
+      //console.log('LIVINGROOOM........................', this.props.chore.toLowerCase(), this.props.chore.toLowerCase().indexOf('livingroom'), choreImage);
     } else if (this.props.chore.toLowerCase().indexOf('kitchen') > -1) {
       choreImage = choreImages[1];
     } else if (this.props.chore.toLowerCase().indexOf('bathroom') > -1) {

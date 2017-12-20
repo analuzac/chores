@@ -60,7 +60,7 @@ export default class ChoresLibrary extends Component {
         <HeaderComponent title="Chores Library" />
         <Content>
           <Separator bordered>
-            <Text style={styles.textStyle}>Household Chores:</Text>
+            <Text style={styles.textStyle}>Chore Details:</Text>
           </Separator>
           {leChores.map(leChore => {
             //console.log('leChore', leChore);
