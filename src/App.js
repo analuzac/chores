@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import { Router, Stack, Scene } from 'react-native-router-flux';
+import { Router, Stack, Scene, ActionConst } from 'react-native-router-flux';
 import setupStore from './redux/setupStore';
 const store = setupStore();
 
@@ -23,7 +23,7 @@ export default class App extends Component {
             <Scene
               key="login"
               component={LogInPageContainer}
-              title="ChoreZap"
+              title="Log In"
               hideNavBar
               initial
             />
@@ -32,11 +32,12 @@ export default class App extends Component {
               component={DashboardPageContainer}
               title="Assigned Chores"
               hideNavBar
+              type={ActionConst.REPLACE}
             />
             <Scene
               key="signup"
               component={SignUpPageContainer}
-              title="ChoreZap"
+              title="Sign Up"
             />
             <Scene
               key="joinhouse"
@@ -53,21 +54,24 @@ export default class App extends Component {
               component={ChoresLibraryPageContainer}
               title="Chores Library"
               hideNavBar
+              type={ActionConst.REPLACE}
             />
             <Scene
               key="choresview"
               component={ChoreViewPageContainer}
-              title="Chore Profile - View"
+              title="View Chore Profile"
             />
             <Scene
               key="choresadd"
               component={ChoreAddPageContainer}
-              title="Chore Profile - Add"
+              title="Add New Chore Profile"
+              // direction="vertical"
+              // schema="modal"
             />
             <Scene
               key="choresupdate"
               component={ChoreUpdatePageContainer}
-              title="Chore Profile - Update"
+              title="Update Chore Profile"
             />
             {/* <Scene
               key="houseview"

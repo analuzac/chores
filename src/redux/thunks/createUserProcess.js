@@ -5,8 +5,12 @@ export default function createUserProcess(userInfo) {
     //
     return createUser(userInfo).then(userInfo => {
       //
-      dispatch({ type: 'CREATE_USER', userInfo: userInfo, errorMsg: null });
-      return userInfo;
+      if (userInfo === 'ERROR') {
+        return 'Duplicate email';
+      } else {
+        dispatch({ type: 'CREATE_USER', userInfo: userInfo, errorMsg: null });
+        return userInfo;
+      }
     });
   };
 }

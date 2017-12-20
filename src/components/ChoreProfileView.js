@@ -30,7 +30,12 @@ export default class ChoreProfileView extends Component {
             {this.props.currentChore.status}
           </Text>
           {this.props.userInfo.role === 'head'
-            ? <Button onPress={() => Actions.choresupdate()} block primary>
+            ? <Button
+                style={styles.buttonStyle}
+                onPress={() => Actions.choresupdate()}
+                full
+                rounded
+                primary>
                 <Text> EDIT CHORE </Text>
               </Button>
             : null}
@@ -41,14 +46,41 @@ export default class ChoreProfileView extends Component {
 }
 
 const styles = {
+  // formStyle: {
+  //   display: 'flex',
+  //   // backgroundColor: 'red',
+  //   justifyContent: 'center'
+  //   // alignItems: 'center'
+  // },
+  itemStyle: {
+    flex: 1,
+    marginRight: 15,
+    marginLeft: 15,
+    marginBottom: 5
+    // marginHorizontal: 15,
+    // justifyContent: 'center'
+  },
+  buttonStyle: {
+    flex: 1,
+    marginHorizontal: 15
+    //flexDirection: 'row',
+  },
   textStyle1: {
     fontSize: 20,
-    textDecorationLine: 'underline'
+    textDecorationLine: 'underline',
+    marginRight: 15,
+    marginLeft: 15,
+    marginTop: 15
+    // textAlign: 'center'
     // fontWeight: 'bold'
   },
   textStyle2: {
     fontSize: 17,
-    fontStyle: 'italic'
+    fontStyle: 'italic',
+    marginRight: 15,
+    marginLeft: 15,
+    marginBottom: 5
+    // textAlign: 'center'
     // fontWeight: 'bold'
   },
   imageStyle: {

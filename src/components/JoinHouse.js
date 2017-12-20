@@ -45,6 +45,11 @@ export default class JoinHouse extends Component {
       householdId: householdId
     };
 
+    if (householdId.trim().length === 0) {
+      Alert.alert('Please fill out the fields');
+      return false;
+    }
+
     let returnedUser = await this.props.onJoin(householdId, userId, changes);
     console.log('RETURNED USERS', returnedUser);
 
@@ -52,10 +57,9 @@ export default class JoinHouse extends Component {
       // Actions.chores();
       Actions.dashboard();
     } else {
-      Alert.alert('Error');
+      Alert.alert('Invalid Key Code');
     }
   }
-
   render() {
     return (
       <Container>

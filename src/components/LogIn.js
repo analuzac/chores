@@ -42,6 +42,13 @@ export default class LogIn extends Component {
       password: this.state.password
     };
 
+    if (
+      logInUser.email.trim().length === 0 ||
+      logInUser.password.trim().length === 0
+    ) {
+      Alert.alert('Invalid username/password');
+      return false;
+    }
     let returnedUser = await this.props.onLogIn(logInUser);
     console.log('RETURNED USERS', returnedUser);
 

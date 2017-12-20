@@ -5,13 +5,16 @@ export default function createHouseholdProcess(householdInfo) {
     //
     return createHousehold(householdInfo).then(householdInfo => {
       //
-
-      dispatch({
-        type: 'CREATE_HOUSEHOLD',
-        householdInfo: householdInfo,
-        errorMsg: null
-      });
-      return householdInfo;
+      if (householdInfo === 'ERROR') {
+        return 'Invalid Household Key Code';
+      } else {
+        dispatch({
+          type: 'CREATE_HOUSEHOLD',
+          householdInfo: householdInfo,
+          errorMsg: null
+        });
+        return householdInfo;
+      }
     });
   };
 }

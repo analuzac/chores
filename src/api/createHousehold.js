@@ -13,10 +13,15 @@ export default function createHousehold(householdInfo) {
     })
       .then(handleErrors)
       .then(response => {
+        // console.log(response.status);
+        // if (response.status === 401) {
+        //   return response.text();
+        // }
         return response.json();
       })
       .catch(function(error) {
         console.log(error);
+        return 'ERROR';
       });
   });
 } // end of function

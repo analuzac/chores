@@ -95,7 +95,7 @@ export default class ChoreProfileUpdate extends Component {
     // };
     return (
       <Container>
-        <Content style={styles.contentStyle1}>
+        <Content>
           {/* <Image source={pic} style={styles.imageStyle} /> */}
           <Text style={styles.textStyle1}>Chore Name:</Text>
           <Item stackedLabel style={styles.itemStyle}>
@@ -150,12 +150,12 @@ export default class ChoreProfileUpdate extends Component {
 }
 
 const styles = {
-  formStyle: {
-    display: 'flex',
-    // backgroundColor: 'red',
-    justifyContent: 'center'
-    // alignItems: 'center'
-  },
+  // formStyle: {
+  //   display: 'flex',
+  //   // backgroundColor: 'red',
+  //   justifyContent: 'center'
+  //   // alignItems: 'center'
+  // },
   itemStyle: {
     flex: 1,
     marginRight: 15,

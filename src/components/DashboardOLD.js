@@ -11,8 +11,7 @@ import {
   Item,
   Input,
   Footer,
-  FooterTab,
-  Spinner
+  FooterTab
 } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 // import HeaderIconText from './HeaderIconText';
@@ -20,7 +19,7 @@ import { Actions } from 'react-native-router-flux';
 
 import CardComponent from './CardComponent';
 import FooterComponent from './FooterComponent';
-import HeaderComponent from './HeaderComponent'; //mccode
+import HeaderComponent from './HeaderComponent';
 
 export default class Dashboard extends Component {
   constructor(props) {
@@ -29,7 +28,6 @@ export default class Dashboard extends Component {
       users: this.props.users
     };
   }
-
   render() {
     const leAssignments = this.props.assignments;
     const users = this.props.users;
@@ -39,7 +37,6 @@ export default class Dashboard extends Component {
       uri:
         'https://upload.wikimedia.org/wikipedia/commons/d/de/Bananavarieties.jpg'
     };
-
     return (
       <Container>
         {/* <HeaderIconText /> */}
@@ -69,7 +66,6 @@ export default class Dashboard extends Component {
                   assigned={leAssignment.firstName} //
                   chore={leAssignment.type} //
                   choreId={leAssignment.choreId} //
-                  instructions={leAssignment.instructions} //
                   image={pic} //
                   users={users}
                   userInfo={userInfo} //mccode

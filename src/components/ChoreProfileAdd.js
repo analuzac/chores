@@ -83,12 +83,12 @@ export default class ChoreProfileAdd extends Component {
         <Content>
           {/* <Image source={pic} style={styles.imageStyle} /> */}
           <Text style={styles.textStyle1}>Chore Name:</Text>
-          <Item>
+          <Item style={styles.itemStyle}>
             <Input placerholder="type" onChangeText={this.handleType} />
           </Item>
 
           <Text style={styles.textStyle1}>Instructions:</Text>
-          <Item>
+          <Item style={styles.itemStyle}>
             <Input
               placerholder="instructions"
               onChangeText={this.handleInstructions}
@@ -100,7 +100,12 @@ export default class ChoreProfileAdd extends Component {
             <Input placerholder="points" onChangeText={this.handlePoints} />
           </Item> */}
 
-          <Button onPress={this.handleSubmit} block primary>
+          <Button
+            style={styles.buttonStyle}
+            onPress={this.handleSubmit}
+            full
+            rounded
+            primary>
             <Text> SUBMIT </Text>
           </Button>
         </Content>
@@ -110,24 +115,45 @@ export default class ChoreProfileAdd extends Component {
 }
 
 const styles = {
+  // contentStyle: {
+  //   display: 'flex',
+  //   // backgroundColor: 'red',
+  //   justifyContent: 'center'
+  //   // alignItems: 'center'
+  // },
+  itemStyle: {
+    flex: 1,
+    marginRight: 15,
+    marginLeft: 15,
+    marginBottom: 5
+    // marginHorizontal: 15,
+    // justifyContent: 'center'
+  },
   buttonStyle: {
     flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center'
+    marginHorizontal: 15
+    //flexDirection: 'row',
   },
   textStyle1: {
     fontSize: 20,
-    textDecorationLine: 'underline'
+    textDecorationLine: 'underline',
+    marginRight: 15,
+    marginLeft: 15,
+    marginTop: 15
+    // textAlign: 'center'
     // fontWeight: 'bold'
   },
   textStyle2: {
     fontSize: 17,
-    fontStyle: 'italic'
+    fontStyle: 'italic',
+    marginRight: 15,
+    marginLeft: 15,
+    marginBottom: 5
+    // textAlign: 'center'
     // fontWeight: 'bold'
-  },
-  imageStyle: {
-    width: 193,
-    height: 110
   }
+  // imageStyle: {
+  //   width: 193,
+  //   height: 110
+  // }
 };

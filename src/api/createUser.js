@@ -14,6 +14,7 @@ export default function createUser(userInfo) {
     })
     .catch(function(error) {
       console.log(error);
+      return 'ERROR';
     });
 } // end of function
 

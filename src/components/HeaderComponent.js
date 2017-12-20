@@ -40,7 +40,7 @@ export default class HeaderComponent extends Component {
               </Title>
             : null}
           {this.props.title !== 'Login'
-            ? <Button small transparent onPress={this.handleLogout}>
+            ? <Button transparent onPress={this.handleLogout}>
                 <Text height="2" width="2">
                   Logout
                 </Text>

@@ -59,6 +59,14 @@ export default class RegisterHouse extends Component {
       // description: this.state.description
     };
 
+    if (
+      householdInfo.name.trim().length === 0 ||
+      householdInfo.type.trim().length === 0
+    ) {
+      Alert.alert('Invalid Entry');
+      return false;
+    }
+
     let returnedHousehold = await this.props.onRegister(householdInfo);
 
     //console.log('PROPS INSIDE REGISTER HOUSEHOLD', this.props);

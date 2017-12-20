@@ -23,6 +23,7 @@ export default function updateUser(householdId, userId, changes) {
       })
       .catch(function(error) {
         console.log(error);
+        return 'ERROR';
       });
   });
 } // end of function

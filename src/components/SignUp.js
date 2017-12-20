@@ -53,19 +53,23 @@ export default class SignUp extends Component {
     if (!email || !name || !password) {
       // if fields are blank, set all other errors to FALSE
       // unique
-      this.setState({ uniqueEmail: false });
+      // this.setState({ uniqueEmail: false });
       // password
-      this.setState({ badPassword: false });
-      return this.setState({ emptyFields: true });
+      // this.setState({ badPassword: false });
+      // return this.setState({ emptyFields: true });
+      Alert.alert('Please fill out the fields');
+      return false;
     }
     if (password.length < 5) {
       // if the password is bad, then set all other errors to false
       // uniqueEmail
-      this.setState({ uniqueEmail: false });
+      // this.setState({ uniqueEmail: false });
       // empty fields
-      this.setState({ emptyFields: false });
+      // this.setState({ emptyFields: false });
       // set bad pw to true
-      return this.setState({ badPassword: true });
+      // return this.setState({ badPassword: true });
+      Alert.alert('Please have a minimum of 5 characters for password');
+      return false;
     }
 
     // 1 set up the userInfo
@@ -86,7 +90,7 @@ export default class SignUp extends Component {
       Alert.alert('Welcome to ChoreZap! \n😎');
       Actions.login();
     } else {
-      Alert.alert('Hi', returnedUser.name);
+      Alert.alert(returnedUser);
       this.setState({ uniqueEmail: true });
     }
   }
@@ -103,27 +107,27 @@ export default class SignUp extends Component {
     //       <Text style={{ marginLeft: '34%', color: 'black' }}> Creating Account... </Text>
     //     </Content>
     //   );
-    if (this.state.emptyFields) {
-      errorMsg = (
-        <Text style={{ color: 'red', marginLeft: '20%' }}>
-          Please fill out all required fields
-        </Text>
-      );
-    }
-    if (this.state.badPassword) {
-      errorMsg = (
-        <Text style={{ color: 'red', marginLeft: '20%' }}>
-          Password must be at least 5 characters
-        </Text>
-      );
-    }
-    if (this.state.uniqueEmail) {
-      errorMsg = (
-        <Text style={{ color: 'red', marginLeft: '20%' }}>
-          {' '}Email must be unique{' '}
-        </Text>
-      );
-    }
+    // if (this.state.emptyFields) {
+    //   errorMsg = (
+    //     <Text style={{ color: 'red', marginLeft: '20%' }}>
+    //       Please fill out all required fields
+    //     </Text>
+    //   );
+    // }
+    // if (this.state.badPassword) {
+    //   errorMsg = (
+    //     <Text style={{ color: 'red', marginLeft: '20%' }}>
+    //       Password must be at least 5 characters
+    //     </Text>
+    //   );
+    // }
+    // if (this.state.uniqueEmail) {
+    //   errorMsg = (
+    //     <Text style={{ color: 'red', marginLeft: '20%' }}>
+    //       {' '}Email must be unique{' '}
+    //     </Text>
+    //   );
+    // }
 
     console.log('HI THERE');
     ////////////////////////////////////////////////////////////////////////////
