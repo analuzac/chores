@@ -23,6 +23,7 @@ import { Actions } from 'react-native-router-flux';
 // import HeaderIconText from './HeaderIconText';
 // import Footer from './Footer';
 import FooterComponent from './FooterComponent';
+import HeaderComponent from './HeaderComponent';
 
 export default class ChoresLibrary extends Component {
   constructor(props) {
@@ -56,6 +57,7 @@ export default class ChoresLibrary extends Component {
     return (
       <Container>
         {/* <HeaderIconText /> */}
+        <HeaderComponent title="Chores Library" />
         <Content>
           <Separator bordered>
             <Text style={styles.textStyle}>Household Chores:</Text>
@@ -81,14 +83,24 @@ export default class ChoresLibrary extends Component {
           })}
           <Text />
           {this.props.userInfo.role === 'head'
-            ? <Button full rounded info onPress={() => Actions.choresadd()}>
+            ? <Button
+                style={styles.buttonStyle}
+                full
+                rounded
+                info
+                onPress={() => Actions.choresadd()}>
                 <Icon name="add" />
                 <Text>Add a Chore</Text>
               </Button>
             : null}
           <Text />
           {this.props.userInfo.role === 'head'
-            ? <Button full rounded info onPress={() => Actions.dashboard()}>
+            ? <Button
+                style={styles.buttonStyle}
+                full
+                rounded
+                info
+                onPress={() => Actions.dashboard()}>
                 <Icon name="people" />
                 <Text>Assign Chores</Text>
               </Button>
@@ -102,21 +114,35 @@ export default class ChoresLibrary extends Component {
   }
 }
 
-// {/* <Content> */}
-// {/* <Footer>
-//   <FooterComponent />
-// </Footer> */}
-// {/* </Content> */}
-
 const styles = {
+  itemStyle: {
+    flex: 1,
+    marginRight: 15,
+    marginLeft: 15,
+    marginBottom: 15
+    // marginHorizontal: 15,
+    // justifyContent: 'center'
+  },
+  inputStyle: {
+    backgroundColor: 'white'
+  },
   buttonStyle: {
-    // flex: 1,
-    // flexDirection: 'column',
-    // justifyContent: 'center',
-    alignItems: 'center'
+    flex: 1,
+    marginHorizontal: 15
+    // marginRight: 15,
+    // marginLeft: 15,
+    // marginBottom: 15
+    //flexDirection: 'row',
   },
   textStyle: {
-    fontSize: 25
+    fontSize: 25,
     // fontWeight: 'bold'
+    textAlign: 'center'
+  },
+  formStyle: {
+    display: 'flex',
+    // backgroundColor: 'red',
+    justifyContent: 'center'
+    // alignItems: 'center'
   }
 };

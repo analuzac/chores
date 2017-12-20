@@ -168,7 +168,7 @@ export default class CardComponent extends Component {
           />
         </CardItem>
         <CardItem>
-          {this.props.userInfo.role === 'head'
+          {this.props.userInfo.role === 'head' && users.length > 1
             ? <Form>
                 <Text>Assign</Text>
                 <Picker

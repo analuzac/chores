@@ -19,6 +19,7 @@ import { Actions } from 'react-native-router-flux';
 
 import CardComponent from './CardComponent';
 import FooterComponent from './FooterComponent';
+import HeaderComponent from './HeaderComponent';
 
 export default class Dashboard extends Component {
   constructor(props) {
@@ -39,6 +40,7 @@ export default class Dashboard extends Component {
     return (
       <Container>
         {/* <HeaderIconText /> */}
+        <HeaderComponent title="Assigned Chores" />
         <Content>
           {/* <Text onPress={() => Actions.login()}>Go to Login Screen</Text>
 

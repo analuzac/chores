@@ -10,9 +10,9 @@ import {
   Text,
   Separator
 } from 'native-base';
-
+import { Alert } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import { Alert, AsyncStorage } from 'react-native';
+import HeaderComponentC from './HeaderComponentC';
 
 export default class LogIn extends Component {
   constructor(props) {
@@ -65,42 +65,68 @@ export default class LogIn extends Component {
   render() {
     return (
       <Container>
+        <HeaderComponentC title="LogIn" />
         <Content>
           <Form style={styles.formStyle}>
-            <Separator bordered>
+            {/* <Separator bordered>
               <Text style={styles.textStyle}>Log In</Text>
-            </Separator>
-            <Item regular style={styles.itemStyle}>
+            </Separator> */}
+            <Text />
+            <Text />
+            <Text />
+            <Item rounded style={styles.itemStyle}>
               {/* <Label>Email</Label> */}
               <Input
                 style={styles.inputStyle}
                 name="email"
+                placeholder="Email"
                 onChangeText={this.handleEmail}
                 value={this.state.email}
-                placeholder="Email"
               />
             </Item>
-            <Item regular style={styles.itemStyle}>
+            <Item rounded style={styles.itemStyle}>
               {/* <Label>Password</Label> */}
               <Input
                 style={styles.inputStyle}
                 name="password"
+                placeholder="Password"
                 onChangeText={this.handlePassword}
                 value={this.state.password}
                 secureTextEntry
-                placeholder="Password"
               />
             </Item>
             <Button
               style={styles.buttonStyle}
               onPress={this.handleLogin}
-              block
+              large
+              full
+              rounded
               primary>
-              <Text> Submit </Text>
+              <Text> Log In </Text>
             </Button>
-            <Text style={styles.textStyle}> - or - </Text>
+            {/* <Text style={styles.textStyle}> - or - </Text> */}
+            <Text />
+            <Text />
+            <Text />
+            <Text />
+            <Text />
+            <Text />
+            <Text />
+            <Text />
+            <Text />
+            <Text />
+            <Text />
+            <Text />
+            <Text />
+            <Text />
+            <Text />
+            <Text />
+            <Text />
+            <Text />
             <Button
-              block
+              large
+              full
+              rounded
               success
               style={styles.buttonStyle}
               onPress={() => Actions.signup()}>

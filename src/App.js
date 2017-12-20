@@ -23,18 +23,20 @@ export default class App extends Component {
             <Scene
               key="login"
               component={LogInPageContainer}
-              title="Log In"
+              title="ChoreZap"
+              hideNavBar
               initial
             />
             <Scene
               key="dashboard"
               component={DashboardPageContainer}
               title="Assigned Chores"
+              hideNavBar
             />
             <Scene
               key="signup"
               component={SignUpPageContainer}
-              title="Sign Up"
+              title="ChoreZap"
             />
             <Scene
               key="joinhouse"
@@ -50,6 +52,7 @@ export default class App extends Component {
               key="choreslibrary"
               component={ChoresLibraryPageContainer}
               title="Chores Library"
+              hideNavBar
             />
             <Scene
               key="choresview"

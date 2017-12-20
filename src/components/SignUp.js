@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import {
   Container,
-  Header,
   Content,
   Form,
   Item,
   Input,
   Label,
   Button,
+  Text,
   Separator
 } from 'native-base';
-import { Alert, AppRegistry, View, Image, Text } from 'react-native';
+import { Alert } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
 export default class SignUp extends Component {
@@ -33,7 +33,7 @@ export default class SignUp extends Component {
   }
 
   handleName(name) {
-    this.setState({ name: name.toLowerCase() });
+    this.setState({ name: name });
   }
 
   handleEmail(email) {
@@ -128,47 +128,89 @@ export default class SignUp extends Component {
     console.log('HI THERE');
     ////////////////////////////////////////////////////////////////////////////
     return (
-      <Content>
-        <Form>
-          {errorMsg}
-          <Separator bordered>
-            <Text style={styles.textStyle}>User Registration</Text>
-          </Separator>
-          <Item stackedLabel>
-            <Label>Full Name</Label>
-            <Input placerholder="name" onChangeText={this.handleName} />
-          </Item>
-          <Item stackedLabel>
-            <Label>Email</Label>
-            <Input placerholder="email" onChangeText={this.handleEmail} />
-          </Item>
-          <Item stackedLabel last>
-            <Label>Password</Label>
-            <Input
-              secureTextEntry
-              placerholder="password"
-              onChangeText={this.handlePassword}
-            />
-          </Item>
-          <Button onPress={this.handleSubmit}>
-            <Text> Submit </Text>
-          </Button>
-        </Form>
-      </Content>
+      <Container>
+        <Content>
+          <Form style={styles.formStyle}>
+            {errorMsg}
+            {/* <Separator bordered>
+              <Text style={styles.textStyle}>User Registration</Text>
+            </Separator> */}
+            <Text />
+            <Text />
+            <Text />
+            <Item rounded style={styles.itemStyle}>
+              {/* <Label>Full Name</Label> */}
+              <Input
+                style={styles.inputStyle}
+                name="name"
+                placeholder="Name"
+                onChangeText={this.handleName}
+                value={this.state.name}
+              />
+            </Item>
+            <Item rounded style={styles.itemStyle}>
+              {/* <Label>Email</Label> */}
+              <Input
+                style={styles.inputStyle}
+                name="email"
+                placeholder="Email"
+                onChangeText={this.handleEmail}
+                value={this.state.email}
+              />
+            </Item>
+            <Item large style={styles.itemStyle}>
+              {/* <Label>Password</Label> */}
+              <Input
+                style={styles.inputStyle}
+                name="password"
+                placeholder="Password"
+                onChangeText={this.handlePassword}
+                value={this.state.password}
+                secureTextEntry
+              />
+            </Item>
+            <Button
+              style={styles.buttonStyle}
+              onPress={this.handleSubmit}
+              large
+              full
+              rounded
+              primary>
+              <Text> Register </Text>
+            </Button>
+          </Form>
+        </Content>
+      </Container>
     );
   }
 }
 
 const styles = {
-  // buttonStyle: {
-  //   flex: 1,
-  //   flexDirection: 'column',
-  //   justifyContent: 'center',
-  //   alignItems: 'center'
-  // },
+  itemStyle: {
+    flex: 1,
+    marginRight: 15,
+    marginLeft: 15,
+    marginBottom: 15
+    // marginHorizontal: 15,
+    // justifyContent: 'center'
+  },
+  inputStyle: {
+    backgroundColor: 'white'
+  },
+  buttonStyle: {
+    flex: 1,
+    marginHorizontal: 15
+    //flexDirection: 'row',
+  },
   textStyle: {
-    // color: 'blue',
-    // fontWeight: 'bold',
-    fontSize: 25
+    fontSize: 25,
+    // fontWeight: 'bold'
+    textAlign: 'center'
+  },
+  formStyle: {
+    display: 'flex',
+    // backgroundColor: 'red',
+    justifyContent: 'center'
+    // alignItems: 'center'
   }
 };

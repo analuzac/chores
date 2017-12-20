@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {
   Container,
-  Header,
   Content,
   Form,
   Item,
@@ -9,17 +8,20 @@ import {
   Label,
   Button,
   Text,
-  Separator
+  Separator,
+  Picker
 } from 'native-base';
+import { Alert } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import { Alert, AsyncStorage } from 'react-native';
+
+const leItem = Picker.Item;
 
 export default class RegisterHouse extends Component {
   constructor(props) {
     super(props);
     this.state = {
       name: '',
-      type: ''
+      type: 'pick one'
       //description: ''
     };
 
@@ -27,6 +29,12 @@ export default class RegisterHouse extends Component {
     this.handleHouse = this.handleHouse.bind(this);
     this.handleType = this.handleType.bind(this);
     //this.handleDescription = this.handleDescription.bind(this);
+  }
+
+  onValueChange(value: string) {
+    this.setState({
+      type: value
+    });
   }
 
   handleHouse(name) {
@@ -71,7 +79,9 @@ export default class RegisterHouse extends Component {
       );
       console.log('>>>>>>', returnedUpdatedUser);
       if (returnedUpdatedUser.id) {
-        Alert.alert('Your household is live! \n🏡');
+        Alert.alert(
+          `Your household is live! \n🏡 \n \nInvite your housemates with: \nHousehold Name = ${returnedHousehold.name} \nKey Code = ${returnedHousehold.id}`
+        );
         Actions.choreslibrary();
       }
     } else {
@@ -83,25 +93,47 @@ export default class RegisterHouse extends Component {
     return (
       <Container>
         <Content>
-          <Form>
-            <Separator bordered>
+          <Form style={styles.formStyle}>
+            {/* <Separator bordered>
               <Text style={styles.textStyle}>Household Registration</Text>
-            </Separator>
-            <Item stackedLabel>
-              <Label>Household Name</Label>
+            </Separator> */}
+            <Text />
+            <Text />
+            <Text />
+            <Item large style={styles.itemStyle}>
+              {/* <Label>Household Name</Label> */}
               <Input
+                style={styles.inputStyle}
                 name="name"
+                placeholder="Name"
                 onChangeText={this.handleHouse}
                 value={this.state.name}
               />
             </Item>
-            <Item stackedLabel>
+            {/* <Item stackedLabel>
               <Label>Type of Household</Label>
               <Input
                 name="type"
                 onChangeText={this.handleType}
                 value={this.state.type}
               />
+            </Item> */}
+            <Item large style={styles.itemStyle}>
+              {/* <Label>Type of Household</Label> */}
+              <Form style={styles.inputStyle}>
+                <Picker
+                  iosHeader="Select one"
+                  mode="dropdown"
+                  selectedValue={this.state.type}
+                  onValueChange={this.onValueChange.bind(this)}>
+                  <leItem
+                    label="Type of Household        <pick one>              "
+                    value="pick one"
+                  />
+                  <leItem label="family" value="family" />
+                  <leItem label="roommates" value="rommates" />
+                </Picker>
+              </Form>
             </Item>
             {/* <Item stackedLabel last>
               <Label>Description</Label>
@@ -111,8 +143,14 @@ export default class RegisterHouse extends Component {
                 value={this.state.description}
               />
             </Item> */}
-            <Button onPress={this.handleSubmit} block primary>
-              <Text> Submit </Text>
+            <Button
+              style={styles.buttonStyle}
+              onPress={this.handleSubmit}
+              large
+              full
+              rounded
+              primary>
+              <Text> Register Household </Text>
             </Button>
           </Form>
         </Content>
@@ -124,15 +162,31 @@ export default class RegisterHouse extends Component {
 //
 
 const styles = {
-  // buttonStyle: {
-  //   flex: 1,
-  //   flexDirection: 'column',
-  //   justifyContent: 'center',
-  //   alignItems: 'center'
-  // },
+  itemStyle: {
+    flex: 1,
+    marginRight: 15,
+    marginLeft: 15,
+    marginBottom: 15
+    // marginHorizontal: 15,
+    // justifyContent: 'center'
+  },
+  inputStyle: {
+    backgroundColor: 'white'
+  },
+  buttonStyle: {
+    flex: 1,
+    marginHorizontal: 15
+    //flexDirection: 'row',
+  },
   textStyle: {
-    // color: 'blue',
-    // fontWeight: 'bold',
-    fontSize: 25
+    fontSize: 25,
+    // fontWeight: 'bold'
+    textAlign: 'center'
+  },
+  formStyle: {
+    display: 'flex',
+    // backgroundColor: 'red',
+    justifyContent: 'center'
+    // alignItems: 'center'
   }
 };

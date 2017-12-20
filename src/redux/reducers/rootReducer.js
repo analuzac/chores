@@ -289,6 +289,7 @@ export default function rootReducer(
       return {
         ...currentState,
         userInfo: action.userInfo,
+        assignments: [],
         errorMsg: action.errorMsg
       };
     case 'REMOVE_TOKEN':

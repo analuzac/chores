@@ -82,7 +82,7 @@ export default class ChoreProfileUpdate extends Component {
     console.log('RETURNED CHORE', returnedChore);
 
     if (returnedChore.type) {
-      Actions.choreslibrary();
+      Actions.choresview();
     } else {
       Alert.alert('Error');
     }

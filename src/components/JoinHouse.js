@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {
   Container,
-  Header,
   Content,
   Form,
   Item,
@@ -11,8 +10,8 @@ import {
   Text,
   Separator
 } from 'native-base';
+import { Alert } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import { Alert, AsyncStorage } from 'react-native';
 
 export default class JoinHouse extends Component {
   constructor(props) {
@@ -61,23 +60,65 @@ export default class JoinHouse extends Component {
     return (
       <Container>
         <Content>
-          <Form>
-            <Separator bordered>
+          <Form style={styles.formStyle}>
+            {/* <Separator bordered>
               <Text style={styles.textStyle}>Log In - Household </Text>
-            </Separator>
-            <Item stackedLabel>
-              <Label>Household Name</Label>
-              <Input placerholder="house" onChangeText={this.handleHouse} />
+            </Separator> */}
+            <Text />
+            <Text />
+            <Text />
+            <Item large style={styles.itemStyle}>
+              {/* <Label>Household Name</Label> */}
+              <Input
+                style={styles.inputStyle}
+                name="house"
+                placeholder="Household Name"
+                onChangeText={this.handleHouse}
+                value={this.state.house}
+              />
             </Item>
-            <Item stackedLabel last>
-              <Label>Key Code</Label>
-              <Input placerholder="keycode" onChangeText={this.handleKeyCode} />
+            <Item large style={styles.itemStyle}>
+              {/* <Label>Key Code</Label> */}
+              <Input
+                style={styles.inputStyle}
+                name="keycode"
+                placeholder="Key Code"
+                onChangeText={this.handleKeyCode}
+                value={this.state.keycode}
+              />
             </Item>
-            <Button block primary onPress={this.handleSubmit}>
-              <Text> Submit </Text>
-            </Button>
-            <Text style={styles.textStyle}> - or - </Text>
             <Button
+              style={styles.buttonStyle}
+              onPress={this.handleSubmit}
+              large
+              full
+              rounded
+              primary>
+              <Text> Join Household </Text>
+            </Button>
+            {/* <Text style={styles.textStyle}> - or - </Text> */}
+            <Text />
+            <Text />
+            <Text />
+            <Text />
+            <Text />
+            <Text />
+            <Text />
+            <Text />
+            <Text />
+            <Text />
+            <Text />
+            <Text />
+            <Text />
+            <Text />
+            <Text />
+            <Text />
+            <Text />
+            <Text />
+            <Button
+              large
+              full
+              rounded
               success
               style={styles.buttonStyle}
               onPress={() => Actions.registerhouse()}>
@@ -91,14 +132,31 @@ export default class JoinHouse extends Component {
 }
 
 const styles = {
+  itemStyle: {
+    flex: 1,
+    marginRight: 15,
+    marginLeft: 15,
+    marginBottom: 15
+    // marginHorizontal: 15,
+    // justifyContent: 'center'
+  },
+  inputStyle: {
+    backgroundColor: 'white'
+  },
   buttonStyle: {
-    // flex: 1,
-    // flexDirection: 'column',
-    // justifyContent: 'center',
-    alignItems: 'center'
+    flex: 1,
+    marginHorizontal: 15
+    //flexDirection: 'row',
   },
   textStyle: {
-    fontSize: 25
+    fontSize: 25,
     // fontWeight: 'bold'
+    textAlign: 'center'
+  },
+  formStyle: {
+    display: 'flex',
+    // backgroundColor: 'red',
+    justifyContent: 'center'
+    // alignItems: 'center'
   }
 };
