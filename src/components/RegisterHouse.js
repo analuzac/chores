@@ -140,6 +140,7 @@ export default class RegisterHouse extends Component {
                   />
                   <leItem label="family" value="family" />
                   <leItem label="roommates" value="rommates" />
+                  <leItem label="other" value="other" />
                 </Picker>
               </Form>
             </Item>
