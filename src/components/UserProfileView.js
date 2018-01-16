@@ -14,27 +14,27 @@ export default class UserProfileView extends Component {
           <Image source={pic} style={styles.imageStyle} />
           <Text style={styles.textStyle1}>Name:</Text>
           <Text style={styles.textStyle2}>
-            {this.props.leUser.name}
+            {this.props.userInfo.firstName}
           </Text>
           <Text style={styles.textStyle1}>Email:</Text>
           <Text style={styles.textStyle2}>
-            {this.props.leUser.email}
+            {this.props.userInfo.email}
           </Text>
-          <Text style={styles.textStyle1}>Household:</Text>
+          {/* <Text style={styles.textStyle1}>Household:</Text>
           <Text style={styles.textStyle2}>
-            {this.props.leUser.household}
-          </Text>
+            {this.props.userInfo.household}
+          </Text> */}
           <Text style={styles.textStyle1}>Role:</Text>
           <Text style={styles.textStyle2}>
-            {this.props.leUser.role}
+            {this.props.userInfo.role}
           </Text>
           <Text style={styles.textStyle1}>Points Awarded:</Text>
           <Text style={styles.textStyle2}>
-            {this.props.leUser.pointsAwarded}
+            {this.props.userInfo.pointsAwarded}
           </Text>
           <Text style={styles.textStyle1}>Points Reedemed:</Text>
           <Text style={styles.textStyle2}>
-            {this.props.leUser.pointsReedemed}
+            {this.props.userInfo.pointsRedeemed}
           </Text>
         </Content>
       </Container>

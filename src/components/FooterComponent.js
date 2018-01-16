@@ -26,7 +26,7 @@ export default class FooterComponent extends Component {
           active={this.props.selected === 'dashboard'}
           onPress={() => Actions.dashboard()}>
           <Icon active={this.props.selected === 'dashboard'} name="people" />
-          <Text>Assignments</Text>
+          <Text>Chores</Text>
         </Button>
 
         <Button
@@ -34,7 +34,23 @@ export default class FooterComponent extends Component {
           active={this.props.selected === 'choreslibrary'}
           onPress={() => Actions.choreslibrary()}>
           <Icon active={this.props.selected === 'choreslibrary'} name="apps" />
-          <Text>Chores Library</Text>
+          <Text>Library</Text>
+        </Button>
+
+        <Button
+          vertical
+          active={this.props.selected === 'choreslibrary'}
+          onPress={() => Actions.choreslibrary()}>
+          <Icon active={this.props.selected === 'choreslibrary'} name="home" />
+          <Text>House</Text>
+        </Button>
+
+        <Button
+          vertical
+          active={this.props.selected === 'userview'}
+          onPress={() => Actions.userview()}>
+          <Icon active={this.props.selected === 'userview'} name="person" />
+          <Text>Profile</Text>
         </Button>
 
         {/* <Button vertical>
