@@ -24,7 +24,6 @@ import { Actions } from 'react-native-router-flux';
 // import Footer from './Footer';
 import FooterComponent from './FooterComponent';
 import HeaderComponent from './HeaderComponent';
-import CardListComponent from './CardListComponent';
 
 export default class ChoresLibrary extends Component {
   constructor(props) {
@@ -51,10 +50,9 @@ export default class ChoresLibrary extends Component {
   }
 
   render() {
-    console.log('WHAT iS IN THE STATE?', this.props);
+    console.log('WHATS IN THE STATE?', this.props);
     let leChores = this.props.chores;
-    console.log('TEST');
-    console.log('INSIDE CHORES LIBRARY COMPONENT', leChores);
+    //console.log('INSIDE CHORES LIBRARY COMPONENT', leChores);
 
     return (
       <Container>
@@ -62,19 +60,25 @@ export default class ChoresLibrary extends Component {
         <HeaderComponent title="Chores Library" />
         <Content>
           <Separator bordered>
-            <Text style={styles.textStyle}>Active Chores</Text>
+            <Text style={styles.textStyle}>Chore Details:</Text>
           </Separator>
           {leChores.map(leChore => {
-            console.log('leChore .....', leChore);
+            //console.log('leChore', leChore);
             return (
-              <Content key={leChore.id}>
-                <CardListComponent
-                  choreId={leChore.id}
-                  choreType={leChore.type}
-                  householdId={this.props.userInfo.householdId}
-                  onOneChore={this.props.onOneChore}
-                />
-              </Content>
+              <Button
+                large
+                full
+                rounded
+                bordered
+                style={styles.buttonStyle}
+                key={leChore.id}
+                onPress={() => {
+                  return this.handleChore(leChore.id);
+                }}>
+                <Text>
+                  {leChore.type}
+                </Text>
+              </Button>
             );
           })}
           <Text />

@@ -287,8 +287,6 @@ export default class CardComponent extends Component {
       <Card>
         <CardItem large style={styles.itemStyle}>
           <Left>
-            {/* <Thumbnail source={{ uri: '../../public/images/bart.jpg' }} /> */}
-            {/* <Thumbnail source={require('../../public/images/bart.jpg')} /> */}
             <Thumbnail source={assignedImage} />
 
             <Body>
@@ -301,24 +299,10 @@ export default class CardComponent extends Component {
               <Text note>
                 Note: {this.props.instructions}
               </Text>
-
-              {/* <Text>
-                Chore {this.props.chore} = {this.props.status}
-              </Text>
-              <Text>
-                AmgtID: {this.props.assignmentId} ChoreID: {this.props.choreId} UserID: {this.props.assignedUserId}
-              </Text>
-              <Text note>
-                Assigned: {this.props.assigned}
-              </Text>
-              <Text note>
-                Logged in as role : {this.props.userInfo.role}
-              </Text> */}
             </Body>
           </Left>
         </CardItem>
         <CardItem cardBody large style={styles.itemStyle}>
-          {/* <Image source={this.props.image} style={{ height: 100, width: 200, flex: 1 }} /> */}
           <Image
             source={choreImage}
             style={{ height: 200, width: null, flex: 1 }}
@@ -347,17 +331,6 @@ export default class CardComponent extends Component {
               </Form>
             : null}
 
-          {/* <Picker iosHeader="Select one"
-              selectedValue={this.state.selected}
-              mode="dropdown"
-              onValueChange={this.onValueChange.bind(this)}>
-              {console.log('USERS', users, this.state.selected)}
-              {users.map(user => <leItem label={user.firstName} value={user.userId} key={user.userId} />)}
-            </Picker> */}
-          {/* <Picker iosHeader="Select one" mode="dropdown">
-              {console.log('USERS', users, this.state.selected)}
-
-            </Picker> */}
           {/* mccode */}
           {this.props.userInfo.role === 'head' ||
           this.props.userInfo.id === this.props.assignedUserId
