@@ -8,13 +8,13 @@ export default class HouseholdProfileView extends Component {
       uri:
         'https://upload.wikimedia.org/wikipedia/commons/d/de/Bananavarieties.jpg'
     };
-    function memberChart(arr) {
-      arr.forEach(element =>
-        <Text style={styles.textStyle2}>
-          {`${element.name} - ${element.points}pts`}
-        </Text>
-      );
-    }
+    // function memberChart(arr) {
+    //   arr.forEach(element =>
+    //     <Text style={styles.textStyle2}>
+    //       {`${element.name} - ${element.points}pts`}
+    //     </Text>
+    //   );
+    // }
     return (
       <Container>
         <Content>

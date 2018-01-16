@@ -44,6 +44,8 @@ export default class App extends Component {
               key="userview"
               component={UserViewPageContainer}
               title="View User Profile"
+              hideNavBar
+              type={ActionConst.REPLACE}
             />
             <Scene
               key="joinhouse"
