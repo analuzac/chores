@@ -38,6 +38,12 @@ export default function rootReducer(
         householdInfo: action.householdInfo,
         errorMsg: action.errorMsg
       };
+    case 'GET_HOUSEHOLD':
+      return {
+        ...currentState,
+        householdInfo: action.householdInfo,
+        errorMsg: action.errorMsg
+      };
     case 'GET_ASSIGNMENTS':
       return { ...currentState, assignments: action.assignments };
     // CREATE ASSIGNMENT //////////

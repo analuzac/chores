@@ -61,9 +61,9 @@ export default class ChoresLibrary extends Component {
         {/* <HeaderIconText /> */}
         <HeaderComponent title="Chores Library" />
         <Content>
-          <Separator bordered>
+          {/* <Separator bordered>
             <Text style={styles.textStyle}>Active Chores</Text>
-          </Separator>
+          </Separator> */}
           {leChores.map(leChore => {
             console.log('leChore .....', leChore);
             return (

@@ -9,6 +9,7 @@ import SignUpPageContainer from './redux/containers/SignUpPageContainer';
 import UserViewPageContainer from './redux/containers/UserViewPageContainer';
 import JoinHousePageContainer from './redux/containers/JoinHousePageContainer';
 import RegisterHousePageContainer from './redux/containers/RegisterHousePageContainer';
+import HouseholdViewPageContainer from './redux/containers/HouseholdViewPageContainer';
 import DashboardPageContainer from './redux/containers/DashboardPageContainer';
 import ChoresLibraryPageContainer from './redux/containers/ChoresLibraryPageContainer';
 import ChoreViewPageContainer from './redux/containers/ChoreViewPageContainer';
@@ -56,6 +57,11 @@ export default class App extends Component {
               key="registerhouse"
               component={RegisterHousePageContainer}
               title="Register Household"
+            />
+            <Scene
+              key="houseview"
+              component={HouseholdViewPageContainer}
+              title="View Household Profile"
             />
             <Scene
               key="choreslibrary"

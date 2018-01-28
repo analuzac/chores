@@ -39,9 +39,9 @@ export default class FooterComponent extends Component {
 
         <Button
           vertical
-          active={this.props.selected === 'choreslibrary'}
-          onPress={() => Actions.choreslibrary()}>
-          <Icon active={this.props.selected === 'choreslibrary'} name="home" />
+          active={this.props.selected === 'houseview'}
+          onPress={() => Actions.houseview()}>
+          <Icon active={this.props.selected === 'houseview'} name="home" />
           <Text>House</Text>
         </Button>
 
