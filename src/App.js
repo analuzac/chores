@@ -62,6 +62,8 @@ export default class App extends Component {
               key="houseview"
               component={HouseholdViewPageContainer}
               title="View Household Profile"
+              hideNavBar
+              type={ActionConst.REPLACE}
             />
             <Scene
               key="choreslibrary"

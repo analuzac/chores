@@ -22,19 +22,19 @@ export default class HouseholdProfileView extends Component {
       <Container>
         <HeaderComponent title="Household Profile" />
         <Content>
-          <Image source={pic} style={styles.imageStyle} />
+          <Text>{`made it far ...`}</Text>
+          {/* <Image source={pic} style={styles.imageStyle} />
           <Text style={styles.textStyle1}>Household Name:</Text>
           <Text style={styles.textStyle2}>
-            {/* {this.props.userInfo} */}
-            {/* {this.props.householdInfo.name} */}
+            {this.props.householdInfo.name}
           </Text>
           <Text style={styles.textStyle1}>Description:</Text>
           <Text style={styles.textStyle2}>
-            {/* {this.props.householdInfo.description} */}
+            {this.props.householdInfo.description}
           </Text>
           <Text style={styles.textStyle1}>Members:</Text>
-          {/* {memberChart(this.props.householdInfo.members)} */}
-          {/* <Text style={styles.textStyle2}>
+          {memberChart(this.props.householdInfo.members)}
+          <Text style={styles.textStyle2}>
             {this.props.leHouse.members}
           </Text> */}
         </Content>
