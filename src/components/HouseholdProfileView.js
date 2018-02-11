@@ -18,12 +18,16 @@ export default class HouseholdProfileView extends Component {
     //   );
     // }
     console.log('PROPS', this.props);
-    return (
-      <Container>
-        <HeaderComponent title="Household Profile" />
-        <Content>
-          <Text>{`made it far ...`}</Text>
-          {/* <Image source={pic} style={styles.imageStyle} />
+    const leMembers = this.props.householdInfo;
+
+    if (leMembers !== null) {
+      return (
+        <Container>
+          <HeaderComponent title="Household Profile" />
+          <Content>
+            <Text>{`made it far ...`}</Text>
+
+            {/* <Image source={pic} style={styles.imageStyle} />
           <Text style={styles.textStyle1}>Household Name:</Text>
           <Text style={styles.textStyle2}>
             {this.props.householdInfo.name}
@@ -37,12 +41,39 @@ export default class HouseholdProfileView extends Component {
           <Text style={styles.textStyle2}>
             {this.props.leHouse.members}
           </Text> */}
-        </Content>
-        <Footer>
-          <FooterComponent selected={'houseview'} />
-        </Footer>
-      </Container>
-    );
+            <Text style={styles.textStyle1}>Household Name:</Text>
+            <Text style={styles.textStyle2}>
+              {this.props.householdInfo[0].name}
+            </Text>
+            <Text style={styles.textStyle1}>Description:</Text>
+            <Text style={styles.textStyle2}>
+              {this.props.householdInfo[0].description}
+            </Text>
+
+            <Text style={styles.textStyle1}>Members:</Text>
+            {leMembers.map(leMember => {
+              console.log('leMember....', leMember);
+              return (
+                <Text key={leMember.userId} style={styles.textStyle2}>
+                  {leMember.firstName}
+                </Text>
+              );
+            })}
+          </Content>
+          <Footer>
+            <FooterComponent selected={'houseview'} />
+          </Footer>
+        </Container>
+      );
+    } else {
+      return (
+        <Container>
+          <Content>
+            <Text>Loading...</Text>
+          </Content>
+        </Container>
+      );
+    }
   }
 }
 

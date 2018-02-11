@@ -7,6 +7,7 @@ const store = setupStore();
 import LogInPageContainer from './redux/containers/LogInPageContainer';
 import SignUpPageContainer from './redux/containers/SignUpPageContainer';
 import UserViewPageContainer from './redux/containers/UserViewPageContainer';
+import UserUpdatePageContainer from './redux/containers/UserUpdatePageContainer';
 import JoinHousePageContainer from './redux/containers/JoinHousePageContainer';
 import RegisterHousePageContainer from './redux/containers/RegisterHousePageContainer';
 import HouseholdViewPageContainer from './redux/containers/HouseholdViewPageContainer';
@@ -47,6 +48,11 @@ export default class App extends Component {
               title="View User Profile"
               hideNavBar
               type={ActionConst.REPLACE}
+            />
+            <Scene
+              key="userupdate"
+              component={UserUpdatePageContainer}
+              title="Update User Profile"
             />
             <Scene
               key="joinhouse"

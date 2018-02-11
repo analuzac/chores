@@ -26,6 +26,7 @@ import {
   FooterTab
 } from 'native-base';
 import { View, Image } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import FooterComponent from './FooterComponent';
 import HeaderComponent from './HeaderComponent';
 
@@ -153,41 +154,17 @@ export default class UserProfileView extends Component {
                 style={{ height: 500, width: null, flex: 1 }}
               />
             </CardItem>
-            {/* <CardItem large style={styles.itemStyle}>
-               {this.props.userInfo.role === 'head'
-                ? <Button
-                    style={styles.buttonStyle}
-                    onPress={() => Actions.choresupdate()}
-                    full
-                    rounded
-                    primary>
-                    <Text> EDIT CHORE </Text>
-                  </Button>
-                : null}
-            </CardItem> */}
+            <CardItem large style={styles.itemStyle}>
+              <Button
+                style={styles.buttonStyle}
+                onPress={() => Actions.userupdate()}
+                full
+                rounded
+                primary>
+                <Text> EDIT PROFILE </Text>
+              </Button>
+            </CardItem>
           </Card>
-          {/* <Image source={pic} style={styles.imageStyle} />
-          <Text style={styles.textStyle1}>Name:</Text>
-          <Text style={styles.textStyle2}>
-            {this.props.userInfo.firstName}
-          </Text>
-          <Text style={styles.textStyle1}>Email:</Text>
-          <Text style={styles.textStyle2}>
-            {this.props.userInfo.email}
-          </Text>
-
-          <Text style={styles.textStyle1}>Role:</Text>
-          <Text style={styles.textStyle2}>
-            {this.props.userInfo.role}
-          </Text>
-          <Text style={styles.textStyle1}>Points Awarded:</Text>
-          <Text style={styles.textStyle2}>
-            {this.props.userInfo.pointsAwarded}
-          </Text>
-          <Text style={styles.textStyle1}>Points Reedemed:</Text>
-          <Text style={styles.textStyle2}>
-            {this.props.userInfo.pointsRedeemed}
-          </Text> */}
         </Content>
         <Footer>
           <FooterComponent selected={'userview'} />
@@ -198,18 +175,73 @@ export default class UserProfileView extends Component {
 }
 
 //
+// should be: this.props.userInfo.id === householdInfo.userId
+//the id of the user profile you just touched
+//
+
+//
 //   <View style={{ alignItems: 'center' }}>
 //
 
+// {/* <Image source={pic} style={styles.imageStyle} />
+// <Text style={styles.textStyle1}>Name:</Text>
+// <Text style={styles.textStyle2}>
+//   {this.props.userInfo.firstName}
+// </Text>
+// <Text style={styles.textStyle1}>Email:</Text>
+// <Text style={styles.textStyle2}>
+//   {this.props.userInfo.email}
+// </Text>
+//
+// <Text style={styles.textStyle1}>Role:</Text>
+// <Text style={styles.textStyle2}>
+//   {this.props.userInfo.role}
+// </Text>
+// <Text style={styles.textStyle1}>Points Awarded:</Text>
+// <Text style={styles.textStyle2}>
+//   {this.props.userInfo.pointsAwarded}
+// </Text>
+// <Text style={styles.textStyle1}>Points Reedemed:</Text>
+// <Text style={styles.textStyle2}>
+//   {this.props.userInfo.pointsRedeemed}
+// </Text> */}
+
 const styles = {
+  // formStyle: {
+  //   display: 'flex',
+  //   // backgroundColor: 'red',
+  //   justifyContent: 'center'
+  //   // alignItems: 'center'
+  // },
+  itemStyle: {
+    flex: 1,
+    marginRight: 15,
+    marginLeft: 15,
+    marginBottom: 5
+    // marginHorizontal: 15,
+    // justifyContent: 'center'
+  },
+  buttonStyle: {
+    flex: 1,
+    marginHorizontal: 15
+    //flexDirection: 'row',
+  },
   textStyle1: {
     fontSize: 20,
-    textDecorationLine: 'underline'
+    textDecorationLine: 'underline',
+    marginRight: 15,
+    marginLeft: 15,
+    marginTop: 15
+    // textAlign: 'center'
     // fontWeight: 'bold'
   },
   textStyle2: {
     fontSize: 17,
-    fontStyle: 'italic'
+    fontStyle: 'italic',
+    marginRight: 15,
+    marginLeft: 15,
+    marginBottom: 5
+    // textAlign: 'center'
     // fontWeight: 'bold'
   },
   imageStyle: {

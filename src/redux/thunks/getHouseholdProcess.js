@@ -11,7 +11,7 @@ export default function getHouseholdProcess(userInfo) {
         householdInfo: householdInfo,
         errorMsg: null
       });
-      return users;
+      return householdInfo;
     });
   };
 }

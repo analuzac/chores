@@ -6,6 +6,7 @@ import UserProfileView from '../../components/UserProfileView';
 import getUserByTokenProcess from '../thunks/getUserByTokenProcess';
 
 function mapStateToProps(state, ownProps) {
+  console.log('USER VIEW STATE...', state);
   return {
     assigments: state.assigments,
     chores: state.chores,
