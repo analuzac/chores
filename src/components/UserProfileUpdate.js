@@ -47,7 +47,8 @@ export default class UserProfileUpdate extends Component {
   }
 
   handleEmail(email) {
-    this.setState({ email: email });
+    this.setState({ email: email.toLowerCase() });
+    console.log('EMAIL SET STATE', this.state.email);
   }
 
   async handleSubmit() {
@@ -58,15 +59,22 @@ export default class UserProfileUpdate extends Component {
       ? this.state.email.trim()
       : this.props.userInfo.email;
 
-    let updateUser = {
+    let changes = {
       firstName: leName,
-      email: leEmail,
-      role: this.props.userInfo.role,
-      pointsAwarded: this.props.userInfo.pointsAwarded,
-      pointsReedemed: this.props.userInfo.pointsReedemed
+      email: leEmail
+      // role: this.props.userInfo.role,
+      // pointsAwarded: this.props.userInfo.pointsAwarded,
+      // pointsReedemed: this.props.userInfo.pointsReedemed
     };
 
-    let returnedUser = await this.props.onUpdateUser(updateUser);
+    let userId = this.props.userInfo.id;
+    let householdId = this.props.userInfo.householdId;
+
+    let returnedUser = await this.props.onUpdateUser(
+      householdId,
+      userId,
+      changes
+    );
     console.log('RETURNED USER', returnedUser);
 
     if (returnedUser.firstName) {
@@ -98,7 +106,11 @@ export default class UserProfileUpdate extends Component {
             <Label style={styles.textStyle2}>
               {this.props.userInfo.email}
             </Label>
-            <Input placerholder="email" onChangeText={this.handleEmail} />
+            <Input
+              placerholder="email"
+              onChangeText={this.handleEmail}
+              value={this.state.email}
+            />
           </Item>
 
           <Text style={styles.textStyle1}>Role:</Text>
