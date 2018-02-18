@@ -111,15 +111,21 @@ export default class CardListComponent extends Component {
       // <Container>
       //   <Header />
       //   <Content>
-      <Card>
+      <Card
+        style={{
+          flex: 1,
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          flexDirection: 'row'
+        }}>
         <CardItem>
-          {/* <Icon active name="specific-chore-pic" /> //useful for when we have an image associated with chore or generic icons*/}
-          <Text>
-            {/* <Left> */}
+          <Left>
             <Thumbnail source={choreImage} />
-            {/* </Left> */}
+          </Left>
+          <Text>
             {this.props.choreType}
           </Text>
+
           <Right>
             <Button
               onPress={() => {

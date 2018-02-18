@@ -48,7 +48,6 @@ export default class UserProfileUpdate extends Component {
 
   handleEmail(email) {
     this.setState({ email: email.toLowerCase() });
-    console.log('EMAIL SET STATE', this.state.email);
   }
 
   async handleSubmit() {
