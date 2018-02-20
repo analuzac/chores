@@ -54,10 +54,10 @@ export default class HouseholdProfileView extends Component {
               <CardItem>
                 <Body>
                   <Text>
-                    Household Name:{this.props.householdInfo[0].name}
+                    Household Name: {this.props.householdInfo[0].name}
                   </Text>
                   <Text>
-                    Description:{this.props.householdInfo[0].description}
+                    Description: {this.props.householdInfo[0].description}
                   </Text>
                 </Body>
               </CardItem>
@@ -74,7 +74,7 @@ export default class HouseholdProfileView extends Component {
                       full
                       rounded
                       info
-                      onPress={() => Actions.dashboard()}>
+                      onPress={() => Actions.houseupdate()}>
                       <Text>EDIT HOUSEHOLD</Text>
                     </Button>
                   : null}
@@ -93,6 +93,7 @@ export default class HouseholdProfileView extends Component {
                   userId={leMember.userId} //
                   firstName={leMember.firstName} //
                   householdId={leMember.householdId}
+                  role={leMember.role}
                 />
               );
             })}

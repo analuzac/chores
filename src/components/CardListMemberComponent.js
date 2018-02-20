@@ -8,6 +8,7 @@ import {
   Text,
   Button,
   Icon,
+  Body,
   Right,
   Left,
   Thumbnail
@@ -132,21 +133,31 @@ export default class CardListMemberComponent extends Component {
       //   <Content>
       <Card>
         <CardItem>
-          <Left>
-            <Thumbnail source={userImage} />
-          </Left>
-          <Text>
-            {this.props.firstName}
-          </Text>
+          <Body>
+            <Left>
+              <Thumbnail source={userImage} />
+            </Left>
 
-          <Right>
+            <Right>
+              <Text>
+                {this.props.firstName}
+                {/* Name: {this.props.firstName} Role: {this.props.role} */}
+              </Text>
+            </Right>
+          </Body>
+
+          {/* <Text>
+            {this.props.role}
+          </Text> */}
+
+          {/* <Right>
             {/* <Button active={this.props.selected === 'houseview'} onPress={() => Actions.userview()}>
               <Icon active={this.props.selected === 'houseview'} name="arrow-forward" />
             </Button> */}
-            <Button onPress={() => Actions.userview2()}>
+          {/* <Button onPress={() => Actions.userview2()}>
               <Icon name="arrow-forward" />
-            </Button>
-          </Right>
+            </Button> */}
+          {/* </Right> */}
         </CardItem>
       </Card>
       //   </Content>

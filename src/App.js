@@ -11,6 +11,7 @@ import UserUpdatePageContainer from './redux/containers/UserUpdatePageContainer'
 import JoinHousePageContainer from './redux/containers/JoinHousePageContainer';
 import RegisterHousePageContainer from './redux/containers/RegisterHousePageContainer';
 import HouseholdViewPageContainer from './redux/containers/HouseholdViewPageContainer';
+import HouseholdUpdatePageContainer from './redux/containers/HouseholdUpdatePageContainer';
 import DashboardPageContainer from './redux/containers/DashboardPageContainer';
 import ChoresLibraryPageContainer from './redux/containers/ChoresLibraryPageContainer';
 import ChoreViewPageContainer from './redux/containers/ChoreViewPageContainer';
@@ -70,6 +71,11 @@ export default class App extends Component {
               title="View Household Profile"
               hideNavBar
               type={ActionConst.REPLACE}
+            />
+            <Scene
+              key="houseupdate"
+              component={HouseholdUpdatePageContainer}
+              title="Update Household Profile"
             />
             <Scene
               key="choreslibrary"
