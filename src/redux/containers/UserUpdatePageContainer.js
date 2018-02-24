@@ -2,6 +2,7 @@ import { compose, lifecycle } from 'recompose';
 import { connect } from 'react-redux';
 
 import UserProfileUpdate from '../../components/UserProfileUpdate';
+
 import updateUserProcess from '../thunks/updateUserProcess';
 
 function mapStateToProps(state, ownProps) {
@@ -31,5 +32,5 @@ const connectToStore = connect(mapStateToProps, mapDispatchToProps);
 //   }
 // });
 
-// export default compose(connectToStore, onDidMount)(ChoresLibrary);
+// export default compose(connectToStore, onDidMount)(UserProfileUpdate);
 export default compose(connectToStore)(UserProfileUpdate);

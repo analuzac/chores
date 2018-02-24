@@ -2,6 +2,7 @@ import { compose, lifecycle } from 'recompose';
 import { connect } from 'react-redux';
 
 import ChoreProfileAdd from '../../components/ChoreProfileAdd';
+
 import createChoreProcess from '../thunks/createChoreProcess';
 import createAssignmentProcess2 from '../thunks/createAssignmentProcess2';
 
@@ -27,11 +28,6 @@ function mapDispatchToProps(dispatch, ownProps) {
       return dispatch(createChoreProcess(householdId, newChore));
     },
     createAssignment2: currentAssignment => {
-      console.log(
-        'DB CONTAINER',
-        scope.userInfo.householdId,
-        currentAssignment
-      );
       return dispatch(
         createAssignmentProcess2(scope.userInfo.householdId, currentAssignment)
       );
@@ -47,5 +43,5 @@ const connectToStore = connect(mapStateToProps, mapDispatchToProps);
 //   }
 // });
 
-// export default compose(connectToStore, onDidMount)(ChoresLibrary);
+// export default compose(connectToStore, onDidMount)(ChoreProfileAdd);
 export default compose(connectToStore)(ChoreProfileAdd);

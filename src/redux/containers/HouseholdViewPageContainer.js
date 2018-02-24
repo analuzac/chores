@@ -8,7 +8,6 @@ import getHouseholdProcess from '../thunks/getHouseholdProcess';
 const scope = {};
 
 function mapStateToProps(state, ownProps) {
-  console.log('MAPTOSTATE...', state);
   scope.userInfo = state.userInfo;
   return {
     assigments: state.assigments,
@@ -21,11 +20,8 @@ function mapStateToProps(state, ownProps) {
 }
 
 function mapDispatchToProps(dispatch, ownProps) {
-  console.log('ONMOUNT PROPS  SIR');
   return {
     onMount: () => {
-      console.log('onMOUNT for HHVC');
-      console.log('INSIDE HOUSEHOLD VIEW CONTAINER', scope);
       return dispatch(getHouseholdProcess(scope.userInfo));
     }
   };

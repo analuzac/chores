@@ -9,7 +9,6 @@ import getOneChoreProcess from '../thunks/getOneChoreProcess';
 const scope = {};
 
 function mapStateToProps(state, ownProps) {
-  console.log('MAPTOSTATE...', state);
   scope.userInfo = state.userInfo;
   return {
     assigments: state.assigments,
@@ -24,7 +23,6 @@ function mapStateToProps(state, ownProps) {
 function mapDispatchToProps(dispatch, ownProps) {
   return {
     onMount: () => {
-      console.log('INSIDE CHORES LIBRARY CONTAINER', scope);
       dispatch(getChoresProcess(scope.userInfo));
     },
     onOneChore: (choreId, householdId) => {

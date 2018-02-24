@@ -2,6 +2,7 @@ import { compose, lifecycle } from 'recompose';
 import { connect } from 'react-redux';
 
 import RegisterHouse from '../../components/RegisterHouse';
+
 import createHouseholdProcess from '../thunks/createHouseholdProcess';
 import updateUserProcess from '../thunks/updateUserProcess';
 

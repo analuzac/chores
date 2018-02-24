@@ -4,30 +4,23 @@ import { connect } from 'react-redux';
 import Dashboard from '../../components/Dashboard';
 
 import getAssignmentsProcess from '../thunks/getAssignmentsProcess';
-
-//mccode
+import updateAssignmentProcess from '../thunks/updateAssignmentProcess';
+import createAssignmentProcess from '../thunks/createAssignmentProcess';
 import getUsersProcess from '../thunks/getUsersProcess';
 import getChoresProcess from '../thunks/getChoresProcess';
-
-// mccode
-import updateAssignmentProcess from '../thunks/updateAssignmentProcess';
-
-import createAssignmentProcess from '../thunks/createAssignmentProcess';
 
 const scope = {};
 let currentAssignment = {};
 
 function mapStateToProps(state, ownProps) {
-  console.log('MAPTOSTATE DS...', state);
   scope.userInfo = state.userInfo;
-  // currentAssignment = state.currentAssignment;
   return {
     assignments: state.assignments,
     chores: state.chores,
     currentChore: state.currentChore,
     currentAssignment: state.currentAssignment,
     userInfo: state.userInfo,
-    users: state.users, // mccode
+    users: state.users,
     householdInfo: state.householdInfo,
     errorMsg: state.errorMsg
   };
@@ -36,22 +29,14 @@ function mapStateToProps(state, ownProps) {
 function mapDispatchToProps(dispatch, ownProps) {
   return {
     onMount: () => {
-      console.log('INSIDE DASHBOARD CONTAINER', scope);
-      //mccode
       dispatch(getUsersProcess(scope.userInfo));
       dispatch(getChoresProcess(scope.userInfo));
       return dispatch(getAssignmentsProcess(scope.userInfo));
     },
     updateAssignment: currentAssignment => {
-      console.log('DB CONTAINER', currentAssignment);
       return dispatch(updateAssignmentProcess(currentAssignment));
     },
     createAssignment: currentAssignment => {
-      console.log(
-        'DB CONTAINER',
-        scope.userInfo.householdId,
-        currentAssignment
-      );
       return dispatch(
         createAssignmentProcess(scope.userInfo.householdId, currentAssignment)
       );

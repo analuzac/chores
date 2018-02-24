@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import JoinHouse from '../../components/JoinHouse';
 
 import updateUserProcess from '../thunks/updateUserProcess';
-//import getUserByTokenProcess from '../thunks/getUserByTokenProcess';
 
 function mapStateToProps(state, ownProps) {
   return {
@@ -19,7 +18,6 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch, ownProps) {
   return {
-    //onMount: () => dispatch(getUserByTokenProcess()),
     onJoin: (householdId, userId, changes) => {
       return dispatch(updateUserProcess(householdId, userId, changes));
     }
