@@ -9,11 +9,12 @@ export default function updateHouseholdProcess(householdId, updatingHousehold) {
       updatingHousehold
     ).then(currentHousehold => {
       //
-      dispatch({
-        type: 'UPDATE_HOUSEHOLD',
-        householdInfo: currentHousehold,
-        errorMsg: null
-      });
+      console.log('UPDATE HOUSEHOLD PROCESS', currentHousehold);
+      // dispatch({
+      //   type: 'UPDATE_HOUSEHOLD',
+      //   householdInfo: currentHousehold,
+      //   errorMsg: null
+      // });
       return currentHousehold;
     });
   };

@@ -151,7 +151,7 @@ export default class UserProfileView extends Component {
             <CardItem cardBody large style={styles.itemStyle}>
               <Image
                 source={assignedImage}
-                style={{ height: 500, width: null, flex: 1 }}
+                style={{ height: 200, width: null, flex: 1 }}
               />
             </CardItem>
             <CardItem large style={styles.itemStyle}>

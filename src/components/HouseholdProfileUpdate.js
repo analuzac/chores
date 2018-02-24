@@ -75,7 +75,7 @@ export default class HouseholdProfileUpdate extends Component {
     console.log('RETURNED HOUSEHOLD', returnedHousehold);
 
     if (returnedHousehold.type) {
-      Actions.pop();
+      Actions.houseview();
     } else {
       Alert.alert('Error');
     }
