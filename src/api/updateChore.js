@@ -1,7 +1,7 @@
 import { AsyncStorage } from 'react-native';
 import env from '../env';
 
-export default function patchChores(householdId, choreId, updateChore) {
+export default function updateChore(householdId, choreId, updateChore) {
   return AsyncStorage.getItem('token').then(storedToken => {
     return fetch(
       `${env.API_BASE_URL}/households/${householdId}/chores/${choreId}`,

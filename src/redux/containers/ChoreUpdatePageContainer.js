@@ -2,7 +2,7 @@ import { compose, lifecycle } from 'recompose';
 import { connect } from 'react-redux';
 
 import ChoreProfileUpdate from '../../components/ChoreProfileUpdate';
-import patchChoresProcess from '../thunks/patchChoresProcess';
+import updateChoreProcess from '../thunks/updateChoreProcess';
 
 function mapStateToProps(state, ownProps) {
   return {
@@ -18,7 +18,7 @@ function mapStateToProps(state, ownProps) {
 function mapDispatchToProps(dispatch, ownProps) {
   return {
     onUpdateChore: (householdId, choreId, updateChore) => {
-      return dispatch(patchChoresProcess(householdId, choreId, updateChore));
+      return dispatch(updateChoreProcess(householdId, choreId, updateChore));
     }
   };
 }

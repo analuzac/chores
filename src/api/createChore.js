@@ -1,7 +1,7 @@
 import { AsyncStorage } from 'react-native';
 import env from '../env';
 
-export default function postChores(householdId, newChore) {
+export default function createChore(householdId, newChore) {
   return AsyncStorage.getItem('token').then(storedToken => {
     return fetch(`${env.API_BASE_URL}/households/${householdId}/chores`, {
       method: 'POST',

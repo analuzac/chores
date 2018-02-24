@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import ChoresLibrary from '../../components/ChoresLibrary';
 
 import getChoresProcess from '../thunks/getChoresProcess';
-import getOneChoresProcess from '../thunks/getOneChoresProcess';
+import getOneChoreProcess from '../thunks/getOneChoreProcess';
 
 const scope = {};
 
@@ -28,7 +28,7 @@ function mapDispatchToProps(dispatch, ownProps) {
       dispatch(getChoresProcess(scope.userInfo));
     },
     onOneChore: (choreId, householdId) => {
-      return dispatch(getOneChoresProcess(choreId, householdId));
+      return dispatch(getOneChoreProcess(choreId, householdId));
     }
   };
 }

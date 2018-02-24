@@ -1,9 +1,9 @@
-import getOneChores from '../.././api/getOneChores';
+import getOneChore from '../.././api/getOneChore';
 
-export default function getOneChoresProcess(choreId, householdId) {
+export default function getOneChoreProcess(choreId, householdId) {
   return (dispatch, getState) => {
     //
-    return getOneChores(choreId, householdId).then(currentChore => {
+    return getOneChore(choreId, householdId).then(currentChore => {
       //
       dispatch({
         type: 'GET_ONE_CHORE',

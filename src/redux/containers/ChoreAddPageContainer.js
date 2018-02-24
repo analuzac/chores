@@ -2,7 +2,7 @@ import { compose, lifecycle } from 'recompose';
 import { connect } from 'react-redux';
 
 import ChoreProfileAdd from '../../components/ChoreProfileAdd';
-import postChoresProcess from '../thunks/postChoresProcess';
+import createChoreProcess from '../thunks/createChoreProcess';
 import createAssignmentProcess2 from '../thunks/createAssignmentProcess2';
 
 let scope = {};
@@ -24,7 +24,7 @@ function mapStateToProps(state, ownProps) {
 function mapDispatchToProps(dispatch, ownProps) {
   return {
     onCreateChore: (householdId, newChore) => {
-      return dispatch(postChoresProcess(householdId, newChore));
+      return dispatch(createChoreProcess(householdId, newChore));
     },
     createAssignment2: currentAssignment => {
       console.log(

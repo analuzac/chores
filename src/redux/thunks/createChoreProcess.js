@@ -1,9 +1,9 @@
-import postChores from '../.././api/postChores';
+import createChore from '../.././api/createChore';
 
-export default function postChoresProcess(householdId, newChore) {
+export default function createChoreProcess(householdId, newChore) {
   return (dispatch, getState) => {
     //
-    return postChores(householdId, newChore).then(currentChore => {
+    return createChore(householdId, newChore).then(currentChore => {
       //
       dispatch({
         type: 'CREATE_CHORE',
