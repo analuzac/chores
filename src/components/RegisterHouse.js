@@ -63,7 +63,7 @@ export default class RegisterHouse extends Component {
       householdInfo.name.trim().length === 0 ||
       householdInfo.type.trim().length === 0
     ) {
-      Alert.alert('Invalid Entry');
+      Alert.alert('Please fill out the fields');
       return false;
     }
 

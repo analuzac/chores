@@ -6,7 +6,7 @@ export default function createUserProcess(userInfo) {
     return createUser(userInfo).then(userInfo => {
       //
       if (userInfo === 'ERROR') {
-        return 'Duplicate email';
+        return 'Duplicate Email';
       } else {
         dispatch({ type: 'CREATE_USER', userInfo: userInfo, errorMsg: null });
         return userInfo;

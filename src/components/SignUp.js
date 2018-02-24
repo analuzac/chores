@@ -50,6 +50,7 @@ export default class SignUp extends Component {
     const password = this.state.password;
 
     // EMPTY FIELDS ERROR
+    // 1 no blanks
     if (!email || !name || !password) {
       // if fields are blank, set all other errors to FALSE
       // unique
@@ -60,6 +61,16 @@ export default class SignUp extends Component {
       Alert.alert('Please fill out the fields');
       return false;
     }
+
+    // 2 email format
+    var mailformat = /^\w+\@\w+\.([A-Za-z0-9]{2,4})$/;
+
+    if (!email.match(mailformat)) {
+      Alert.alert('Invalid email format');
+      return false;
+    }
+
+    // 3 password need at least 5 characters
     if (password.length < 5) {
       // if the password is bad, then set all other errors to false
       // uniqueEmail

@@ -25,7 +25,7 @@ import {
   Footer,
   FooterTab
 } from 'native-base';
-import { View, Image } from 'react-native';
+import { View, Image, Alert } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
 export default class UserProfileUpdate extends Component {
@@ -57,6 +57,14 @@ export default class UserProfileUpdate extends Component {
     const leEmail = this.state.email
       ? this.state.email.trim()
       : this.props.userInfo.email;
+
+    // 1 email format
+    var mailformat = /^\w+\@\w+\.([A-Za-z0-9]{2,4})$/;
+
+    if (!leEmail.match(mailformat)) {
+      Alert.alert('Invalid email format');
+      return false;
+    }
 
     let changes = {
       firstName: leName,

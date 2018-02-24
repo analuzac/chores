@@ -42,13 +42,24 @@ export default class LogIn extends Component {
       password: this.state.password
     };
 
+    // 1. no blanks, required
+    // 2. email format
+    var mailformat = /^\w+\@\w+\.([A-Za-z0-9]{2,4})$/;
+    var email = logInUser.email.trim();
     if (
       logInUser.email.trim().length === 0 ||
-      logInUser.password.trim().length === 0
+      logInUser.password.trim().length === 0 ||
+      !email.match(mailformat)
     ) {
-      Alert.alert('Invalid username/password');
+      Alert.alert('Invalid Username or Password');
       return false;
     }
+
+    // if (!email.match(mailformat)) {
+    //   Alert.alert('Invalid email format');
+    //   return false;
+    // }
+
     let returnedUser = await this.props.onLogIn(logInUser);
     console.log('RETURNED USERS', returnedUser);
 

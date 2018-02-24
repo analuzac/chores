@@ -52,9 +52,15 @@ export default class ChoreProfileAdd extends Component {
       instructions: this.state.instructions
       //points: this.state.points
     };
+
+    if (!newChore.type || !newChore.instructions) {
+      Alert.alert('Please fill out the fields');
+      return false;
+    }
+
     let householdId = this.props.userInfo.householdId;
     let returnedChore = await this.props.onCreateChore(householdId, newChore);
-    console.log('RETURNED CHORE', returnedChore);
+    //console.log('RETURNED CHORE', returnedChore);
 
     const newAssignment = {
       choreId: returnedChore.id,
