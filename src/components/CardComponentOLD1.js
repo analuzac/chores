@@ -181,44 +181,34 @@ export default class CardComponent extends Component {
     ];
 
     // assingn the user images
-    let assignedImage = (assignedImage = require('../images/profiles/blankprofile.jpg'));
+    let assignedImage = userImages[4];
     // console.log('ASSIGNED ', this.props.assigned.toLowerCase());
     if (this.props.assigned.toLowerCase() === 'bart') {
-      //assignedImage = userImages[0];
-      assignedImage = require('../images/profiles/bart.png');
+      assignedImage = userImages[0];
     } else if (this.props.assigned.toLowerCase() === 'lisa') {
-      // assignedImage = userImages[1];
-      assignedImage = require('../images/profiles/lisa.png');
+      assignedImage = userImages[1];
     } else if (this.props.assigned.toLowerCase() === 'marge') {
-      // assignedImage = userImages[2];
-      assignedImage = require('../images/profiles/marge.png');
+      assignedImage = userImages[2];
     } else if (this.props.assigned.toLowerCase() === 'homer') {
       // console.log('HOMERR', userImages[3]);
-      // assignedImage = userImages[3];
-      assignedImage = require('../images/profiles/homer.jpeg');
+      assignedImage = userImages[3];
     }
 
     if (this.props.assigned.toLowerCase() === 'joey') {
-      // assignedImage = userImages[5];
-      assignedImage = require('../images/profiles/joey.jpg');
+      assignedImage = userImages[5];
     } else if (this.props.assigned.toLowerCase() === 'rachel') {
-      // assignedImage = userImages[6];
-      assignedImage = require('../images/profiles/rachel.jpg');
+      assignedImage = userImages[6];
     } else if (this.props.assigned.toLowerCase() === 'phoebe') {
-      // assignedImage = userImages[7];
-      assignedImage = require('../images/profiles/phoebe.jpg');
+      assignedImage = userImages[7];
     } else if (this.props.assigned.toLowerCase() === 'ross') {
       // console.log('HOMERR', userImages[3]);
-      // assignedImage = userImages[8];
-      assignedImage = require('../images/profiles/ross.jpg');
+      assignedImage = userImages[8];
     } else if (this.props.assigned.toLowerCase() === 'monica') {
       // console.log('HOMERR', userImages[3]);
-      // assignedImage = userImages[9];
-      assignedImage = require('../images/profiles/monica.jpg');
+      assignedImage = userImages[9];
     } else if (this.props.assigned.toLowerCase() === 'chandler') {
       // console.log('HOMERR', userImages[3]);
-      // assignedImage = userImages[10];
-      assignedImage = require('../images/profiles/chandler.jpg');
+      assignedImage = userImages[10];
     }
 
     // chore images
@@ -261,7 +251,7 @@ export default class CardComponent extends Component {
       }
     ];
 
-    let images = ['.././images/chores/livingroomSimpsonsChristmas.jpg'];
+    let images = ['.././images/livingroomSimpsonsChristmas.jpg'];
 
     let choreImage = choreImages[4];
     //console.log('CHORES........................', this.props.chore.toLowerCase(), this.props.chore.toLowerCase().indexOf('kitchen'));
@@ -276,39 +266,20 @@ export default class CardComponent extends Component {
         choreImage = choreImages[8];
       } else {
         //console.log('DEFAULT ');
-        choreImage = require('../images/chores/living2.jpg');
 
-        // choreImage = choreImages[0];
+        choreImage = choreImages[0];
       }
       //console.log('LIVINGROOOM........................', this.props.chore.toLowerCase(), this.props.chore.toLowerCase().indexOf('livingroom'), choreImage);
     } else if (this.props.chore.toLowerCase().indexOf('kitchen') > -1) {
-      // choreImage = choreImages[1];
-
-      choreImage = require('../images/chores/kitchen.jpg');
+      choreImage = choreImages[1];
     } else if (this.props.chore.toLowerCase().indexOf('bathroom') > -1) {
-      //choreImage = choreImages[2];
-      // choreImage = require('../images/bathroom.png');
-      choreImage = require('../images/chores/bath2.jpg');
+      choreImage = choreImages[2];
     } else if (this.props.chore.toLowerCase().indexOf('trash') > -1) {
-      // choreImage = choreImages[3];
-      choreImage = require('../images/chores/trash.jpg');
+      choreImage = choreImages[3];
     }
 
     // end of mccode //
-    // // mcc
-    // let choreTemp = '';
-    // let choreTempIns = 'Get milk';
 
-    // if (this.props.chore === 'trash/recyling/compost') {
-    //   choreTemp = ' Morning Gym';
-    //   choreTempIns = 'Lift weights';
-    // } else {
-    //   choreTemp = ' Buy Groceries';
-    // }
-    // override only
-    //choreImage = { uri: 'https://t4.ftcdn.net/jpg/01/27/65/93/240_F_127659315_Lk873FZ1nGStVhWsEgj1DARtwUzLwNW8.jpg' };
-    // choreImage = require('../images/bathroom.png');
-    // choreImage = require('../images/kitchen.jpg');
     return (
       // <Container>
       //   <Header />
@@ -320,26 +291,21 @@ export default class CardComponent extends Component {
 
             <Body>
               <Text>
-                Chore:
-                {this.props.chore}
+                Chore: {this.props.chore}
               </Text>
               <Text>
-                Assigned:
-                {this.props.assigned}
+                Assigned: {this.props.assigned}
               </Text>
               <Text note>
-                {/* Note: Lift Weights */}
-                {this.props.instructions}
+                Note: {this.props.instructions}
               </Text>
             </Body>
           </Left>
         </CardItem>
         <CardItem cardBody large style={styles.itemStyle}>
-          {/* <Image source={require('../images/bathroom.png')} /> */}
-          {/* style={{ height: 200, width: null, flex: 1 }} /> */}
           <Image
             source={choreImage}
-            style={{ height: 220, width: null, flex: 1 }}
+            style={{ height: 200, width: null, flex: 1 }}
           />
         </CardItem>
         <CardItem large style={styles.itemStyle}>

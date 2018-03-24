@@ -2,6 +2,12 @@
 #
 .DS_Store
 
+
+ios/chores/Info.plist
+
+src/env.js
+env.js
+.env
 # Xcode
 #
 build/

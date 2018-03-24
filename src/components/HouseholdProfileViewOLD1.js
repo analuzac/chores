@@ -35,12 +35,6 @@ export default class HouseholdProfileView extends Component {
       }
     ];
     let houseHoldImage = houseHoldPics[0];
-    houseHoldImage = require('../images/households/default.jpg');
-    if (this.props.householdInfo[0].type === 'family') {
-      houseHoldImage = require('../images/households/family.jpg');
-    } else if (this.props.householdInfo[0].type === 'roommates') {
-      houseHoldImage = require('../images/households/roommates.jpg');
-    }
     // function memberChart(arr) {
     //   arr.forEach(element =>
     //     <Text style={styles.textStyle2}>
@@ -48,9 +42,8 @@ export default class HouseholdProfileView extends Component {
     //     </Text>
     //   );
     // }
-    console.log('PROPS in HouseholdProfileView COMP 3333333', this.props);
-    if (leMembers !== null && Array.isArray(leMembers)) {
-      //if (leMembers !== null) {
+    console.log('PROPS in HouseholdProfileView COMP 3333333', leMembers);
+    if (leMembers !== null) {
       //console.log('no MEMbERS');
 
       return (
@@ -117,7 +110,7 @@ export default class HouseholdProfileView extends Component {
       return (
         <Container>
           <Content>
-            <Text>None Yet</Text>
+            <Text>Loading...</Text>
           </Content>
         </Container>
       );

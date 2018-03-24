@@ -12,8 +12,6 @@ import {
   Left,
   Picker,
   Form,
-  Card,
-  CardItem,
   Item,
   Input,
   Label,
@@ -84,80 +82,65 @@ export default class HouseholdProfileUpdate extends Component {
   }
 
   render() {
-    let houseHoldPics = [
-      {
-        uri:
-          'https://cdn1.thr.com/sites/default/files/2016/04/simpsons_family_house.jpg'
-      }
-    ];
-    let houseHoldImage = houseHoldPics[0];
+    // let pic = {
+    //   uri:
+    //     'https://upload.wikimedia.org/wikipedia/commons/d/de/Bananavarieties.jpg'
+    // };
+    // function memberChart(arr) {
+    //   arr.map(element => {
+    //     return (
+    //       <Text style={styles.textStyle2}>
+    //         {`${element.name} - ${element.points}pts`}
+    //       </Text>
+    //     );
+    //   });
+    // }
     console.log('HOUSEHOLD UPDATE - PROPS...', this.props);
     return (
       <Container>
-        {/* <HeaderComponent title="Household Profile" /> */}
         <Content>
-          <Card>
-            <CardItem large style={styles.itemStyle}>
-              <Left>
-                <Body>
-                  <Text style={styles.textStyle1}>
-                    Household Name: {this.props.householdInfo[0].name}
-                  </Text>
-                  <Item style={styles.itemStyle}>
-                    <Input
-                      style={styles.inputStyle}
-                      placeholder="name"
-                      onChangeText={this.handleName}
-                    />
-                  </Item>
-                  <Text style={styles.textStyle1}>
-                    Description: {this.props.householdInfo[0].description}
-                  </Text>
-                  <Item stackedLabel>
-                    <Input
-                      placeholder="description"
-                      onChangeText={this.handleDescription}
-                    />
-                  </Item>
+          {/* <Image source={pic} style={styles.imageStyle} /> */}
+          <Text style={styles.textStyle1}>Household Name:</Text>
+          <Item stackedLabel style={styles.itemStyle}>
+            <Label style={styles.textStyle2}>
+              {this.props.householdInfo[0].name}
+            </Label>
+            <Input placerholder="name" onChangeText={this.handleName} />
+          </Item>
 
-                  {/* </CardItem>
-            <CardItem large style={styles.itemStyle}> */}
-                  <Text style={styles.textStyle1}>Type:</Text>
-                  <Form>
-                    <Picker
-                      iosHeader="Select one"
-                      mode="dropdown"
-                      selectedValue={this.state.type}
-                      onValueChange={this.onValueChange.bind(this)}>
-                      <leItem label="family" value="family" />
-                      <leItem label="roommates" value="roommates" />
-                      <leItem label="other" value="other" />
-                    </Picker>
-                  </Form>
-                </Body>
-              </Left>
-            </CardItem>
-            <CardItem cardBody large style={styles.itemStyle}>
-              <Image
-                source={houseHoldImage}
-                style={{ height: 200, width: null, flex: 1 }}
-              />
-            </CardItem>
-            <CardItem>
-              <Button
-                style={styles.buttonStyle}
-                onPress={this.handleSubmit}
-                full
-                rounded
-                primary>
-                <Text> DONE </Text>
-              </Button>
-            </CardItem>
-          </Card>
+          <Text style={styles.textStyle1}>Description:</Text>
+          <Item stackedLabel style={styles.itemStyle}>
+            <Label style={styles.textStyle2}>
+              {this.props.householdInfo[0].description}
+            </Label>
+            <Input
+              placerholder="description"
+              onChangeText={this.handleDescription}
+            />
+          </Item>
+
+          <Text style={styles.textStyle1}>Type:</Text>
+          <Form>
+            <Picker
+              iosHeader="Select one"
+              mode="dropdown"
+              selectedValue={this.state.type}
+              onValueChange={this.onValueChange.bind(this)}>
+              <leItem label="family" value="family" />
+              <leItem label="roommates" value="roommates" />
+              <leItem label="other" value="other" />
+            </Picker>
+          </Form>
+
+          <Button
+            style={styles.buttonStyle}
+            onPress={this.handleSubmit}
+            full
+            rounded
+            primary>
+            <Text> DONE </Text>
+          </Button>
         </Content>
-        {/* <Footer>
-          <FooterComponent selected={'houseview'} />
-        </Footer> */}
       </Container>
     );
   }
@@ -178,7 +161,7 @@ const styles = {
     flex: 1,
     marginRight: 15,
     marginLeft: 15,
-    marginBottom: 15
+    marginBottom: 5
     // marginHorizontal: 15,
     // justifyContent: 'center'
   },
@@ -188,10 +171,10 @@ const styles = {
     //flexDirection: 'row',
   },
   textStyle1: {
-    fontSize: 18,
-    // textDecorationLine: 'underline',
-    marginRight: 5,
-    marginLeft: 5,
+    fontSize: 20,
+    textDecorationLine: 'underline',
+    marginRight: 15,
+    marginLeft: 15,
     marginTop: 15
     // textAlign: 'center'
     // fontWeight: 'bold'
